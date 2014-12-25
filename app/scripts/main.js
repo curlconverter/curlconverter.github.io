@@ -8,17 +8,19 @@
 'use strict';
 
 var curlconverter = require('curlconverter');
-var $ = require('jquery-browserify');
-$(function() {
-  $('#convert-button').on('click', function() {
-    var curlCode = $('#curl-code').val();
+
+document.addEventListener('DOMContentLoaded', function(){
+  var convertButton = document.getElementById('convert-button');
+    convertButton.addEventListener('click', function() {
+
+
+    var curlCode = document.getElementById('curl-code').value;
     var pythonCode;
     if (curlCode.indexOf('curl') === -1) {
       pythonCode = 'Could not parse curl command.';
     } else {
       pythonCode = curlconverter.toPython(curlCode);
     }
-    $('#python-code').val(pythonCode);
-
+    document.getElementById('python-code').value = pythonCode;
   });
 });
