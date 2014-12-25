@@ -43,6 +43,7 @@
     "backbone": "^1.1.2",
     "curlconverter": "0.0.1",
     "jquery": "^2.1.1",
+    "jquery-browserify": "^1.8.1",
     "lodash": "^2.4.1"
   }
 }
