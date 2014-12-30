@@ -3,4 +3,4 @@
 var gulp = require('gulp');
 
 // Dev Server
-gulp.task('dev', ['html', 'styles', 'vendor', 'browserify', 'images', 'watch']);
+gulp.task('dev', ['html', 'styles', 'browserify', 'images', 'watch']);
