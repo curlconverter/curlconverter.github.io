@@ -9,6 +9,7 @@
 
 var curlconverter = require('curlconverter');
 
+
 document.addEventListener('DOMContentLoaded', function(){
   var convertButton = document.getElementById('convert-button');
     convertButton.addEventListener('click', function() {
@@ -19,7 +20,12 @@ document.addEventListener('DOMContentLoaded', function(){
     if (curlCode.indexOf('curl') === -1) {
       pythonCode = 'Could not parse curl command.';
     } else {
+      try {
       pythonCode = curlconverter.toPython(curlCode);
+      } catch(e) {
+        console.log(e);
+        pythonCode = 'Error parsing curl command.';
+      }
     }
     document.getElementById('python-code').value = pythonCode;
   });
