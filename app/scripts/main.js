@@ -11,14 +11,11 @@ var curlconverter = require('curlconverter');
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var language = 'python';
   var hash = window.location.hash.replace('#', '');
   if ('node' === hash) {
-    language = changeLanguage('node');
+    changeLanguage('node');
   }
 
-  var languageSelect = document.getElementById('language');
-  languageSelect.value = language;
   var convertButton = document.getElementById('convert-button');
   convertButton.addEventListener('click', function() {
 
@@ -29,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
       generatedCode = 'Could not parse curl command.';
     } else {
       try {
+        var language = getLanguage();
         if (language === 'node') {
           generatedCode = curlconverter.toNode(curlCode);
         } else {
@@ -50,6 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+/*
+single point of truth in the dom, YEEEE HAWWWW
+ */
 var changeLanguage = function(language) {
   var generatedCodeTitle = document.getElementById('generated-code-title');
   if (language === 'node') {
@@ -58,5 +59,13 @@ var changeLanguage = function(language) {
     generatedCodeTitle.innerHTML = 'Python requests';
   }
   window.location.hash = '#' + language;
+  var languageSelect = document.getElementById('language');
+  languageSelect.value = language;
+
   return language;
+};
+
+var getLanguage = function() {
+  var languageSelect = document.getElementById('language');
+  return languageSelect.value;
 };
