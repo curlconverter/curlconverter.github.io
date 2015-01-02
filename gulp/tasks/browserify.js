@@ -4,10 +4,12 @@ var browserify = require('browserify');
 var config = require('../config');
 var partialify = require('partialify');
 var gulp = require('gulp');
-var debug = require('gulp-debug');
 var rename = require('gulp-rename');
 var rev = require('gulp-rev');
 var source = require('vinyl-source-stream');
+
+var uglify = require('gulp-uglify');
+var buffer = require('vinyl-buffer');
 
 
 // Browserify
@@ -17,6 +19,8 @@ gulp.task('browserify', function() {
     .transform(partialify) // Transform to allow requireing of templates
     .bundle()
     .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest(config.dist + '/scripts/'));
 });
 
