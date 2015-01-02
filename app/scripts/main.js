@@ -17,33 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var convertButton = document.getElementById('convert-button');
-  convertButton.addEventListener('click', function() {
-
-
-    var curlCode = document.getElementById('curl-code').value;
-    var generatedCode;
-    if (curlCode.indexOf('curl') === -1) {
-      generatedCode = 'Could not parse curl command.';
-    } else {
-      try {
-        var language = getLanguage();
-        if (language === 'node') {
-          generatedCode = curlconverter.toNode(curlCode);
-        } else {
-          generatedCode = curlconverter.toPython(curlCode);
-        }
-      } catch(e) {
-        console.log(e);
-        generatedCode = 'Error parsing curl command.';
-      }
-    }
-    document.getElementById('generated-code').value = generatedCode;
-  });
+  convertButton.addEventListener('click', convert);
 
   // listen for change in select
+  var languageSelect = document.getElementById('language');
   languageSelect.addEventListener('change', function() {
     var language = document.getElementById('language').value;
     changeLanguage(language);
+    if (document.getElementById('curl-code').value) {
+      convert();
+    }
   });
 });
 
@@ -68,4 +51,25 @@ var changeLanguage = function(language) {
 var getLanguage = function() {
   var languageSelect = document.getElementById('language');
   return languageSelect.value;
+};
+
+var convert = function() {
+  var curlCode = document.getElementById('curl-code').value;
+  var generatedCode;
+  if (curlCode.indexOf('curl') === -1) {
+    generatedCode = 'Could not parse curl command.';
+  } else {
+    try {
+      var language = getLanguage();
+      if (language === 'node') {
+        generatedCode = curlconverter.toNode(curlCode);
+      } else {
+        generatedCode = curlconverter.toPython(curlCode);
+      }
+    } catch(e) {
+      console.log(e);
+      generatedCode = 'Error parsing curl command.';
+    }
+  }
+  document.getElementById('generated-code').value = generatedCode;
 };
