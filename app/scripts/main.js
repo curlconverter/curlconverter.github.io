@@ -10,23 +10,53 @@
 var curlconverter = require('curlconverter');
 
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function() {
+  var language = 'python';
+  var hash = window.location.hash.replace('#', '');
+  if ('node' === hash) {
+    language = changeLanguage('node');
+  }
+
+  var languageSelect = document.getElementById('language');
+  languageSelect.value = language;
   var convertButton = document.getElementById('convert-button');
-    convertButton.addEventListener('click', function() {
+  convertButton.addEventListener('click', function() {
 
 
     var curlCode = document.getElementById('curl-code').value;
-    var pythonCode;
+    var generatedCode;
     if (curlCode.indexOf('curl') === -1) {
-      pythonCode = 'Could not parse curl command.';
+      generatedCode = 'Could not parse curl command.';
     } else {
       try {
-      pythonCode = curlconverter.toPython(curlCode);
+        if (language === 'node') {
+          generatedCode = curlconverter.toNode(curlCode);
+        } else {
+          generatedCode = curlconverter.toPython(curlCode);
+        }
       } catch(e) {
         console.log(e);
-        pythonCode = 'Error parsing curl command.';
+        generatedCode = 'Error parsing curl command.';
       }
     }
-    document.getElementById('python-code').value = pythonCode;
+    document.getElementById('generated-code').value = generatedCode;
+  });
+
+  // listen for change in select
+  languageSelect.addEventListener('change', function() {
+    var language = document.getElementById('language').value;
+    changeLanguage(language);
   });
 });
+
+
+var changeLanguage = function(language) {
+  var generatedCodeTitle = document.getElementById('generated-code-title');
+  if (language === 'node') {
+    generatedCodeTitle.innerHTML = 'Node.js';
+  } else {
+    generatedCodeTitle.innerHTML = 'Python requests';
+  }
+  window.location.hash = '#' + language;
+  return language;
+};
