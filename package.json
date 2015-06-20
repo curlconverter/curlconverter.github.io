@@ -8,7 +8,7 @@
     "dist": "NODE_ENV=production gulp dist"
   },
   "devDependencies": {
-    "gulp": "3.8.7",
+    "gulp": "3.9.0",
     "gulp-autoprefixer": "^0.0.10",
     "gulp-cache": "^0.2.2",
     "gulp-changed": "^1.0.0",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "backbone": "^1.1.2",
-    "curlconverter": "^0.0.12",
+    "curlconverter": "0.0.13",
     "vinyl-buffer": "^1.0.0"
   }
 }
