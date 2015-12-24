@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "backbone": "^1.1.2",
-    "curlconverter": "0.0.14",
+    "curlconverter": "0.0.16",
     "vinyl-buffer": "^1.0.0"
   }
 }
