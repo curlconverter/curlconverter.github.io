@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var hash = window.location.hash.replace('#', '');
   if ('node' === hash) {
     changeLanguage('node');
+  } else if ('php' === hash) {
+    changeLanguage(('php'));
   }
 
   var convertButton = document.getElementById('convert-button');
@@ -29,8 +31,11 @@ single point of truth in the dom, YEEEE HAWWWW
  */
 var changeLanguage = function(language) {
   var generatedCodeTitle = document.getElementById('generated-code-title');
+
   if (language === 'node') {
     generatedCodeTitle.innerHTML = 'Node.js';
+  } else if (language === 'php') {
+    generatedCodeTitle.innerHTML = 'PHP requests';
   } else {
     generatedCodeTitle.innerHTML = 'Python requests';
   }
