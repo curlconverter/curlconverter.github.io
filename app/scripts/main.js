@@ -63,8 +63,7 @@ var convert = function() {
         generatedCode = curlconverter.toNode(curlCode);
       } else if (language == 'php') {
         generatedCode = curlconverter.toPhp(curlCode);
-      }
-      else {
+      } else {
         generatedCode = curlconverter.toPython(curlCode);
       }
     } catch(e) {
