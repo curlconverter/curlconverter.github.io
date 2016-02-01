@@ -56,7 +56,10 @@ var convert = function() {
       var language = getLanguage();
       if (language === 'node') {
         generatedCode = curlconverter.toNode(curlCode);
-      } else {
+      } else if (language == 'php') {
+        generatedCode = curlconverter.toPhp(curlCode);
+      }
+      else {
         generatedCode = curlconverter.toPython(curlCode);
       }
     } catch(e) {
