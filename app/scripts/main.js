@@ -61,10 +61,13 @@ var convert = function() {
       var language = getLanguage();
       if (language === 'node') {
         generatedCode = curlconverter.toNode(curlCode);
+        window['ga']('send', 'event', 'convertcode', 'tonode');
       } else if (language == 'php') {
         generatedCode = curlconverter.toPhp(curlCode);
+        window['ga']('send', 'event', 'convertcode', 'tophp');
       } else {
         generatedCode = curlconverter.toPython(curlCode);
+        window['ga']('send', 'event', 'convertcode', 'topython');
       }
     } catch(e) {
       console.log(e);
