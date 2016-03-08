@@ -55,6 +55,7 @@ var convert = function() {
   var curlCode = document.getElementById('curl-code').value;
   var generatedCode;
   if (curlCode.indexOf('curl') === -1) {
+
     generatedCode = 'Could not parse curl command.';
   } else {
     try {
@@ -69,10 +70,22 @@ var convert = function() {
         generatedCode = curlconverter.toPython(curlCode);
         window['ga']('send', 'event', 'convertcode', 'topython');
       }
+      hideIssuePromo();
     } catch(e) {
       console.log(e);
       generatedCode = 'Error parsing curl command.';
+      window['ga']('send', 'event', 'convertcode', 'parseerror');
+      showIssuePromo();
     }
   }
   document.getElementById('generated-code').value = generatedCode;
+};
+
+
+var showIssuePromo = function() {
+  document.getElementById('issue-promo').style.display = "inline-block";
+};
+
+var hideIssuePromo = function() {
+  document.getElementById('issue-promo').style.display = "none";
 };
