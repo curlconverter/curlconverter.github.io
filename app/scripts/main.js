@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     changeLanguage(('php'));
   }
 
-  var convertButton = document.getElementById('convert-button');
-  convertButton.addEventListener('click', convert);
+  var curlCodeInput = document.getElementById('curl-code');
+  curlCodeInput.addEventListener('keyup', convert);
 
   // listen for change in select
   var languageSelect = document.getElementById('language');
