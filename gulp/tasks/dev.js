@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var gulp = require('gulp');
+var gulp = require('gulp')
 
 // Dev Server
-gulp.task('dev', ['html', 'styles', 'browserify', 'images', 'watch']);
+gulp.task('dev', ['html', 'styles', 'browserify', 'images', 'watch'])
