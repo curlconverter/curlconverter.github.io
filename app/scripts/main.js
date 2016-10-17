@@ -35,13 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var postExample = document.getElementById('post-example')
   postExample.addEventListener('click', function () {
-    showExample("curl 'http://www.w3schools.com/ajax/demo_post.asp' -X POST -H 'Origin: http://www.w3schools.com' " +
+    showExample("curl 'http://fiddle.jshell.net/echo/html/' -H 'Origin: http://fiddle.jshell.net' " +
       "-H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: en-US,en;q=0.8' " +
       "-H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) " +
-      "Chrome/39.0.2171.95 Safari/537.36' -H 'Accept: */*' " +
-      "-H 'Referer: http://www.w3schools.com/ajax/tryit_view.asp?x=0.07944501144811511' " +
-      "-H 'Cookie: _gat=1; ASPSESSIONIDACCRDTDC=MCMDKFMBLLLHGKCGNMKNGPKI; _ga=GA1.2.1424920226.1419478126' " +
-      "-H 'Connection: keep-alive' -H 'Content-Length: 0' --compressed")
+      "Chrome/39.0.2171.95 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' " +
+      "-H 'Accept: */*' -H 'Referer: http://fiddle.jshell.net/_display/' -H 'X-Requested-With: XMLHttpRequest' " +
+      "-H 'Connection: keep-alive' --data 'msg1=wow&msg2=such' --compressed")
   })
 
   var basicAuthExample = document.getElementById('basic-auth-example')
