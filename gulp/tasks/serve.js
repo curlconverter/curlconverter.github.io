@@ -2,18 +2,20 @@
 
 var config = require('../config');
 var gulp = require('gulp');
+var serveStatic = require('serve-static')
+var serveIndex = require('serve-index')
 
 // Connect
 gulp.task('connect', function () {
   var connect = require('connect');
   var app = connect()
     .use(require('connect-livereload')({ port: config.livereloadPort }))
-    .use('/', connect.static('.tmp'))
-    .use('/', connect.static('app'))
+    .use('/', serveStatic('.tmp'))
+    .use('/', serveStatic('app'))
     // paths to bower_components should be relative to the current file
     // e.g. in app/index.html you should use ../bower_components
-    .use('/bower_components', connect.static('bower_components'))
-    .use(connect.directory('app'));
+    .use('/bower_components', serveStatic('bower_components'))
+    .use(serveIndex('app'));
 
   require('http').createServer(app)
     .listen(config.port)

@@ -10,6 +10,7 @@ var source = require('vinyl-source-stream');
 
 var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
+var livereload = require('gulp-livereload')
 
 
 // Browserify
@@ -21,7 +22,8 @@ gulp.task('browserify', function() {
     .pipe(source('main.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(gulp.dest(config.dist + '/scripts/'));
+    .pipe(gulp.dest(config.dist + '/scripts/'))
+    .pipe(livereload());
 });
 
 // Script Dist

@@ -1,23 +1,17 @@
 'use strict';
 
-// var config = require('../config.js');
 var gulp = require('gulp');
 var livereload = require('gulp-livereload');
 
 // Watch
 gulp.task('watch', ['connect', 'serve'], function () {
-  var server = livereload();
+  livereload.listen()
     // Watch for changes in `app` folder
     gulp.watch([
-        // 'app/jade/**/*.jade',
-        // 'app/*.html',
-        // 'app/scss/**/*.scss',
-        // 'app/scripts/**/*.js',
-        // 'app/images/**/*',
+        'app/*.html',
+        'app/scripts/**/*.js',
         '.tmp/**/*'
-    ]).on('change', function(file) {
-      server.changed(file.path);
-    });
+    ])
 
     // Watch .less files
     gulp.watch('app/less/**/*.less', ['styles']);
