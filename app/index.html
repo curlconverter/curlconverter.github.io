@@ -31,16 +31,18 @@
 
 
   <div class="container">
-    <div class="header">
-      <ul class="nav nav-pills pull-right">
-        <li><a href="http://trillworks.com">Home</a></li>
-        <li><a href="https://github.com/NickCarneiro/curlconverter">GitHub</a></li>
-        <li style="padding-top: 8px; padding-left: 10px;"><iframe src="https://ghbtns.com/github-btn.html?user=NickCarneiro&repo=curlconverter&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="30px"></iframe></li>
-      </ul>
-      <h3 class="text-muted">Convert cURL syntax to Python, Node.js, PHP</h3>
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://trillworks.com">Home</a></li>
+          <li><a href="https://github.com/NickCarneiro/curlconverter">GitHub</a></li>
+          <li style="padding-top: 8px; padding-left: 10px;"><iframe src="https://ghbtns.com/github-btn.html?user=NickCarneiro&repo=curlconverter&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="30px"></iframe></li>
+        </ul>
+        <h3 class="text-muted hidden-xs">Convert cURL syntax to Python, Node.js, PHP</h3>
+      </div>
     </div>
-    <div class="row marketing">
-      <div class="col-lg-6">
+    <div class="row">
+      <div class="col-sm-6">
         <h2>cURL command</h2>
         <textarea id="curl-code" class="code" placeholder="Paste a cURL command here"></textarea>
         <div>
@@ -54,7 +56,7 @@
         </div>
 
       </div>
-      <div class="col-lg-6">
+      <div class="col-sm-6">
         <h2 id="generated-code-title">Python requests</h2>
         <div style="display: none;" id="issue-promo">If your syntax is correct, create an
           <a href="https://github.com/NickCarneiro/curlconverter/issues/new" target="_blank">issue</a>.
