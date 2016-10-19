@@ -5,5 +5,5 @@ var del = require('del')
 
 // Clean
 gulp.task('clean', function () {
-  return del(['.tmp', 'dist/styles', 'dist/scripts', 'dist/images'])
+  return del(['.tmp', 'dist/'])
 })
