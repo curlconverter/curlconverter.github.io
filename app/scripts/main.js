@@ -95,7 +95,11 @@ var convert = function () {
       hideIssuePromo()
     } catch (e) {
       console.log(e)
-      generatedCode = 'Error parsing curl command.'
+      if (curlCode.indexOf('curl') !== 0) {
+        generatedCode = 'Error parsing curl command. Your input should start with the word "curl"'
+      } else {
+        generatedCode = 'Error parsing curl command.'
+      }
       window['ga']('send', 'event', 'convertcode', 'parseerror')
       showIssuePromo()
     }
