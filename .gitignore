@@ -6,3 +6,4 @@ dist
 app/bower_components
 .DS_Store
 *.iml
+scripts/main.min.js
