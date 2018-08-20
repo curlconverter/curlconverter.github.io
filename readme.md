@@ -5,10 +5,8 @@ Uses browserify and gulp
 
 # setup
 
-    sudo npm install -g gulp
-    sudo npm install -g bower
     npm install
-    bower install
-    gulp
+    npm run-script build
+    python -m SimpleHTTPServer
 
 
