@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (hash === 'node') {
     changeLanguage('node')
   } else if (hash === 'php') {
-    changeLanguage(('php'))
+    changeLanguage('php')
+  } else if (hash === 'r') {
+    changeLanguage('r')
   }
 
   var curlCodeInput = document.getElementById('curl-code')
@@ -59,6 +61,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Node.js'
   } else if (language === 'php') {
     generatedCodeTitle.innerHTML = 'PHP requests'
+  } else if (language === 'r') {
+    generatedCodeTitle.innerHTML = 'R httr'
   } else {
     generatedCodeTitle.innerHTML = 'Python requests'
   }
@@ -88,6 +92,9 @@ var convert = function () {
       } else if (language === 'php') {
         generatedCode = curlconverter.toPhp(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tophp')
+      } else if (language === 'r') {
+        generatedCode = curlconverter.toR(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'tor')
       } else {
         generatedCode = curlconverter.toPython(curlCode)
         window['ga']('send', 'event', 'convertcode', 'topython')
