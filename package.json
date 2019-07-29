@@ -9,11 +9,11 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "curlconverter": "^2.6.0"
+    "curlconverter": "^2.8.1"
   },
   "devDependencies": {
-    "browserify": "^16.2.2",
-    "standard": "^11.0.1",
+    "browserify": "^16.3.0",
+    "standard": "^13.1.0",
     "uglify-es": "^3.3.9"
   }
 }
