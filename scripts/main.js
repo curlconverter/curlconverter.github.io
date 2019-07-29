@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     changeLanguage('json')
   } else if (hash === 'rust') {
     changeLanguage('rust')
+  } else if (hash === 'dart') {
+    changeLanguage('dart')
   }
 
   var curlCodeInput = document.getElementById('curl-code')
@@ -77,6 +79,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Strest'
   } else if (language === 'rust') {
     generatedCodeTitle.innerHTML = 'Rust'
+  } else if (language === 'dart') {
+    generatedCodeTitle.innerHTML = 'Dart'
   } else if (language === 'json') {
     generatedCodeTitle.innerHTML = 'JSON'
   } else {
@@ -120,6 +124,9 @@ var convert = function () {
       } else if (language === 'rust') {
         generatedCode = curlconverter.toRust(curlCode)
         window['ga']('send', 'event', 'convertcode', 'torust')
+      } else if (language === 'dart') {
+        generatedCode = curlconverter.toDart(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'todart')
       } else if (language === 'json') {
         generatedCode = curlconverter.toJsonString(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tojson')
