@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     changeLanguage('rust')
   } else if (hash === 'dart') {
     changeLanguage('dart')
+  } else if (hash === 'ansible') {
+    changeLanguage('ansible')
   }
 
   var curlCodeInput = document.getElementById('curl-code')
@@ -71,6 +73,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Node.js'
   } else if (language === 'php') {
     generatedCodeTitle.innerHTML = 'PHP requests'
+  } else if (language === 'ansible') {
+    generatedCodeTitle.innerHTML = 'Ansible URI'
   } else if (language === 'r') {
     generatedCodeTitle.innerHTML = 'R httr'
   } else if (language === 'go') {
@@ -130,6 +134,9 @@ var convert = function () {
       } else if (language === 'json') {
         generatedCode = curlconverter.toJsonString(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tojson')
+      } else if (language === 'ansible') {
+        generatedCode = curlconverter.toAnsible(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'toansible')
       } else {
         generatedCode = curlconverter.toPython(curlCode)
         window['ga']('send', 'event', 'convertcode', 'topython')
