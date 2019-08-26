@@ -61,6 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
   basicAuthExample.addEventListener('click', function () {
     showExample('curl "https://api.test.com/" -u "some_username:some_password"')
   })
+
+  var windowsCurl = document.getElementById('windows-curl')
+  windowsCurl.addEventListener('click', function () {
+    appendWindows()
+  })
+
+  var bashCurl = document.getElementById('bash-curl')
+  bashCurl.addEventListener('click', function () {
+    unappendWindows()
+  })
 })
 
 /*
@@ -166,5 +176,17 @@ var hideIssuePromo = function () {
 
 var showExample = function (code) {
   document.getElementById('curl-code').value = code
+  convert()
+}
+
+var appendWindows = function () {
+  var current = document.getElementById('curl-code').value
+  document.getElementById('curl-code').value = current + " --windows"
+  convert()
+}
+
+var unappendWindows = function () {
+  var current = document.getElementById('curl-code').value
+  document.getElementById('curl-code').value = current.replace(" --windows", "")
   convert()
 }
