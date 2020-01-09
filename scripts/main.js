@@ -83,6 +83,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Strest'
   } else if (language === 'rust') {
     generatedCodeTitle.innerHTML = 'Rust'
+  } else if (language === 'elixir') {
+    generatedCodeTitle.innerHTML = 'Elixir'
   } else if (language === 'dart') {
     generatedCodeTitle.innerHTML = 'Dart'
   } else if (language === 'json') {
@@ -128,6 +130,9 @@ var convert = function () {
       } else if (language === 'rust') {
         generatedCode = curlconverter.toRust(curlCode)
         window['ga']('send', 'event', 'convertcode', 'torust')
+      } else if (language === 'elixir') {
+        generatedCode = curlconverter.toElixir(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'toelixir')
       } else if (language === 'dart') {
         generatedCode = curlconverter.toDart(curlCode)
         window['ga']('send', 'event', 'convertcode', 'todart')
