@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
     changeLanguage('dart')
   } else if (hash === 'ansible') {
     changeLanguage('ansible')
+  } else if (hash === 'matlab') {
+    changeLanguage('matlab')
   }
 
   var curlCodeInput = document.getElementById('curl-code')
@@ -89,6 +91,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Dart'
   } else if (language === 'json') {
     generatedCodeTitle.innerHTML = 'JSON'
+  } else if (language === 'matlab') {
+    generatedCodeTitle.innerHTML = 'MATLAB'
   } else {
     generatedCodeTitle.innerHTML = 'Python requests'
   }
@@ -142,6 +146,9 @@ var convert = function () {
       } else if (language === 'ansible') {
         generatedCode = curlconverter.toAnsible(curlCode)
         window['ga']('send', 'event', 'convertcode', 'toansible')
+      } else if (language === 'matlab') {
+        generatedCode = curlconverter.toMATLAB(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'tomatlab')
       } else {
         generatedCode = curlconverter.toPython(curlCode)
         window['ga']('send', 'event', 'convertcode', 'topython')
