@@ -122,6 +122,9 @@ var convert = function () {
       } else if (language === 'php') {
         generatedCode = curlconverter.toPhp(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tophp')
+      } else if (language === 'browser') {
+        generatedCode = curlconverter.toBrowser(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'tobrowser')
       } else if (language === 'r') {
         generatedCode = curlconverter.toR(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tor')
