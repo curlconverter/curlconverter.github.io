@@ -75,6 +75,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Node.js'
   } else if (language === 'php') {
     generatedCodeTitle.innerHTML = 'PHP requests'
+  } else if (language === 'browser') {
+    generatedCodeTitle.innerHTML = 'Browser (fetch)'
   } else if (language === 'ansible') {
     generatedCodeTitle.innerHTML = 'Ansible URI'
   } else if (language === 'r') {
