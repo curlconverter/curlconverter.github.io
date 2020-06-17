@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     changeLanguage('node')
   } else if (hash === 'php') {
     changeLanguage('php')
+  } else if (hash === 'browser') {
+    changeLanguage('browser')
   } else if (hash === 'r') {
     changeLanguage('r')
   } else if (hash === 'go') {
