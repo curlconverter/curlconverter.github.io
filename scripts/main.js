@@ -4,8 +4,10 @@ var curlconverter = require('curlconverter')
 
 document.addEventListener('DOMContentLoaded', function () {
   var hash = window.location.hash.replace('#', '')
-  if (hash === 'node') {
-    changeLanguage('node')
+  if (hash === 'node-fetch') {
+    changeLanguage('node-fetch')
+  } else if (hash === 'node-request') {
+    changeLanguage('node-request')
   } else if (hash === 'php') {
     changeLanguage('php')
   } else if (hash === 'browser') {
@@ -73,8 +75,10 @@ single point of truth in the dom, YEEEE HAWWWW
 var changeLanguage = function (language) {
   var generatedCodeTitle = document.getElementById('generated-code-title')
 
-  if (language === 'node') {
-    generatedCodeTitle.innerHTML = 'Node.js'
+  if (language === 'node-fetch') {
+    generatedCodeTitle.innerHTML = 'Node (fetch)'
+  } else if (language === 'node-request') {
+    generatedCodeTitle.innerHTML = 'Node (request)'
   } else if (language === 'php') {
     generatedCodeTitle.innerHTML = 'PHP requests'
   } else if (language === 'browser') {
@@ -120,9 +124,12 @@ var convert = function () {
   } else {
     try {
       var language = getLanguage()
-      if (language === 'node') {
-        generatedCode = curlconverter.toNode(curlCode)
-        window['ga']('send', 'event', 'convertcode', 'tonode')
+      if (language === 'node-fetch') {
+        generatedCode = curlconverter.toNodeFetch(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'tonodefetch')
+      } else if (language === 'node-request') {
+        generatedCode = curlconverter.toNodeRequest(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'tonoderequests')
       } else if (language === 'php') {
         generatedCode = curlconverter.toPhp(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tophp')
