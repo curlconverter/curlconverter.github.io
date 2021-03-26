@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     changeLanguage('go')
   } else if (hash === 'strest') {
     changeLanguage('strest')
+  } else if (hash === 'java') {
+    changeLanguage('java')
   } else if (hash === 'json') {
     changeLanguage('json')
   } else if (hash === 'rust') {
@@ -97,6 +99,8 @@ var changeLanguage = function (language) {
     generatedCodeTitle.innerHTML = 'Elixir'
   } else if (language === 'dart') {
     generatedCodeTitle.innerHTML = 'Dart'
+  } else if (language === 'java') {
+    generatedCodeTitle.innerHTML = 'Java'
   } else if (language === 'json') {
     generatedCodeTitle.innerHTML = 'JSON'
   } else if (language === 'matlab') {
@@ -154,6 +158,9 @@ var convert = function () {
       } else if (language === 'dart') {
         generatedCode = curlconverter.toDart(curlCode)
         window['ga']('send', 'event', 'convertcode', 'todart')
+      } else if (language === 'java') {
+        generatedCode = curlconverter.toJava(curlCode)
+        window['ga']('send', 'event', 'convertcode', 'tojava')
       } else if (language === 'json') {
         generatedCode = curlconverter.toJsonString(curlCode)
         window['ga']('send', 'event', 'convertcode', 'tojson')
