@@ -5,5 +5,5 @@ Uses browserify and gulp
 # setup
 
     npm install
-    npm run-script build
-    python -m SimpleHTTPServer
+    npm run build
+    python -m http.server
