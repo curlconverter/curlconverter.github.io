@@ -1,9 +1,10 @@
+*.iml
 .idea
+
+.tmp
+.DS_Store
+
 node_modules
 dist
-.tmp
 .sass-cache
 app/bower_components
-.DS_Store
-*.iml
-scripts/main.min.js

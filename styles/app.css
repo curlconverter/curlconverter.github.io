@@ -67,3 +67,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .chrome > li {
   font-size: 16px;
 }
+
+.code {
+  font-family: monospace, sans-serif, serif;
+}
