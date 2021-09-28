@@ -65,7 +65,7 @@ const convert = function () {
     try {
       const language = getLanguage()
       const converter = languages[language][0]
-      generatedCode = converter(curlCode)
+      generatedCode = converter(curlCode).trimEnd() // remove trailling newline
 
       const event = converter.name.toLowerCase().replace('tojsonstring', 'tojson')
       window.ga('send', 'event', 'convertcode', event)
