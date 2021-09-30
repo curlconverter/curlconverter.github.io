@@ -14,7 +14,7 @@
     "node": ">=12"
   },
   "dependencies": {
-    "curlconverter": "^4.0.0-alpha.5",
+    "curlconverter": "^4.0.0-alpha.6",
     "path-browserify": "^1.0.1",
     "url": "^0.11.0"
   },
