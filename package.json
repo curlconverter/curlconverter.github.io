@@ -6,23 +6,29 @@
     "build": "webpack",
     "watch": "webpack --watch --mode development --devtool inline-source-map",
     "start": "webpack serve --open",
-    "lint": "standard scripts/main.js",
-    "lint:fix": "standard --fix scripts/main.js"
+    "lint": "standard           ./index.js ./webpack.config.js",
+    "lint:fix": "standard --fix ./index.js ./webpack.config.js"
   },
   "type": "module",
   "engines": {
     "node": ">=12"
   },
   "dependencies": {
-    "curlconverter": "^4.0.0-alpha.6",
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^5.1.3",
+    "curlconverter": "^4.0.0-alpha.7",
+    "github-fork-ribbon-css": "^0.2.3",
+    "highlight.js": "^11.3.1",
     "path-browserify": "^1.0.1",
     "url": "^0.11.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^9.0.1",
-    "standard": "^16.0.3",
-    "webpack": "^5.54.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.3.0"
+    "css-loader": "^6.4.0",
+    "standard": "^16.0.4",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
   }
 }
