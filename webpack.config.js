@@ -1,19 +1,28 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { createRequire } from 'module'
 import CopyPlugin from 'copy-webpack-plugin'
 
+import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default {
-  entry: './scripts/main.js',
+  entry: './index.js',
   mode: 'production',
+  // mode: 'development',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'docs')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   resolve: {
     fallback: {
@@ -32,9 +41,10 @@ export default {
         'node_modules/curlconverter/tree-sitter-bash.wasm',
         'index.html',
         { from: 'images', to: 'images' },
-        { from: 'styles', to: 'styles' },
         'meta'
       ]
     })
-  ]
+  ],
+  // Don't warn that we have a big JS bundle.
+  performance: { hints: false }
 }

@@ -1,4 +1,4 @@
-A static Web app for showing off [curlconverter](https://github.com/NickCarneiro/curlconverter)
+A static Web app for showing off [curlconverter](https://github.com/curlconverter/curlconverter)
 
 Uses Webpack
 

@@ -1,0 +1,31 @@
+#generated-code, #curl-code {
+  font-family: monospace;
+  line-height: 1.25;
+}
+
+#curl-code {
+  min-height: calc(12.5em + .375rem + .375rem + 2px);
+}
+
+#generated-code {
+  /* same as the text area */
+  padding: .375rem .75rem;
+  border-radius: .3rem;
+  border: 1px solid whitesmoke;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: whitesmoke;
+  min-height: calc(1.25em + .375rem + .375rem + 2px);
+}
+
+pre code.error {
+  color: red;
+}
+
+.examples {
+  padding-bottom: 1rem;
+}
+
+.github-fork-ribbon:before {
+  background-color: #333;
+}

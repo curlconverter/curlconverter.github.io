@@ -7,91 +7,111 @@
     <meta name="description" content="Utility for converting cURL commands to code">
     <meta name="author" content="Nick Carneiro">
 
-    <title>Convert curl command syntax to Python requests, Ansible URI, browser fetch, MATLAB, Node.js, R, PHP, Strest, Go, Dart, Java, JSON, Elixir, and Rust code</title>
-    <link href="/curltorequests/app.css" rel="stylesheet">
+    <title>Convert curl commands to code</title>
   </head>
   <body>
-  <div class="container">
+  <div class="container py-2">
     <div class="row">
-      <div class="col-sm-12">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="https://github.com/NickCarneiro/curlconverter">GitHub</a></li>
-          <li style="padding-top: 8px; padding-left: 10px;"><iframe src="https://ghbtns.com/github-btn.html?user=NickCarneiro&repo=curlconverter&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="30px"></iframe></li>
-        </ul>
-        <h3 class="text-muted hidden-xs">Convert curl syntax to Python, Node.js, PHP, R, Go, Rust, Elixir, Java, MATLAB, Ansible URI, Strest, Dart and JSON</h3>
+      <div class="col-8 col-sm-10 col-md-11 col-xl-12 col-xxl-11">
+        <h3 class="text-muted d-none d-md-block">Convert <a href="https://curl.se/docs/manual.html">curl</a> commands to Python, JavaScript, PHP, R, Go, Rust, Elixir, Java, MATLAB, Ansible URI, Strest, Dart or JSON</h3>
+        <h3 class="text-muted d-block d-md-none">Convert <a href="https://curl.se/docs/manual.html">curl</a> to Python, JS and more</h3>
       </div>
     </div>
+  </div>
+  <div class="container-xxl pb-4">
     <div class="row">
-      <div class="col-sm-6">
-        <h2>curl command</h2>
-        <textarea id="curl-code" class="code" placeholder="Paste a curl command here" autofocus></textarea>
-        <div>
-          Examples:
-          <a id="get-example" href="#" tabindex="-1">GET</a>
-          -
-          <a id="post-example" href="#" tabindex="-1">POST</a>
-          -
-          <a id="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
-
+      <div class="col-lg-6">
+        <div class="row py-1">
+          <h2>curl command</h2>
         </div>
-
-      </div>
-      <div class="col-sm-6">
-        <h2 id="generated-code-title">Python requests</h2>
-        <div style="display: none;" id="issue-promo">If your syntax is correct, create an
-          <a href="https://github.com/NickCarneiro/curlconverter/issues/new" target="_blank">issue</a>.
+        <div class="row">
+          <div class="col pb-4 pb-lg-0">
+            <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=5 autofocus></textarea>
+            <small class="examples">
+              Examples:
+              <a id="get-example" href="#" tabindex="-1">GET</a>
+              -
+              <a id="post-example" href="#" tabindex="-1">POST</a>
+              -
+              <a id="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
+            </small>
+          </div>
         </div>
-        <textarea id="generated-code" class="code"></textarea>
+      </div>
 
+      <div class="col-lg-6">
+        <div class="row pb-1 pb-lg-0">
+          <div class="d-none d-sm-block col-sm-auto py-1">
+            <h2>Language:</h2>
+          </div>
+          <div class="col col-sm-auto px-sm-0">
+            <select class="form-select form-select-lg" id="language">
+              <option value="ansible">Ansible</option>
+              <option value="browser">Browser (fetch)</option>
+              <option value="dart">Dart</option>
+              <option value="elixir">Elixir</option>
+              <option value="go">Go</option>
+              <option value="java">Java</option>
+              <option value="json">JSON</option>
+              <option value="node-fetch">Node.js (fetch)</option>
+              <option value="node-request">Node.js (request)</option>
+              <option value="matlab">MATLAB</option>
+              <option value="php">PHP</option>
+              <option value="python" selected>Python</option>
+              <option value="r">R</option>
+              <option value="rust">Rust</option>
+              <option value="strest">Strest</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <pre><code id="generated-code"></code></pre>
+        </div>
+        <div class="row">
+          <div style="display: none;" id="issue-promo">If your syntax is correct, create a
+            <a href="https://github.com/curlconverter/curlconverter/issues/new" target="_blank">new issue</a> <span style="display: none;" id="prefilled-issue"> or <a href="" target="_blank">prefilled with the current input</a></span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 button-container">
-        <label for="language">
-          Language
-        </label>
-        <select class="form-control" id="language">
-          <option value="ansible">Ansible</option>
-          <option value="browser">Browser (fetch)</option>
-          <option value="dart">Dart</option>
-          <option value="elixir">Elixir</option>
-          <option value="go">Go</option>
-          <option value="java">Java</option>
-          <option value="json">JSON</option>
-          <option value="node-fetch">Node.js (fetch)</option>
-          <option value="node-request">Node.js (request)</option>
-          <option value="matlab">MATLAB</option>
-          <option value="php">PHP</option>
-          <option value="python" selected="selected">Python</option>
-          <option value="r">R</option>
-          <option value="rust">Rust</option>
-          <option value="strest">Strest</option>
-        </select>
-      </div>
-    </div>
-    <div class="row extra-padding">
-      <div class="col-lg-2">
-        <h3>Curl from Chrome</h3>
+  </div>
+  <div class="container-md">
+    <div class="row border-top py-4">
+      <div class="col-lg-4">
+        <h3>Curl from Google Chrome</h3>
         <ul class="chrome">
           <li>1) Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
-          <li>2) Ctrl-click a request, "Copy as cURL".</li>
-          <li>3) Paste it in the cURL command box.</li>
+          <li>2) Ctrl-click a request.</li>
+          <li>3) Click "Copy" &gt; "Copy as cURL".</li>
+          <li>4) Paste it in the <b>curl command</b> box above.</li>
         </ul>
+        <p>
+          This also works in Safari and Firefox.
+        </p>
       </div>
-      <div class="col-lg-6">
-        <img class="screenshot" src="images/screenshot.png" srcset="images/screenshot@2x.png 2x" alt="screenshot of the Chrome DevTools">
+      <div class="col-lg-8">
+        <img class="screenshot img-fluid mx-auto d-block" src="images/screenshot.png" srcset="images/screenshot@2x.png 2x" alt="screenshot of the Chrome DevTools">
       </div>
     </div>
-    <div class="row border-top extra-padding">
+    <div class="row border-top pt-4">
       <div class="col-sm-4">
-        <h3>Support Us</h3>
-        <div class="well larger-text">
-          <p>GitHub is matching all contributions to this project on <a href="https://github.com/sponsors/NickCarneiro">Github Sponsors</a>.
-          This is a surprisingly good deal and I'm not sure how long it's going to last.
-          </p>
-          <a class="btn btn-primary" href="https://github.com/sponsors/NickCarneiro">
-            Contribute Now
-          </a>
+        <div class="row pb-3">
+          <h3>Support Us</h3>
+          <div class="well larger-text">
+            <p>GitHub is matching all contributions to this project on <a href="https://github.com/sponsors/NickCarneiro">Github Sponsors</a>.
+            This is a surprisingly good deal and I'm not sure how long it's going to last.
+            </p>
+            <a class="btn btn-primary" href="https://github.com/sponsors/NickCarneiro">
+              Contribute Now
+            </a>
+          </div>
+        </div>
+        <div class="row d-none d-sm-block">
+          <h3>Found a problem?</h3>
+          <div>
+            Please report bugs
+            <a href="https://github.com/curlconverter/curlconverter/issues/new">on GitHub</a>.
+          </div>
         </div>
       </div>
       <div class="col-sm-4">
@@ -100,24 +120,44 @@
           <li><a href="https://mholt.github.io/curl-to-go/">curl-to-Go</a></li>
           <li><a href="https://incarnate.github.io/curl-to-php/">curl-to-PHP</a></li>
           <li><a href="https://mattcg.github.io/har-to-curl/">HAR-to-curl</a></li>
+          <li><a href="https://ryan.govost.es/http-translator/">http-translator</a> (Python, JS and JSON)</li>
+          <li><a href="https://github.com/spulec/uncurl">uncurl</a> (to Python)</li>
+          <li><a href="https://github.com/hrbrmstr/curlconverter">hrbrmstr/curlconverter</a> (to R)</li>
+          <li><a href="https://github.com/postmanlabs/curl-to-postman">curl-to-postman</a></li>
+          <li><a href="https://github.com/Kong/insomnia/blob/develop/packages/insomnia-importers/README.md">Insomnia</a></li>
+          <li><a href="https://github.com/luckymarmot/Paw-cURLImporter">Paw-cURLImporter</a></li>
         </ul>
       </div>
       <div class="col-sm-4">
-        <h3>Find a problem?</h3>
-        <div class="well larger-text">
-          Please report bugs on
-          <a href="https://github.com/NickCarneiro/curlconverter">GitHub</a>.
-        </div>
+        <h3>Privacy</h3>
+        <p>
+          <code>curlconverter</code> is <a href="https://github.com/curlconverter/curlconverter">open source</a> and runs <a href="https://github.com/curlconverter/curltorequests/blob/master/index.js">entirely in your browser</a> using JavaScript.
+          We do <b>not</b> transmit or record the curl commands you enter or what they're converted to.
+        <p>
+        </p>
+          We only record which languages you're converting to and whether or not the conversions succeed (through <a href="https://en.wikipedia.org/wiki/Google_Analytics">Google Analytics</a>).
+        </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 footer">
+    <div class="row d-block d-sm-none">
+      <h3>Found a problem?</h3>
+      <div>
+        Please report bugs
+        <a href="https://github.com/curlconverter/curlconverter/issues/new">on GitHub</a>.
+      </div>
+    </div>
+    <div class="row pt-4 pb-3">
+      <div class="position-relative">
+        <div class="text-center">
         You should follow me on Twitter <a href="https://twitter.com/nickc_dev">here</a>.
+        </div>
       </div>
     </div>
   </div>
 
-    <script src="main.js"></script>
+  <a class="github-fork-ribbon right-top" href="https://github.com/curlconverter/curlconverter" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+
+  <script src="main.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -126,7 +166,6 @@
 
     ga('create', 'UA-7363929-21', 'auto');
     ga('send', 'pageview');
-
   </script>
   </body>
 </html>
