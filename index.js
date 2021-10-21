@@ -9,17 +9,20 @@ import * as curlconverter from 'curlconverter'
 
 import './main.css'
 
-// TODO: put the curl input in the URL?
 // TODO: include a Windows screenshot. Firefox and Safari have "copy as cURL" as well
-// TODO: option to pre-fill new GitHub Issue with input (and output?) when clicking "create an issue"
+//
+// TODO: put the curl input in the URL?
 // TODO: print a diff of the raw resulting requests?
 
-// TODO: initial input should be "curl example.com"
-// with the corresponding output but greyed out?
+// TODO: translate the site. The top languages are
+// chinese
+// russian
+// portuguese
+// japanese
+// korean
+// french
+// spanish
 
-// TODO: make all the `language` values work with hljs
-
-// TODO: library names should be links to their homepages (for context)
 const languages = {
   ansible: { converter: curlconverter.toAnsible, name: 'Ansible URI', hljs: 'yaml' },
   browser: { converter: curlconverter.toBrowser, name: 'Browser (fetch)', hljs: 'javascript' },
@@ -129,7 +132,6 @@ const convert = function () {
       generatedCode = converter(curlCode).trimEnd() // remove trailling newline
 
       const event = converter.name.toLowerCase().replace('tojsonstring', 'tojson')
-      window.ga('send', 'event', 'convertcode', event)
 
       hideIssuePromo()
     } catch (e) {
@@ -142,7 +144,6 @@ const convert = function () {
         error += ':\n' + origErrorMsg
       }
       changeHighlight('plaintext')
-      window.ga('send', 'event', 'convertcode', 'parseerror')
       showIssuePromo(origErrorMsg)
     }
   }
