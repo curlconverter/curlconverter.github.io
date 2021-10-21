@@ -43,7 +43,8 @@ export default {
         'node_modules/curlconverter/tree-sitter-bash.wasm',
         'index.html',
         { from: 'images', to: 'images' },
-        'meta'
+        'meta',
+        'CNAME'
       ]
     })
   ],
