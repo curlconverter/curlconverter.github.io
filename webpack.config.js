@@ -1,6 +1,7 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import CopyPlugin from 'copy-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
@@ -20,7 +21,7 @@ export default {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
   },
@@ -35,13 +36,15 @@ export default {
     topLevelAwait: true
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new CopyPlugin({
       patterns: [
         'node_modules/web-tree-sitter/tree-sitter.wasm',
         'node_modules/curlconverter/tree-sitter-bash.wasm',
         'index.html',
         { from: 'images', to: 'images' },
-        'meta'
+        'meta',
+        'CNAME'
       ]
     })
   ],

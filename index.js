@@ -130,9 +130,6 @@ const convert = function () {
     try {
       const converter = languages[language].converter
       generatedCode = converter(curlCode).trimEnd() // remove trailling newline
-
-      const event = converter.name.toLowerCase().replace('tojsonstring', 'tojson')
-
       hideIssuePromo()
     } catch (e) {
       console.error(e)
