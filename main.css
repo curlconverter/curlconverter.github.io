@@ -18,12 +18,9 @@
   min-height: calc(1.25em + .375rem + .375rem + 2px);
 }
 
-pre code.error {
-  color: red;
-}
-
-.examples {
-  padding-bottom: 1rem;
+/* At least Chrome on macOS adds a bottom margin */
+pre {
+  margin-bottom: 0;
 }
 
 .github-fork-ribbon:before {

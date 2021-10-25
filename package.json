@@ -6,8 +6,8 @@
     "build": "webpack",
     "watch": "webpack --watch --mode development --devtool inline-source-map",
     "start": "webpack serve --open",
-    "lint": "standard           ./index.js ./webpack.config.js",
-    "lint:fix": "standard --fix ./index.js ./webpack.config.js"
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "type": "module",
   "engines": {
@@ -19,6 +19,7 @@
     "curlconverter": "^4.0.0-alpha.7",
     "github-fork-ribbon-css": "^0.2.3",
     "highlight.js": "^11.3.1",
+    "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
     "url": "^0.11.0"
   },
@@ -31,5 +32,10 @@
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1"
+  },
+  "standard": {
+    "ignore": [
+      "docs/"
+    ]
   }
 }
