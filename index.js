@@ -1,13 +1,15 @@
 import 'bootstrap'
+import hljs from 'highlight.js'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'github-fork-ribbon-css/gh-fork-ribbon.css'
-import hljs from 'highlight.js'
+import 'normalize.css'
 
 import 'highlight.js/styles/github.css'
 
-import * as curlconverter from 'curlconverter'
-
 import './main.css'
+
+import * as curlconverter from 'curlconverter'
 
 // TODO: include a Windows screenshot. Firefox and Safari have "copy as cURL" as well
 //
@@ -104,6 +106,14 @@ const hideIssuePromo = () => {
   document.getElementById('issue-promo').style.display = 'none'
 }
 
+const showCopyToClipboard = () => {
+  document.getElementById('copy-to-clipboard').style.display = 'inline-block'
+}
+
+const hideCopyToClipboard = () => {
+  document.getElementById('copy-to-clipboard').style.display = 'none'
+}
+
 const showExample = function (code) {
   document.getElementById('curl-code').value = code
   convert()
@@ -118,12 +128,12 @@ const convert = function () {
   // Convert the placeholder text as a demo
   if (!curlCode) {
     curlCode = 'curl example.com'
-    hideIssuePromo()
   }
 
   if (!curlCode.trim()) {
     error = ''
     hideIssuePromo()
+    hideCopyToClipboard()
   } else if (curlCode.indexOf('curl') === -1) {
     error = 'Could not parse curl command.'
   } else {
@@ -131,6 +141,7 @@ const convert = function () {
       const converter = languages[language].converter
       generatedCode = converter(curlCode).trimEnd() // remove trailling newline
       hideIssuePromo()
+      showCopyToClipboard()
     } catch (e) {
       console.error(e)
       const origErrorMsg = e.toString()
@@ -142,6 +153,7 @@ const convert = function () {
       }
       changeHighlight('plaintext')
       showIssuePromo(origErrorMsg)
+      hideCopyToClipboard()
     }
   }
   const generatedCodeEl = document.getElementById('generated-code')
@@ -195,14 +207,16 @@ basicAuthExample.addEventListener('click', function () {
   showExample('curl "https://api.test.com/" -u "some_username:some_password"')
 })
 
-const generatedCodeEl = document.getElementById('generated-code')
-generatedCodeEl.addEventListener('click', (event) => {
+const copyToClipboardEl = document.getElementById('copy-to-clipboard')
+copyToClipboardEl.addEventListener('click', (event) => {
   const generatedCodeEl = document.getElementById('generated-code')
   const selection = window.getSelection()
   const range = document.createRange()
   range.selectNodeContents(generatedCodeEl)
   selection.removeAllRanges()
   selection.addRange(range)
+
+  navigator.clipboard.writeText(generatedCodeEl.textContent)
 })
 
 convert()
