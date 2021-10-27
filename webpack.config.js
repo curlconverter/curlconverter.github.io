@@ -22,6 +22,10 @@ export default {
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.sh$/,
+        use: 'raw-loader'
       }
     ]
   },

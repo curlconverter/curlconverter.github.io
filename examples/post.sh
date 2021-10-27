@@ -1,0 +1,11 @@
+curl 'http://fiddle.jshell.net/echo/html/' \
+    -H 'Origin: http://fiddle.jshell.net' \
+    -H 'Accept-Encoding: gzip, deflate' \
+    -H 'Accept-Language: en-US,en;q=0.8' \
+    -H 'User-Agent: {{useragent}}' \
+    -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+    -H 'Accept: */*' \
+    -H 'Referer: http://fiddle.jshell.net/_display/' \
+    -H 'X-Requested-With: XMLHttpRequest' \
+    -H 'Connection: keep-alive' \
+    --data 'msg1=wow&msg2=such&msg3=data' --compressed
