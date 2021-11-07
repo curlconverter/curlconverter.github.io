@@ -32,60 +32,116 @@
       </div>
     </div>
   </div>
-  <div class="container-xxl pb-4">
+  <div class="container-xl pb-4">
     <div class="row">
-      <div class="col-lg-6">
-        <div class="row py-1">
-          <h2>curl command</h2>
+      <div class="row pt-1">
+        <div class="col-12 col-xl-9">
+          <h2 id="input-title">curl command</h2>
         </div>
-        <div class="row">
-          <div class="col pb-4 pb-lg-0">
-            <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=7 autofocus spellcheck="false" autocorrect="off" autocapitalize="none"></textarea>
-            <small class="examples">
-              Examples:
-              <a id="get-example" href="#" tabindex="-1">GET</a>
-              -
-              <a id="post-example" href="#" tabindex="-1">POST</a>
-              -
-              <a id="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
-            </small>
-          </div>
+        <div class="d-none d-xl-block pt-3 col-xl-3 text-end align-text-bottom">
+          <small class="examples">
+            Examples:
+            <a class="get-example" href="#">GET</a>
+            -
+            <a class="post-example" href="#">POST</a>
+            -
+            <a class="basic-auth-example" href="#">Basic Auth</a>
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col pb-3">
+          <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=7 autofocus spellcheck="false" autocorrect="off" autocapitalize="none"></textarea>
+          <small class="examples d-block d-xl-none">
+            Examples:
+            <a class="get-example" href="#" tabindex="-1">GET</a>
+            -
+            <a class="post-example" href="#" tabindex="-1">POST</a>
+            -
+            <a class="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
+          </small>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="row pb-1 pb-lg-0">
-          <div class="d-none d-sm-block col-sm-auto py-1">
-            <h2>Language:</h2>
-          </div>
-          <div class="col col-sm-auto px-sm-0">
-            <select class="form-select form-select-lg" id="language">
-              <option value="ansible">Ansible</option>
-              <option value="dart">Dart</option>
-              <option value="elixir">Elixir</option>
-              <option value="go">Go</option>
-              <option value="java">Java</option>
-              <option value="javascript">JavaScript</option>
-              <option value="json">JSON</option>
-              <option value="node-fetch">Node.js (fetch)</option>
-              <option value="node-request">Node.js (request)</option>
-              <option value="matlab">MATLAB</option>
-              <option value="php">PHP</option>
-              <option value="python" selected>Python</option>
-              <option value="r">R</option>
-              <option value="rust">Rust</option>
-              <option value="strest">Strest</option>
-            </select>
-          </div>
+      <div class="row pb-1 pb-lg-0" role="navigation">
+        <div class="col-sm-auto d-none d-sm-block d-xl-none py-1">
+          <h2>Language:</h2>
         </div>
-        <div class="row">
-          <pre><code id="generated-code"></code></pre>
+        <div class="col col-sm-auto d-xl-none px-sm-0">
+          <select class="form-select form-select-lg" id="language-select">
+            <option value="ansible">Ansible</option>
+            <option value="dart">Dart</option>
+            <option value="elixir">Elixir</option>
+            <option value="go">Go</option>
+            <option value="java">Java</option>
+            <option value="javascript">JavaScript</option>
+            <option value="json">JSON</option>
+            <option value="node-fetch">Node.js (fetch)</option>
+            <option value="node-request">Node.js (request)</option>
+            <option value="matlab">MATLAB</option>
+            <option value="php">PHP</option>
+            <option value="python" selected>Python</option>
+            <option value="r">R</option>
+            <option value="rust">Rust</option>
+            <option value="strest">Strest</option>
+          </select>
         </div>
-        <div class="row">
-          <div id="copy-to-clipboard" class="text-end"><a href="#">Copy to clipboard</a></div>
-          <div style="display: none;" id="issue-promo">If your syntax is correct, create a
-            <a href="https://github.com/curlconverter/curlconverter/issues/new" target="_blank">new issue</a> <span style="display: none;" id="prefilled-issue"> or <a href="" target="_blank">prefilled with the current input</a></span>
-          </div>
+        <ul class="nav nav-tabs d-none d-xl-flex px-3" id="language-navbar">
+          <li class="nav-item">
+            <a class="nav-link" href="#ansible">Ansible</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#dart">Dart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#elixir">Elixir</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#go">Go</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#java">Java</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#javascript">JavaScript</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#json">JSON</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#node-fetch">fetch</a></li>
+              <li><a class="dropdown-item" href="#node-request">request</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#matlab">MATLAB</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#php">PHP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#python">Python</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#r">R</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#rust">Rust</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#strest">Strest</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <pre><code id="generated-code"></code></pre>
+      </div>
+      <div class="row">
+        <div id="copy-to-clipboard" class="text-end"><a href="#">Copy to clipboard</a></div>
+        <div style="display: none;" id="issue-promo">If your syntax is correct, create a
+          <a href="https://github.com/curlconverter/curlconverter/issues/new" target="_blank">new issue</a> <span style="display: none;" id="prefilled-issue"> or <a href="" target="_blank">prefilled with the current input</a></span>
         </div>
       </div>
     </div>

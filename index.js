@@ -19,6 +19,8 @@ import * as curlconverter from 'curlconverter'
 //
 // TODO: put the curl input in the URL?
 // TODO: print a diff of the raw resulting requests?
+//
+// TODO: add check box for scanning the clipboard
 
 // TODO: translate the site. The top languages are
 // chinese
@@ -80,14 +82,37 @@ const changeHighlight = (language) => {
     generatedCodeEl.classList.add(newClass)
   }
 
+  const navbar = document.getElementById('language-navbar')
+  if (language === 'plaintext') {
+    navbar.classList.add('error')
+  } else {
+    navbar.classList.remove('error')
+  }
+
   hljs.highlightElement(generatedCodeEl)
 }
 
 const changeLanguage = function (language) {
   window.location.hash = '#' + language
 
-  const languageSelect = document.getElementById('language')
+  const languageSelect = document.getElementById('language-select')
   languageSelect.value = language
+
+  const languageNavbar = document.getElementById('language-navbar')
+  // const newActiveElem = e.target.classList.contains('dropdown-item') ? : e.target
+  const newActiveElem = languageNavbar.querySelector(`a[href="#${language}"]`)
+  for (const item of languageNavbar.querySelectorAll('.nav-link, .dropdown-item')) {
+    item.classList.remove('active')
+  }
+  newActiveElem.classList.add('active')
+  if (newActiveElem.classList.contains('dropdown-item')) {
+    const parent = newActiveElem.parentElement.parentElement.parentElement.getElementsByClassName('dropdown-toggle')[0]
+    if (parent) {
+      parent.classList.add('active')
+    }
+  }
+
+  document.getElementById('language-select').value = language
 
   changeHighlight(language)
 
@@ -95,7 +120,7 @@ const changeLanguage = function (language) {
 }
 
 const getLanguage = function () {
-  const languageSelect = document.getElementById('language')
+  const languageSelect = document.getElementById('language-select')
   return languageSelect.value
 }
 
@@ -193,30 +218,53 @@ const curlCodeInput = document.getElementById('curl-code')
 curlCodeInput.addEventListener('keyup', convert)
 
 // listen for change in select
-const languageSelect = document.getElementById('language')
+const languageSelect = document.getElementById('language-select')
 languageSelect.addEventListener('change', function () {
-  const language = document.getElementById('language').value
+  const language = document.getElementById('language-select').value
   changeLanguage(language)
   convert()
 })
 
-const getExample = document.getElementById('get-example')
-getExample.addEventListener('click', function () {
-  showExample(getExampleText)
-})
+const languageNavbar = document.getElementById('language-navbar')
+const languageNavbarItems = languageNavbar.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item')
+for (const navbarItem of languageNavbarItems) {
+  navbarItem.addEventListener('click', function (e) {
+    e.preventDefault()
 
-const postExample = document.getElementById('post-example')
-postExample.addEventListener('click', function () {
-  showExample(postExampleText)
-})
+    const language = e.target.href.split('#')[1]
 
-const basicAuthExample = document.getElementById('basic-auth-example')
-basicAuthExample.addEventListener('click', function () {
-  showExample(authExampleText)
-})
+    changeLanguage(language)
+    convert()
+  })
+}
+
+const getExamples = document.getElementsByClassName('get-example')
+for (const getExample of getExamples) {
+  getExample.addEventListener('click', function (e) {
+    e.preventDefault() // Don't scroll to the top of the page
+    showExample(getExampleText)
+  })
+}
+
+const postExamples = document.getElementsByClassName('post-example')
+for (const postExample of postExamples) {
+  postExample.addEventListener('click', function (e) {
+    e.preventDefault()
+    showExample(postExampleText)
+  })
+}
+
+const basicAuthExamples = document.getElementsByClassName('basic-auth-example')
+for (const basicAuthExample of basicAuthExamples) {
+  basicAuthExample.addEventListener('click', function (e) {
+    e.preventDefault()
+    showExample(authExampleText)
+  })
+}
 
 const copyToClipboardEl = document.getElementById('copy-to-clipboard')
-copyToClipboardEl.addEventListener('click', (event) => {
+copyToClipboardEl.addEventListener('click', (e) => {
+  e.preventDefault()
   const generatedCodeEl = document.getElementById('generated-code')
   const selection = window.getSelection()
   const range = document.createRange()
