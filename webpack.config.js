@@ -13,6 +13,7 @@ export default {
   entry: './index.js',
   mode: 'production',
   // mode: 'development',
+  // devtool: 'eval-source-map', // show source maps
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -45,6 +46,7 @@ export default {
       patterns: [
         'node_modules/web-tree-sitter/tree-sitter.wasm',
         'node_modules/curlconverter/tree-sitter-bash.wasm',
+        // 'node_modules/bootstrap/dist/css/bootstrap.min.css.map',
         'index.html',
         { from: 'images', to: 'images' },
         'meta',
