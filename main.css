@@ -1,4 +1,3 @@
-
 #language-navbar {
   border-bottom: none;
 }
@@ -6,6 +5,11 @@
 .nav-item > .nav-link.active, .nav-item > .nav-link:hover {
   background-color: whitesmoke;
   border-bottom: none;
+  transition: none;
+}
+
+/* Don't briefly draw a blue bar under Node.js dropdown after hovering over it */
+.nav-link {
   transition: none;
 }
 

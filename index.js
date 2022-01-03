@@ -1,5 +1,6 @@
 import 'bootstrap'
 import hljs from 'highlight.js'
+import { detect } from 'detect-browser'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'github-fork-ribbon-css/gh-fork-ribbon.css'
@@ -275,4 +276,43 @@ copyToClipboardEl.addEventListener('click', (e) => {
   navigator.clipboard.writeText(generatedCodeEl.textContent)
 })
 
+const browsers = ['chrome', 'safari', 'firefox']
+let userBrowser = 'chrome'
+try {
+  const detectedBrowser = detect()
+  if (detectedBrowser && detectedBrowser.name && browsers.includes(detectedBrowser.name)) {
+    userBrowser = detectedBrowser.name
+  }
+} catch {}
+
+const showInstructions = function (browser) {
+  if (!browsers.includes(browser)) {
+    browser = userBrowser
+  }
+  for (const b of browsers) {
+    const el = document.getElementById(b)
+    if (b === browser) {
+      el.classList.remove('d-none')
+    } else {
+      el.classList.add('d-none')
+    }
+  }
+}
+
+for (const b of browsers) {
+  const basicAuthExamples = document.getElementsByClassName('to-' + b)
+  for (const basicAuthExample of basicAuthExamples) {
+    basicAuthExample.addEventListener('click', function (e) {
+      e.preventDefault()
+      const browser = [...e.target.classList].filter(c => c.startsWith('to-'))
+      if (browser.length) {
+        showInstructions(browser[0].replace(/^to-/, ''))
+      } else {
+        showInstructions()
+      }
+    })
+  }
+}
+
 convert()
+showInstructions()
