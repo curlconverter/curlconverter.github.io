@@ -495,7 +495,6 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 }
 
 #curl-code {
-  min-height: calc(12.5em + .375rem + .375rem + 2px);
 }
 
 #generated-code {

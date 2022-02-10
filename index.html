@@ -40,7 +40,7 @@
         </div>
         <div class="row">
           <div class="col pb-4 pb-lg-0">
-            <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=5 autofocus></textarea>
+            <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=7 autofocus spellcheck="false" autocorrect="off" autocapitalize="none"></textarea>
             <small class="examples">
               Examples:
               <a id="get-example" href="#" tabindex="-1">GET</a>
@@ -90,16 +90,16 @@
       </div>
     </div>
   </div>
-  <div class="container-md">
+  <div class="container-md pb-4">
     <div class="row border-top py-4">
       <div class="col-lg-4">
         <h3>Curl from Google Chrome</h3>
-        <ul class="chrome">
-          <li>1) Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
-          <li>2) Ctrl-click a request.</li>
-          <li>3) Click "Copy" &gt; "Copy as cURL".</li>
-          <li>4) Paste it in the <b>curl command</b> box above.</li>
-        </ul>
+        <ol class="chrome">
+          <li>Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
+          <li>Right click (or Ctrl-click) a request</li>
+          <li>Click "Copy" &gt; "Copy as cURL" or "Copy as cURL (<b>bash</b>)" if you're using Windows</li>
+          <li>Paste it in the <b>curl command</b> box above</li>
+        </ol>
         <p>
           This also works in Safari and Firefox.
         </p>
