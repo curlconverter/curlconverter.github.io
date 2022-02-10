@@ -9,6 +9,10 @@ import 'highlight.js/styles/github.css'
 
 import './main.css'
 
+import getExampleTemplate from './examples/get.sh'
+import postExampleTemplate from './examples/post.sh'
+import authExampleText from './examples/auth.sh'
+
 import * as curlconverter from 'curlconverter'
 
 // TODO: include a Windows screenshot. Firefox and Safari have "copy as cURL" as well
@@ -24,6 +28,20 @@ import * as curlconverter from 'curlconverter'
 // korean
 // french
 // spanish
+
+// https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
+let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36'
+// For fun and future-proofing, put the user's
+// actual User Agent in the examples
+if (window.navigator &&
+    window.navigator.userAgent &&
+    window.navigator.userAgent.trim() &&
+    !/[^a-z0-9-/().;, _]/i.test(window.navigator.userAgent)) {
+  useragent = window.navigator.userAgent
+}
+
+const getExampleText = getExampleTemplate.replace('{{useragent}}', useragent)
+const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
 
 const languages = {
   ansible: { converter: curlconverter.toAnsible, name: 'Ansible URI', hljs: 'yaml' },
@@ -115,7 +133,7 @@ const hideCopyToClipboard = () => {
 }
 
 const showExample = function (code) {
-  document.getElementById('curl-code').value = code
+  document.getElementById('curl-code').value = code.trim()
   convert()
 }
 
@@ -184,27 +202,17 @@ languageSelect.addEventListener('change', function () {
 
 const getExample = document.getElementById('get-example')
 getExample.addEventListener('click', function () {
-  showExample("curl 'http://en.wikipedia.org/' -H 'Accept-Encoding: gzip, deflate, sdch' " +
-    "-H 'Accept-Language: en-US,en;q=0.8' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) " +
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36' " +
-    "-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' " +
-    "-H 'Referer: http://www.wikipedia.org/' " +
-    " -H 'Connection: keep-alive' --compressed")
+  showExample(getExampleText)
 })
 
 const postExample = document.getElementById('post-example')
 postExample.addEventListener('click', function () {
-  showExample("curl 'http://fiddle.jshell.net/echo/html/' -H 'Origin: http://fiddle.jshell.net' " +
-    "-H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: en-US,en;q=0.8' " +
-    "-H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) " +
-    "Chrome/39.0.2171.95 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' " +
-    "-H 'Accept: */*' -H 'Referer: http://fiddle.jshell.net/_display/' -H 'X-Requested-With: XMLHttpRequest' " +
-    "-H 'Connection: keep-alive' --data 'msg1=wow&msg2=such&msg3=data' --compressed")
+  showExample(postExampleText)
 })
 
 const basicAuthExample = document.getElementById('basic-auth-example')
 basicAuthExample.addEventListener('click', function () {
-  showExample('curl "https://api.test.com/" -u "some_username:some_password"')
+  showExample(authExampleText)
 })
 
 const copyToClipboardEl = document.getElementById('copy-to-clipboard')
