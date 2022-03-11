@@ -45,11 +45,11 @@ const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
 
 const languages = {
   ansible: { converter: curlconverter.toAnsible, name: 'Ansible URI', hljs: 'yaml' },
-  browser: { converter: curlconverter.toBrowser, name: 'Browser (fetch)', hljs: 'javascript' },
   dart: { converter: curlconverter.toDart, name: 'Dart', hljs: 'dart' },
   elixir: { converter: curlconverter.toElixir, name: 'Elixir', hljs: 'elixir' },
   go: { converter: curlconverter.toGo, name: 'Go', hljs: 'go' },
   java: { converter: curlconverter.toJava, name: 'Java', hljs: 'java' },
+  javascript: { converter: curlconverter.toBrowser, name: 'JavaScript', hljs: 'javascript' },
   json: { converter: curlconverter.toJsonString, name: 'JSON', hljs: 'json' },
   matlab: { converter: curlconverter.toMATLAB, name: 'MATLAB', hljs: 'matlab' },
   'node-fetch': { converter: curlconverter.toNodeFetch, name: 'Node (fetch)', hljs: 'javascript' },
