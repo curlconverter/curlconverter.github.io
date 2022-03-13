@@ -30,7 +30,7 @@ import * as curlconverter from 'curlconverter'
 // spanish
 
 // https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
-let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36'
+let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
 // For fun and future-proofing, put the user's
 // actual User Agent in the examples
 if (window.navigator &&
