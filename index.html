@@ -32,80 +32,172 @@
       </div>
     </div>
   </div>
-  <div class="container-xxl pb-4">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="row py-1">
-          <h2>curl command</h2>
-        </div>
-        <div class="row">
-          <div class="col pb-4 pb-lg-0">
-            <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=7 autofocus spellcheck="false" autocorrect="off" autocapitalize="none"></textarea>
-            <small class="examples">
-              Examples:
-              <a id="get-example" href="#" tabindex="-1">GET</a>
-              -
-              <a id="post-example" href="#" tabindex="-1">POST</a>
-              -
-              <a id="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
-            </small>
-          </div>
-        </div>
+  <div class="container-xl pb-4">
+    <div class="row pt-1">
+      <div class="col-12 col-sm-5 col-lg-8">
+        <h2 id="input-title">curl command</h2>
       </div>
-
-      <div class="col-lg-6">
-        <div class="row pb-1 pb-lg-0">
-          <div class="d-none d-sm-block col-sm-auto py-1">
-            <h2>Language:</h2>
-          </div>
-          <div class="col col-sm-auto px-sm-0">
-            <select class="form-select form-select-lg" id="language">
-              <option value="ansible">Ansible</option>
-              <option value="dart">Dart</option>
-              <option value="elixir">Elixir</option>
-              <option value="go">Go</option>
-              <option value="java">Java</option>
-              <option value="javascript">JavaScript</option>
-              <option value="json">JSON</option>
-              <option value="node-fetch">Node.js (fetch)</option>
-              <option value="node-request">Node.js (request)</option>
-              <option value="matlab">MATLAB</option>
-              <option value="php">PHP</option>
-              <option value="python" selected>Python</option>
-              <option value="r">R</option>
-              <option value="rust">Rust</option>
-              <option value="strest">Strest</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <pre><code id="generated-code"></code></pre>
-        </div>
-        <div class="row">
-          <div id="copy-to-clipboard" class="text-end"><a href="#">Copy to clipboard</a></div>
-          <div style="display: none;" id="issue-promo">If your syntax is correct, create a
-            <a href="https://github.com/curlconverter/curlconverter/issues/new" target="_blank">new issue</a> <span style="display: none;" id="prefilled-issue"> or <a href="" target="_blank">prefilled with the current input</a></span>
-          </div>
-        </div>
+      <div class="d-none d-sm-block pt-3 col-sm-6 col-lg-3 col-xl-4 text-end align-text-bottom">
+        <small class="examples">
+          Examples:
+          <a class="get-example" href="#">GET</a>
+          -
+          <a class="post-example" href="#">POST</a>
+          -
+          <a class="basic-auth-example" href="#">Basic Auth</a>
+        </small>
       </div>
     </div>
+    <div class="row">
+      <div class="col pb-3">
+        <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=6 autofocus spellcheck="false" autocorrect="off" autocapitalize="none"></textarea>
+        <small class="examples d-block d-sm-none text-end">
+          Examples:
+          <a class="get-example" href="#" tabindex="-1">GET</a>
+          -
+          <a class="post-example" href="#" tabindex="-1">POST</a>
+          -
+          <a class="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
+        </small>
+      </div>
+    </div>
+
+    <div class="row pb-1 pb-lg-0" role="navigation">
+      <div class="col-sm-auto d-none d-sm-block d-xl-none py-1">
+        <h2>Language:</h2>
+      </div>
+      <div class="col col-sm-auto d-xl-none px-sm-0">
+        <select class="form-select form-select-lg" id="language-select">
+          <option value="ansible">Ansible</option>
+          <option value="dart">Dart</option>
+          <option value="elixir">Elixir</option>
+          <option value="go">Go</option>
+          <option value="java">Java</option>
+          <option value="javascript">JavaScript</option>
+          <option value="json">JSON</option>
+          <option value="node-fetch">Node.js (fetch)</option>
+          <option value="node-request">Node.js (request)</option>
+          <option value="matlab">MATLAB</option>
+          <option value="php">PHP</option>
+          <option value="python" selected>Python</option>
+          <option value="r">R</option>
+          <option value="rust">Rust</option>
+          <option value="strest">Strest</option>
+        </select>
+      </div>
+      <ul class="nav nav-tabs d-none d-xl-flex px-3" id="language-navbar">
+        <li class="nav-item">
+          <a class="nav-link" href="#ansible">Ansible</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#dart">Dart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#elixir">Elixir</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#go">Go</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#java">Java</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#javascript">JavaScript</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#json">JSON</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#node-fetch">fetch</a></li>
+            <li><a class="dropdown-item" href="#node-request">request</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#matlab">MATLAB</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#php">PHP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#python">Python</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#r">R</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#rust">Rust</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#strest">Strest</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <pre><code id="generated-code"></code></pre>
+      </div>
+    </div>
+    <div class="row">
+      <div id="copy-to-clipboard" class="text-end"><a href="#">Copy to clipboard</a></div>
+      <div style="display: none;" id="issue-promo">If your syntax is correct, create a
+        <a href="https://github.com/curlconverter/curlconverter/issues/new" target="_blank">new issue</a> <span style="display: none;" id="prefilled-issue"> or <a href="" target="_blank">prefilled with the current input</a></span>
+      </div>
+    </div>
+
   </div>
   <div class="container-md pb-4">
-    <div class="row border-top py-4">
+    <div class="row border-top py-4" id="chrome">
       <div class="col-lg-4">
         <h3>Curl from Google Chrome</h3>
-        <ol class="chrome">
+        <ol>
           <li>Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
           <li>Right click (or Ctrl-click) a request</li>
-          <li>Click "Copy" &gt; "Copy as cURL" or "Copy as cURL (<b>bash</b>)" if you're using Windows</li>
+          <li>Click "Copy" &#8594; <span class="not-windows">"Copy as cURL"</span><span class="windows d-none">"Copy as cURL (<b>bash</b>)"</span></li>
           <li>Paste it in the <b>curl command</b> box above</li>
         </ol>
         <p>
-          This also works in Safari and Firefox.
+          This also works in <a class="to-safari" href="#">Safari</a> and <a class="to-firefox" href="#">Firefox</a>.
         </p>
       </div>
       <div class="col-lg-8">
-        <img class="screenshot img-fluid mx-auto d-block" src="/images/screenshot.png" srcset="/images/screenshot@2x.png 2x" alt="screenshot of the Chrome DevTools">
+        <img class="screenshot img-fluid mx-auto d-block" src="/images/chrome.png" srcset="/images/chrome@2x.png 2x" alt="screenshot of the Chrome DevTools">
+      </div>
+    </div>
+    <div class="row border-top py-4 d-none" id="safari">
+      <div class="col-lg-4">
+        <h3>Curl from Safari</h3>
+        <ol>
+          <li>Open the <a href="https://support.apple.com/en-us/guide/safari-developer/dev1f3525e58/mac">Network</a> tab in the <a href="https://support.apple.com/en-us/guide/safari-developer/dev073038698/mac">Developer Tools</a></li>
+          <li>Right click (or Ctrl-click or two-finger click) a request</li>
+          <li>Click "Copy as cURL" in the dropdown menu</li>
+          <li>Paste it in the <b>curl command</b> box above</li>
+        </ol>
+        <p>
+          This also works in <a class="to-chrome" href="#">Chrome</a> and <a class="to-firefox" href="#">Firefox</a>.
+        </p>
+      </div>
+      <div class="col-lg-8">
+        <img class="screenshot img-fluid mx-auto d-block" src="/images/safari.png" srcset="/images/safari@2x.png 2x" alt="screenshot of the Safari dev tools">
+      </div>
+    </div>
+    <div class="row border-top py-4 d-none" id="firefox">
+      <div class="col-lg-4">
+        <h3>Curl from Firefox</h3>
+        <ol>
+          <li>Open the <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor">Network Monitor</a> tab in the <a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li>
+          <li>Right click (or Ctrl-click) a request</li>
+          <li>Click "Copy" &#8594; "Copy as cURL"</li>
+          <li>Paste it in the <b>curl command</b> box above</li>
+        </ol>
+        <p>
+          This also works in <a class="to-chrome" href="#">Chrome</a> and <a class="to-safari" href="#">Safari</a>.
+        </p>
+      </div>
+      <div class="col-lg-8">
+        <img class="screenshot img-fluid mx-auto d-block" src="/images/firefox.png" srcset="/images/firefox@2x.png 2x" alt="screenshot of the Firefox dev tools">
       </div>
     </div>
     <div class="row border-top pt-4">

@@ -1,3 +1,24 @@
+#language-navbar {
+  border-bottom: none;
+}
+
+.nav-item > .nav-link.active, .nav-item > .nav-link:hover {
+  background-color: whitesmoke;
+  border-bottom: none;
+  transition: none;
+}
+
+/* Don't briefly draw a blue bar under Node.js dropdown after hovering over it */
+.nav-link {
+  transition: none;
+}
+
+.nav.error > .nav-item > .nav-link.active, .nav.error > .nav-item > .nav-link:hover {
+  background-color: #ffcdcd;
+  border-color: #ffcdcd;
+}
+
+
 #generated-code, #curl-code {
   font-family: monospace;
   line-height: 1.25;
@@ -10,9 +31,10 @@
   /* same as the text area */
   padding: .375rem .75rem;
   border-radius: .3rem;
-  border: 1px solid whitesmoke;
+  border: 1px solid;
   font-size: 1rem;
   font-weight: 400;
+  border-color: whitesmoke;
   background-color: whitesmoke;
   min-height: calc(1.25em + .375rem + .375rem + 2px);
 }
@@ -20,6 +42,12 @@
 /* At least Chrome on macOS adds a bottom margin */
 pre {
   margin-bottom: 0;
+}
+
+/* The output should be marked as plaintext only when there's an error. */
+#generated-code.language-plaintext {
+  border-color: #ffcdcd;
+  background-color: #ffcdcd;
 }
 
 .github-fork-ribbon:before {
