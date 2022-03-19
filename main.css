@@ -489,6 +489,27 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
   Outdated base version: https://github.com/primer/github-syntax-light
   Current colors taken from GitHub's CSS
 */.hljs{color:#24292e;background:#fff}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}.hljs-built_in,.hljs-symbol{color:#e36209}.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}.hljs-subst{color:#24292e}.hljs-section{color:#005cc5;font-weight:700}.hljs-bullet{color:#735c0f}.hljs-emphasis{color:#24292e;font-style:italic}.hljs-strong{color:#24292e;font-weight:700}.hljs-addition{color:#22863a;background-color:#f0fff4}.hljs-deletion{color:#b31d28;background-color:#ffeef0}
+#language-navbar {
+  border-bottom: none;
+}
+
+.nav-item > .nav-link.active, .nav-item > .nav-link:hover {
+  background-color: whitesmoke;
+  border-bottom: none;
+  transition: none;
+}
+
+/* Don't briefly draw a blue bar under Node.js dropdown after hovering over it */
+.nav-link {
+  transition: none;
+}
+
+.nav.error > .nav-item > .nav-link.active, .nav.error > .nav-item > .nav-link:hover {
+  background-color: #ffcdcd;
+  border-color: #ffcdcd;
+}
+
+
 #generated-code, #curl-code {
   font-family: monospace;
   line-height: 1.25;
@@ -501,9 +522,10 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
   /* same as the text area */
   padding: .375rem .75rem;
   border-radius: .3rem;
-  border: 1px solid whitesmoke;
+  border: 1px solid;
   font-size: 1rem;
   font-weight: 400;
+  border-color: whitesmoke;
   background-color: whitesmoke;
   min-height: calc(1.25em + .375rem + .375rem + 2px);
 }
@@ -511,6 +533,12 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 /* At least Chrome on macOS adds a bottom margin */
 pre {
   margin-bottom: 0;
+}
+
+/* The output should be marked as plaintext only when there's an error. */
+#generated-code.language-plaintext {
+  border-color: #ffcdcd;
+  background-color: #ffcdcd;
 }
 
 .github-fork-ribbon:before {

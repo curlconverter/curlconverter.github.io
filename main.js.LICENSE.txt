@@ -4,13 +4,6 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 
-/*!
- * cookie
- * Copyright(c) 2012-2014 Roman Shtylman
- * Copyright(c) 2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-
 /*! Browser bundle of nunjucks 3.2.3  */
 
 /*! https://mths.be/punycode v1.3.2 by @mathias */
