@@ -129,19 +129,37 @@ const showIssuePromo = (errorMsg) => {
   const issuePromo = document.getElementById('issue-promo')
 
   const curlCode = document.getElementById('curl-code').value
+
   const prefilledIssue = document.getElementById('prefilled-issue')
+  const githubA = prefilledIssue.getElementsByTagName('a')[0]
+  const emailDevs = document.getElementById('email-devs')
+  const mailtoA = emailDevs.getElementsByTagName('a')[0]
+
+  const githubLink = new URL('https://github.com/curlconverter/curlconverter/issues/new')
+  const mailtoLink = new URL('mailto:nickc@trillworks.com')
+
   if (errorMsg && curlCode && curlCode.length <= 2000) {
-    const link = new URL('https://github.com/curlconverter/curlconverter/issues/new')
-    const params = new URLSearchParams({
-      title: 'Error: "' + errorMsg + '"',
-      body: '**Input**:\n\n```sh\n' + curlCode + '\n```\n\n**Expected output**:\n\n'
+    if (!curlCode.toLowerCase().includes('cookie') &&
+        !curlCode.toLowerCase().includes('authorization')) {
+      const githubParams = new URLSearchParams({
+        title: 'Error: "' + errorMsg + '"',
+        body: '**Input**:\n\n```sh\n' + curlCode + '\n```\n\n**Expected output**:\n\n'
+      })
+      githubLink.search = githubParams
+      prefilledIssue.style.display = 'inline-block'
+    } else {
+      prefilledIssue.style.display = 'none'
+    }
+
+    const mailtoParams = new URLSearchParams({
+      subject: 'Curlconverter Error: "' + errorMsg + '"',
+      body: 'Input:\n\n' + curlCode + '\n\nExpected output:\n\n'
     })
-    link.search = params
-    prefilledIssue.getElementsByTagName('a')[0].href = link.toString()
-    prefilledIssue.style.display = 'inline-block'
-  } else {
-    prefilledIssue.style.display = 'none'
+    mailtoLink.search = mailtoParams
   }
+
+  githubA.href = githubLink.toString()
+  mailtoA.href = mailtoLink.toString()
 
   issuePromo.style.display = 'inline-block'
 }
