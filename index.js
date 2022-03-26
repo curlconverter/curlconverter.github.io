@@ -173,6 +173,10 @@ const convert = function () {
   if (!curlCode) {
     curlCode = 'curl example.com'
   }
+  // If command starts with a non-breaking space, replace all of them with a space
+  if (curlCode.startsWith('curl\u00A0')) {
+    curlCode = curlCode.replace(/\u00A0/g, ' ')
+  }
 
   if (!curlCode.trim()) {
     error = ''
