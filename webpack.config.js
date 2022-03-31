@@ -21,6 +21,11 @@ export default {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
+      {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
@@ -45,7 +50,7 @@ export default {
     new CopyPlugin({
       patterns: [
         'node_modules/web-tree-sitter/tree-sitter.wasm',
-        'node_modules/curlconverter/tree-sitter-bash.wasm',
+        'node_modules/curlconverter/dist/tree-sitter-bash.wasm',
         // 'node_modules/bootstrap/dist/css/bootstrap.min.css.map',
         'index.html',
         { from: 'images', to: 'images' },
