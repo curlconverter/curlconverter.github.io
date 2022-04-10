@@ -585,7 +585,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 }
 
 .nav-item > .nav-link.active, .nav-item > .nav-link:hover {
-  background-color: whitesmoke;
+  background-color: #f8f8f8;
   border-bottom: none;
   transition: none;
 }
@@ -618,8 +618,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   border: 1px solid;
   font-size: 1rem;
   font-weight: 400;
-  border-color: whitesmoke;
-  background-color: whitesmoke;
+  border-color: #f8f8f8;
+  background-color: #f8f8f8;
   min-height: calc(1.25em + .375rem + .375rem + 2px);
 }
 
