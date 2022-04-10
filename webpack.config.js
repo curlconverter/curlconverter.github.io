@@ -12,8 +12,9 @@ const __dirname = path.dirname(__filename)
 export default {
   entry: './index.js',
   mode: 'production',
+  devtool: 'source-map',
   // mode: 'development',
-  // devtool: 'eval-source-map', // show source maps
+  // devtool: 'eval-source-map',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -51,7 +52,7 @@ export default {
       patterns: [
         'node_modules/web-tree-sitter/tree-sitter.wasm',
         'node_modules/curlconverter/dist/tree-sitter-bash.wasm',
-        // 'node_modules/bootstrap/dist/css/bootstrap.min.css.map',
+        'node_modules/bootstrap/dist/css/bootstrap.min.css.map',
         'index.html',
         { from: 'images', to: 'images' },
         'meta',
