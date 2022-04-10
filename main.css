@@ -592,6 +592,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 /* Don't briefly draw a blue bar under Node.js dropdown after hovering over it */
 .nav-link {
   transition: none;
+  /* move tabs closer together so that all the languages fit */
+  padding: .5rem .8rem
 }
 
 .nav.error > .nav-item > .nav-link.active, .nav.error > .nav-item > .nav-link:hover {
