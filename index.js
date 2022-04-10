@@ -48,6 +48,8 @@ const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
 
 const languages = {
   ansible: { converter: curlconverter.toAnsible, name: 'Ansible URI', hljs: 'yaml' },
+  // TODO: not supported by highlight.js
+  cfml: { converter: curlconverter.toCFML, name: 'CFML', hljs: 'javascript' },
   dart: { converter: curlconverter.toDart, name: 'Dart', hljs: 'dart' },
   elixir: { converter: curlconverter.toElixir, name: 'Elixir', hljs: 'elixir' },
   go: { converter: curlconverter.toGo, name: 'Go', hljs: 'go' },
