@@ -57,7 +57,7 @@ const languages = {
   javascript: { converter: curlconverter.toBrowser, name: 'JavaScript', hljs: 'javascript' },
   json: { converter: curlconverter.toJsonString, name: 'JSON', hljs: 'json' },
   matlab: { converter: curlconverter.toMATLAB, name: 'MATLAB', hljs: 'matlab' },
-  'node-fetch': { converter: curlconverter.toNodeFetch, name: 'Node (fetch)', hljs: 'javascript' },
+  'node': { converter: curlconverter.toNodeFetch, name: 'Node (fetch)', hljs: 'javascript' },
   'node-request': { converter: curlconverter.toNodeRequest, name: 'Node (request)', hljs: 'javascript' },
   php: { converter: curlconverter.toPhp, name: 'PHP requests', hljs: 'php' },
   python: { converter: curlconverter.toPython, name: 'Python requests', hljs: 'python' },
@@ -216,7 +216,13 @@ const convert = function () {
   }
 }
 
-const hash = window.location.hash.replace('#', '')
+let hash = window.location.hash.replace('#', '')
+// backwards compatibility
+if (hash === 'browser') {
+  hash = 'javascript'
+} else if (hash === 'node-fetch') {
+  hash = 'node'
+}
 if (Object.prototype.hasOwnProperty.call(languages, hash)) {
   changeLanguage(hash)
 }
