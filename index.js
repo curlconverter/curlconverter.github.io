@@ -47,23 +47,23 @@ const getExampleText = getExampleTemplate.replace('{{useragent}}', useragent)
 const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
 
 const languages = {
-  ansible: { converter: curlconverter.toAnsible, name: 'Ansible URI', hljs: 'yaml' },
+  ansible: { converter: curlconverter.toAnsibleWarn, name: 'Ansible URI', hljs: 'yaml' },
   // TODO: not supported by highlight.js
-  cfml: { converter: curlconverter.toCFML, name: 'CFML', hljs: 'javascript' },
-  dart: { converter: curlconverter.toDart, name: 'Dart', hljs: 'dart' },
-  elixir: { converter: curlconverter.toElixir, name: 'Elixir', hljs: 'elixir' },
-  go: { converter: curlconverter.toGo, name: 'Go', hljs: 'go' },
-  java: { converter: curlconverter.toJava, name: 'Java', hljs: 'java' },
-  javascript: { converter: curlconverter.toBrowser, name: 'JavaScript', hljs: 'javascript' },
-  json: { converter: curlconverter.toJsonString, name: 'JSON', hljs: 'json' },
-  matlab: { converter: curlconverter.toMATLAB, name: 'MATLAB', hljs: 'matlab' },
-  'node': { converter: curlconverter.toNodeFetch, name: 'Node (fetch)', hljs: 'javascript' },
-  'node-request': { converter: curlconverter.toNodeRequest, name: 'Node (request)', hljs: 'javascript' },
-  php: { converter: curlconverter.toPhp, name: 'PHP requests', hljs: 'php' },
-  python: { converter: curlconverter.toPython, name: 'Python requests', hljs: 'python' },
-  r: { converter: curlconverter.toR, name: 'R httr', hljs: 'r' },
-  rust: { converter: curlconverter.toRust, name: 'Rust', hljs: 'rust' },
-  strest: { converter: curlconverter.toStrest, name: 'Strest', hljs: 'yaml' }
+  cfml: { converter: curlconverter.toCFMLWarn, name: 'CFML', hljs: 'javascript' },
+  dart: { converter: curlconverter.toDartWarn, name: 'Dart', hljs: 'dart' },
+  elixir: { converter: curlconverter.toElixirWarn, name: 'Elixir', hljs: 'elixir' },
+  go: { converter: curlconverter.toGoWarn, name: 'Go', hljs: 'go' },
+  java: { converter: curlconverter.toJavaWarn, name: 'Java', hljs: 'java' },
+  javascript: { converter: curlconverter.toBrowserWarn, name: 'JavaScript', hljs: 'javascript' },
+  json: { converter: curlconverter.toJsonStringWarn, name: 'JSON', hljs: 'json' },
+  matlab: { converter: curlconverter.toMATLABWarn, name: 'MATLAB', hljs: 'matlab' },
+  'node': { converter: curlconverter.toNodeWarn, name: 'Node (fetch)', hljs: 'javascript' },
+  'node-request': { converter: curlconverter.toNodeRequestWarn, name: 'Node (request)', hljs: 'javascript' },
+  php: { converter: curlconverter.toPhpWarn, name: 'PHP requests', hljs: 'php' },
+  python: { converter: curlconverter.toPythonWarn, name: 'Python requests', hljs: 'python' },
+  r: { converter: curlconverter.toRWarn, name: 'R httr', hljs: 'r' },
+  rust: { converter: curlconverter.toRustWarn, name: 'Rust', hljs: 'rust' },
+  strest: { converter: curlconverter.toStrestWarn, name: 'Strest', hljs: 'yaml' }
 }
 
 const changeHighlight = (language) => {
@@ -168,6 +168,7 @@ const showExample = function (code) {
 const convert = function () {
   let curlCode = document.getElementById('curl-code').value
   let generatedCode
+  let warnings
   let error
   const language = getLanguage()
 
@@ -188,8 +189,9 @@ const convert = function () {
     error = 'Could not parse curl command.'
   } else {
     try {
-      const converter = languages[language].converter
-      generatedCode = converter(curlCode).trimEnd() // remove trailling newline
+      const converter = languages[language].converter;
+      [generatedCode, warnings] = converter(curlCode);
+      generatedCode = generatedCode.trimEnd() // remove trailling newline
       hideIssuePromo()
       showCopyToClipboard()
     } catch (e) {
@@ -207,12 +209,22 @@ const convert = function () {
     }
   }
   const generatedCodeEl = document.getElementById('generated-code')
+  const warningsEl = document.getElementById('warnings')
   if (!error) {
     generatedCodeEl.textContent = generatedCode
     changeHighlight(language)
+    if (warnings && warnings.length) {
+      warningsEl.textContent = warnings.map(w => w[1]).join('\n')
+      warningsEl.style.display = 'inline-block'
+    } else {
+      warningsEl.textContent = ''
+      warningsEl.style.display = 'none'
+    }
   } else {
     generatedCodeEl.textContent = error
     changeHighlight('plaintext')
+    warningsEl.textContent = ''
+    warningsEl.style.display = 'none'
   }
 }
 
