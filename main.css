@@ -513,7 +513,7 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 }
 
 
-#generated-code, #curl-code {
+#generated-code, #curl-code, #warnings {
   font-family: monospace;
   line-height: 1.25;
 }
@@ -521,7 +521,7 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 #curl-code {
 }
 
-#generated-code {
+#generated-code, #warnings {
   /* same as the text area */
   padding: .375rem .75rem;
   border-radius: .3rem;
@@ -531,6 +531,12 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
   border-color: #f8f8f8;
   background-color: #f8f8f8;
   min-height: calc(1.25em + .375rem + .375rem + 2px);
+}
+
+#warnings {
+  border-color: #ffffdd;
+  background-color: #ffffdd;
+  min-width: 100%;
 }
 
 /* At least Chrome on macOS adds a bottom margin */
