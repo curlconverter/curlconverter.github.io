@@ -47,23 +47,24 @@ const getExampleText = getExampleTemplate.replace('{{useragent}}', useragent)
 const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
 
 const languages = {
-  ansible: { converter: curlconverter.toAnsibleWarn, name: 'Ansible URI', hljs: 'yaml' },
+  ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml' },
   // TODO: not supported by highlight.js
-  cfml: { converter: curlconverter.toCFMLWarn, name: 'CFML', hljs: 'javascript' },
-  dart: { converter: curlconverter.toDartWarn, name: 'Dart', hljs: 'dart' },
-  elixir: { converter: curlconverter.toElixirWarn, name: 'Elixir', hljs: 'elixir' },
-  go: { converter: curlconverter.toGoWarn, name: 'Go', hljs: 'go' },
-  java: { converter: curlconverter.toJavaWarn, name: 'Java', hljs: 'java' },
-  javascript: { converter: curlconverter.toBrowserWarn, name: 'JavaScript', hljs: 'javascript' },
-  json: { converter: curlconverter.toJsonStringWarn, name: 'JSON', hljs: 'json' },
-  matlab: { converter: curlconverter.toMATLABWarn, name: 'MATLAB', hljs: 'matlab' },
-  'node': { converter: curlconverter.toNodeWarn, name: 'Node (fetch)', hljs: 'javascript' },
-  'node-request': { converter: curlconverter.toNodeRequestWarn, name: 'Node (request)', hljs: 'javascript' },
-  php: { converter: curlconverter.toPhpWarn, name: 'PHP requests', hljs: 'php' },
-  python: { converter: curlconverter.toPythonWarn, name: 'Python requests', hljs: 'python' },
-  r: { converter: curlconverter.toRWarn, name: 'R httr', hljs: 'r' },
-  rust: { converter: curlconverter.toRustWarn, name: 'Rust', hljs: 'rust' },
-  strest: { converter: curlconverter.toStrestWarn, name: 'Strest', hljs: 'yaml' }
+  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript' },
+  dart: { converter: curlconverter.toDartWarn, hljs: 'dart' },
+  elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir' },
+  go: { converter: curlconverter.toGoWarn, hljs: 'go' },
+  java: { converter: curlconverter.toJavaWarn, hljs: 'java' },
+  javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript' },
+  json: { converter: curlconverter.toJsonStringWarn, hljs: 'json' },
+  matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab' },
+  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript' },
+  'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript' },
+  'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript' },
+  php: { converter: curlconverter.toPhpWarn, hljs: 'php' },
+  python: { converter: curlconverter.toPythonWarn, hljs: 'python' },
+  r: { converter: curlconverter.toRWarn, hljs: 'r' },
+  rust: { converter: curlconverter.toRustWarn, hljs: 'rust' },
+  strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml' }
 }
 
 const changeHighlight = (language) => {
@@ -232,8 +233,8 @@ let hash = window.location.hash.replace('#', '')
 // backwards compatibility
 if (hash === 'browser') {
   hash = 'javascript'
-} else if (hash === 'node-fetch') {
-  hash = 'node'
+} else if (hash === 'node') {
+  hash = 'node-fetch'
 }
 if (Object.prototype.hasOwnProperty.call(languages, hash)) {
   changeLanguage(hash)
