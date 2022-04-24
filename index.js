@@ -169,9 +169,9 @@ const showExample = function (code) {
 const convert = function () {
   let curlCode = document.getElementById('curl-code').value
   let generatedCode
-  let warnings
   let error
   const language = getLanguage()
+  let warnings = []
 
   // Convert the placeholder text as a demo
   if (!curlCode) {
@@ -191,7 +191,7 @@ const convert = function () {
   } else {
     try {
       const converter = languages[language].converter;
-      [generatedCode, warnings] = converter(curlCode);
+      [generatedCode, warnings] = converter(curlCode, warnings);
       generatedCode = generatedCode.trimEnd() // remove trailling newline
       hideIssuePromo()
       showCopyToClipboard()
@@ -214,16 +214,15 @@ const convert = function () {
   if (!error) {
     generatedCodeEl.textContent = generatedCode
     changeHighlight(language)
-    if (warnings && warnings.length) {
-      warningsEl.textContent = warnings.map(w => w[1]).join('\n')
-      warningsEl.style.display = 'inline-block'
-    } else {
-      warningsEl.textContent = ''
-      warningsEl.style.display = 'none'
-    }
   } else {
     generatedCodeEl.textContent = error
     changeHighlight('plaintext')
+  }
+
+  if (warnings && warnings.length) {
+    warningsEl.textContent = warnings.map(w => w[1]).join('\n')
+    warningsEl.style.display = 'inline-block'
+  } else {
     warningsEl.textContent = ''
     warningsEl.style.display = 'none'
   }
