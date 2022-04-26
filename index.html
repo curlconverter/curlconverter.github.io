@@ -24,6 +24,7 @@
     <title>Convert curl commands to code</title>
   </head>
   <body>
+
   <div class="container py-2">
     <div class="row">
       <div class="col-8 col-sm-10 col-md-11">
@@ -32,33 +33,25 @@
       </div>
     </div>
   </div>
+  <a class="github-fork-ribbon right-top" href="https://github.com/curlconverter/curlconverter" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+
   <div class="container-xl pb-4">
-    <div class="row pt-1">
-      <div class="col-12 col-sm-5 col-lg-8">
-        <h2 id="input-title">curl command</h2>
+    <div class="row pb-3">
+      <div class="col-12 col-sm-5 order-1">
+        <h2 class="mb-sm-0">curl command</h2>
       </div>
-      <div class="d-none d-sm-block pt-3 col-sm-6 col-lg-3 col-xl-4 text-end align-text-bottom">
-        <small class="examples">
+      <div class="col-12 col-sm-6 col-xl-7 order-3 order-sm-2 pt-sm-3 text-end">
+        <small class="examples align-top">
           Examples:
-          <a class="get-example" href="#">GET</a>
+          <a id="get-example" href="#">GET</a>
           -
-          <a class="post-example" href="#">POST</a>
+          <a id="post-example" href="#">POST</a>
           -
-          <a class="basic-auth-example" href="#">Basic Auth</a>
+          <a id="basic-auth-example" href="#">Basic Auth</a>
         </small>
       </div>
-    </div>
-    <div class="row">
-      <div class="col pb-3">
+      <div class="col-12 order-2 order-sm-3 pb-sm-3">
         <textarea id="curl-code" class="form-control" placeholder="curl example.com" rows=6 autofocus spellcheck="false" autocorrect="off" autocapitalize="none"></textarea>
-        <small class="examples d-block d-sm-none text-end">
-          Examples:
-          <a class="get-example" href="#" tabindex="-1">GET</a>
-          -
-          <a class="post-example" href="#" tabindex="-1">POST</a>
-          -
-          <a class="basic-auth-example" href="#" tabindex="-1">Basic Auth</a>
-        </small>
       </div>
     </div>
 
@@ -211,6 +204,7 @@
         <img class="screenshot img-fluid mx-auto d-block" src="/images/firefox.png" srcset="/images/firefox@2x.png 2x" alt="screenshot of the Firefox dev tools">
       </div>
     </div>
+
     <div class="row border-top pt-4">
       <div class="col-sm-12 col-md-4">
         <h3>Privacy</h3>
@@ -259,8 +253,6 @@
       </div>
     </div>
   </div>
-
-  <a class="github-fork-ribbon right-top" href="https://github.com/curlconverter/curlconverter" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
 
   <script src="/main.js"></script>
   </body>
