@@ -263,29 +263,23 @@ for (const navbarItem of languageNavbarItems) {
   })
 }
 
-const getExamples = document.getElementsByClassName('get-example')
-for (const getExample of getExamples) {
-  getExample.addEventListener('click', function (e) {
-    e.preventDefault() // Don't scroll to the top of the page
-    showExample(getExampleText)
-  })
-}
+const getExample = document.getElementById('get-example')
+getExample.addEventListener('click', function (e) {
+  e.preventDefault() // Don't scroll to the top of the page
+  showExample(getExampleText)
+})
 
-const postExamples = document.getElementsByClassName('post-example')
-for (const postExample of postExamples) {
-  postExample.addEventListener('click', function (e) {
-    e.preventDefault()
-    showExample(postExampleText)
-  })
-}
+const postExample = document.getElementById('post-example')
+postExample.addEventListener('click', function (e) {
+  e.preventDefault()
+  showExample(postExampleText)
+})
 
-const basicAuthExamples = document.getElementsByClassName('basic-auth-example')
-for (const basicAuthExample of basicAuthExamples) {
-  basicAuthExample.addEventListener('click', function (e) {
-    e.preventDefault()
-    showExample(authExampleText)
-  })
-}
+const basicAuthExample = document.getElementById('basic-auth-example')
+basicAuthExample.addEventListener('click', function (e) {
+  e.preventDefault()
+  showExample(authExampleText)
+})
 
 const copyToClipboardEl = document.getElementById('copy-to-clipboard')
 copyToClipboardEl.addEventListener('click', (e) => {
