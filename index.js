@@ -186,23 +186,21 @@ const convert = function () {
     error = ''
     hideIssuePromo()
     hideCopyToClipboard()
-  } else if (curlCode.indexOf('curl') === -1) {
-    error = 'Could not parse curl command.'
   } else {
     try {
       const converter = languages[language].converter;
       [generatedCode, warnings] = converter(curlCode, warnings);
-      generatedCode = generatedCode.trimEnd() // remove trailling newline
+      generatedCode = generatedCode.trimEnd() // remove trailing newline
       hideIssuePromo()
       showCopyToClipboard()
     } catch (e) {
       console.error(e)
       const origErrorMsg = e.toString()
       error = 'Error parsing curl command'
-      if (curlCode.indexOf('curl') !== 0) {
-        error += '. Your input should start with the word "curl"'
-      } else if (origErrorMsg) {
+      if (origErrorMsg) {
         error += ':\n' + origErrorMsg
+      } else if (!curlCode.trim().startsWith('curl')) {
+        error += '. Your input should start with the word "curl"'
       }
       changeHighlight('plaintext')
       showIssuePromo(origErrorMsg)
