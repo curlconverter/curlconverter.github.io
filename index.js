@@ -217,6 +217,9 @@ const convert = function () {
     changeHighlight('plaintext')
   }
 
+  if (curlCode.split('^').length > 5 && userOS === 'windows') {
+    warnings.push(['copy-as-cmd', 'Did you press "Copy as cURL (cmd)" instead of "Copy as cURL (bash)"? Only bash commands are supported.'])
+  }
   if (warnings && warnings.length) {
     warningsEl.textContent = warnings.map(w => w[1]).join('\n')
     warningsEl.style.display = 'inline-block'
@@ -294,10 +297,14 @@ copyToClipboardEl.addEventListener('click', (e) => {
 
 const browsers = ['chrome', 'safari', 'firefox']
 let userBrowser = 'chrome'
+let userOS = 'mac'
 try {
   const detectedBrowser = detect()
   if (detectedBrowser && detectedBrowser.name && browsers.includes(detectedBrowser.name)) {
     userBrowser = detectedBrowser.name
+    if (detectedBrowser.os && detectedBrowser.os.toLowerCase().includes("windows")) {
+      userOS = 'windows'
+    }
   }
 } catch {}
 
