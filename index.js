@@ -241,7 +241,7 @@ if (Object.prototype.hasOwnProperty.call(languages, hash)) {
 }
 
 const curlCodeInput = document.getElementById('curl-code')
-curlCodeInput.addEventListener('keyup', convert)
+curlCodeInput.addEventListener('input', convert)
 
 // listen for change in select
 const languageSelect = document.getElementById('language-select')
