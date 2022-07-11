@@ -28,8 +28,8 @@
   <div class="container py-2">
     <div class="row">
       <div class="col-8 col-sm-10 col-md-11">
-        <h3 class="text-muted d-none d-md-block">Convert <a href="https://curl.se/docs/manual.html">curl</a> commands to Python, JavaScript, PHP, R, Go, Rust, Elixir, Java, MATLAB, Dart, CFML, Ansible URI, Strest or JSON</h3>
-        <h3 class="text-muted d-block d-md-none">Convert <a href="https://curl.se/docs/manual.html">curl</a> to Python, JavaScript and more</h3>
+        <h3 class="text-muted d-none d-md-block">Convert <a href="https://curl.se/docs/manual.html"><code>curl</code></a> commands to Python, JavaScript, PHP, R, Go, Rust, Elixir, Java, MATLAB, Dart, Ansible URI, Strest or JSON</h3>
+        <h3 class="text-muted d-block d-md-none">Convert <a href="https://curl.se/docs/manual.html"><code>curl</code></a> to Python, JavaScript and more</h3>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
   <div class="container-xl pb-4">
     <div class="row pb-3">
       <div class="col-12 col-sm-5 order-1">
-        <h2 class="mb-sm-0">curl command</h2>
+        <h2 class="mb-sm-0"><code>curl</code> command</h2>
       </div>
       <div class="col-12 col-sm-6 col-xl-7 order-3 order-sm-2 pt-sm-3 text-end">
         <small class="examples align-top">
@@ -62,7 +62,6 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="cfml">ColdFusion ML</option>
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
           <option value="go">Go</option>
@@ -85,7 +84,10 @@
           <a class="nav-link" href="#ansible">Ansible</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#cfml" title="ColdFusion Markup Language">CFML</a>
+          <a class="nav-link nav-link-outbound" href="https://everything.curl.dev/libcurl/libcurl">
+            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            C <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/></svg>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#dart">Dart</a>
@@ -126,6 +128,11 @@
           <a class="nav-link" href="#r">R</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link nav-link-outbound" href="https://jhawthorn.github.io/curl-to-ruby/">
+            Ruby <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/></svg>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#rust">Rust</a>
         </li>
         <li class="nav-item">
@@ -146,8 +153,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col pt-3">
-        <pre><code style="display: none;" id="warnings"></code></pre>
+      <div id="warnings-container" class="col pt-3" style="display: none;">
+        <pre><code id="warnings" style="display: block;"></code></pre>
       </div>
     </div>
 
@@ -155,15 +162,18 @@
   <div class="container-md pb-4">
     <div class="row border-top py-4" id="chrome">
       <div class="col-lg-4">
-        <h3>Curl from Google Chrome</h3>
+        <h3><code>curl</code> from Google Chrome</h3>
         <ol>
           <li>Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
           <li>Right click (or Ctrl-click) a request</li>
           <li>Click "Copy" &#8594; <span class="not-windows">"Copy as cURL"</span><span class="windows d-none">"Copy as cURL (<b>bash</b>)"</span></li>
-          <li>Paste it in the <b>curl command</b> box above</li>
+          <li>Paste it in the <b><code>curl</code> command</b> box above</li>
         </ol>
         <p>
           This also works in <a class="to-safari" href="#">Safari</a> and <a class="to-firefox" href="#">Firefox</a>.
+        </p>
+        <p class="d-none d-lg-block pt-3">
+          <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
         </p>
       </div>
       <div class="col-lg-8">
@@ -172,15 +182,18 @@
     </div>
     <div class="row border-top py-4 d-none" id="safari">
       <div class="col-lg-4">
-        <h3>Curl from Safari</h3>
+        <h3><code>curl</code> from Safari</h3>
         <ol>
           <li>Open the <a href="https://support.apple.com/en-us/guide/safari-developer/dev1f3525e58/mac">Network</a> tab in the <a href="https://support.apple.com/en-us/guide/safari-developer/dev073038698/mac">Developer Tools</a></li>
           <li>Right click (or Ctrl-click or two-finger click) a request</li>
           <li>Click "Copy as cURL" in the dropdown menu</li>
-          <li>Paste it in the <b>curl command</b> box above</li>
+          <li>Paste it in the <b><code>curl</code> command</b> box above</li>
         </ol>
         <p>
           This also works in <a class="to-chrome" href="#">Chrome</a> and <a class="to-firefox" href="#">Firefox</a>.
+        </p>
+        <p class="d-none d-lg-block pt-3">
+          <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
         </p>
       </div>
       <div class="col-lg-8">
@@ -189,15 +202,18 @@
     </div>
     <div class="row border-top py-4 d-none" id="firefox">
       <div class="col-lg-4">
-        <h3>Curl from Firefox</h3>
+        <h3><code>curl</code> from Firefox</h3>
         <ol>
           <li>Open the <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor">Network Monitor</a> tab in the <a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li>
           <li>Right click (or Ctrl-click) a request</li>
           <li>Click "Copy" &#8594; "Copy as cURL"</li>
-          <li>Paste it in the <b>curl command</b> box above</li>
+          <li>Paste it in the <b><code>curl</code> command</b> box above</li>
         </ol>
         <p>
           This also works in <a class="to-chrome" href="#">Chrome</a> and <a class="to-safari" href="#">Safari</a>.
+        </p>
+        <p class="d-none d-xl-block pt-3">
+          <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
         </p>
       </div>
       <div class="col-lg-8">
@@ -209,11 +225,11 @@
       <div class="col-sm-12 col-md-4">
         <h3>Privacy</h3>
         <p>
-          We do <b>not</b> transmit or record the curl commands you enter or what they're converted to.
+          We do <b>not</b> transmit or record the <code>curl</code> commands you enter or what they're converted to.
           This is a static website (hosted on <a href="https://pages.github.com/">GitHub Pages</a>) and the conversion happens <a href="https://github.com/curlconverter/curltorequests/blob/master/index.js">entirely in your browser</a> using JavaScript.
         </p>
-        <p>
-          There is also <a href="https://marketplace.visualstudio.com/items?itemName=curlconverter.curlconverter">a VS Code extension</a> and a command line tool you can install with
+        <p class="pt-lg-2">
+          There is also <a href="https://marketplace.visualstudio.com/items?itemName=curlconverter.curlconverter">a VS Code extension</a> and a command line tool you can install from <a href="https://www.npmjs.com/package/curlconverter">npm</a> with
         </p>
         </p>
           <code>npm install -g curlconverter</code>
@@ -226,19 +242,18 @@
           <li><a href="https://incarnate.github.io/curl-to-php/">curl-to-PHP</a></li>
           <li><a href="https://jhawthorn.github.io/curl-to-ruby/">curl-to-ruby</a></li>
           <li><a href="https://mattcg.github.io/har-to-curl/">HAR-to-curl</a></li>
-          <li><a href="https://ryan.govost.es/http-translator/">http-translator</a> (Python, JS and JSON)</li>
+          <li><a href="https://ryan.govost.es/http-translator/">http-translator</a> (to Python and JS)</li>
+          <li><code>curl</code>'s <a href="https://everything.curl.dev/libcurl/libcurl">--libcurl</a> (to C)</li>
           <li><a href="https://github.com/spulec/uncurl">uncurl</a> (to Python)</li>
           <li><a href="https://github.com/hrbrmstr/curlconverter">hrbrmstr/curlconverter</a> (to R)</li>
-          <li><a href="https://github.com/postmanlabs/curl-to-postman">Postman</a></li>
-          <li><a href="https://github.com/Kong/insomnia/blob/develop/packages/insomnia-importers/README.md">Insomnia</a></li>
-          <li><a href="https://github.com/luckymarmot/Paw-cURLImporter">Paw</a></li>
-          <li><a href="https://github.com/ofw/curlify">curlify</a> (Python to curl)</li>
+          <li><a href="https://github.com/postmanlabs/curl-to-postman">Postman</a>, <a href="https://github.com/Kong/insomnia/blob/develop/packages/insomnia-importers/README.md">Insomnia</a> and <a href="https://github.com/luckymarmot/Paw-cURLImporter">Paw</a></li>
+          <li><a href="https://github.com/ofw/curlify">curlify</a> (Python to <code>curl</code>)</li>
         </ul>
       </div>
       <div class="col-sm-6 col-md-4">
         <div class="row">
           <h3>Support Us</h3>
-          <div class="well larger-text pb-3">
+          <div class="well larger-text pb-3 pb-sm-4">
             <p>GitHub is matching all contributions to this project on <a href="https://github.com/sponsors/NickCarneiro">Github Sponsors</a>.</p>
             <a class="btn btn-primary" href="https://github.com/sponsors/NickCarneiro">
               Contribute Now

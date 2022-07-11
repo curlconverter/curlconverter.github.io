@@ -504,7 +504,20 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 .nav-link {
   transition: none;
   /* move tabs closer together so that all the languages fit */
-  padding: .5rem .8rem
+  padding: .5rem .7rem
+}
+
+.nav-link.nav-link-outbound > svg {
+  height: 14px;
+  width: 14px;
+  margin-bottom: 3px;
+  stroke: #0d6efd;
+  fill: #0d6efd;
+}
+
+.nav-link.nav-link-outbound:focus > svg, .nav-link.nav-link-outbound:hover > svg {
+  stroke: #0a58ca;
+  fill: #0a58ca;
 }
 
 .nav.error > .nav-item > .nav-link.active, .nav.error > .nav-item > .nav-link:hover {
@@ -512,6 +525,9 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
   border-color: #ffcdcd;
 }
 
+code {
+  color: black;
+}
 
 #generated-code, #curl-code, #warnings {
   font-family: monospace;
