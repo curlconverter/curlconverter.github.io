@@ -209,6 +209,8 @@ const convert = function () {
   }
   const generatedCodeEl = document.getElementById('generated-code')
   const warningsEl = document.getElementById('warnings')
+  // We need to hide the element that has the padding
+  const warningsContainerEl = document.getElementById('warnings-container')
   if (!error) {
     generatedCodeEl.textContent = generatedCode
     changeHighlight(language)
@@ -222,10 +224,10 @@ const convert = function () {
   }
   if (warnings && warnings.length) {
     warningsEl.textContent = warnings.map(w => w[1]).join('\n')
-    warningsEl.style.display = 'inline-block'
+    warningsContainerEl.style.display = 'inline-block'
   } else {
     warningsEl.textContent = ''
-    warningsEl.style.display = 'none'
+    warningsContainerEl.style.display = 'none'
   }
 }
 
@@ -252,7 +254,7 @@ languageSelect.addEventListener('change', function () {
 })
 
 const languageNavbar = document.getElementById('language-navbar')
-const languageNavbarItems = languageNavbar.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item')
+const languageNavbarItems = languageNavbar.querySelectorAll('.nav-link:not(.dropdown-toggle):not(.nav-link-outbound), .dropdown-item')
 for (const navbarItem of languageNavbarItems) {
   navbarItem.addEventListener('click', function (e) {
     e.preventDefault()
