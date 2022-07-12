@@ -12,7 +12,7 @@
 .nav-link {
   transition: none;
   /* move tabs closer together so that all the languages fit */
-  padding: .5rem .7rem
+  padding: .5rem .6rem
 }
 
 .nav-link.nav-link-outbound > svg {
