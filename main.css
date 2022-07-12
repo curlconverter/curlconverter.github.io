@@ -504,7 +504,7 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 .nav-link {
   transition: none;
   /* move tabs closer together so that all the languages fit */
-  padding: .5rem .7rem
+  padding: .5rem .6rem
 }
 
 .nav-link.nav-link-outbound > svg {
