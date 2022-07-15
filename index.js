@@ -219,7 +219,7 @@ const convert = function () {
     changeHighlight('plaintext')
   }
 
-  if (curlCode.split('^').length > 5 && userOS === 'windows') {
+  if (userOS === 'windows' && curlCode.split('^').length > 5) {
     warnings.push(['copy-as-cmd', 'Did you press "Copy as cURL (cmd)" instead of "Copy as cURL (bash)"? Only bash commands are supported.'])
   }
   if (warnings && warnings.length) {
