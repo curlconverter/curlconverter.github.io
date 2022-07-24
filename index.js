@@ -124,8 +124,7 @@ const changeLanguage = function (language) {
 }
 
 const getLanguage = function () {
-  const languageSelect = document.getElementById('language-select')
-  return languageSelect.value
+  return document.getElementById('language-select').value
 }
 
 const showIssuePromo = (errorMsg) => {
@@ -166,11 +165,11 @@ const showExample = function (code) {
   convert()
 }
 
-const convert = function () {
+const convert = function (language) {
   let curlCode = document.getElementById('curl-code').value
   let generatedCode
   let error
-  const language = getLanguage()
+  language = language || getLanguage()
   let warnings = []
 
   // Convert the placeholder text as a demo
@@ -243,7 +242,7 @@ if (Object.prototype.hasOwnProperty.call(languages, hash)) {
 }
 
 const curlCodeInput = document.getElementById('curl-code')
-curlCodeInput.addEventListener('input', convert)
+curlCodeInput.addEventListener('input', () => { convert() })
 
 // listen for change in select
 const languageSelect = document.getElementById('language-select')
@@ -262,6 +261,16 @@ for (const navbarItem of languageNavbarItems) {
     const language = e.target.href.split('#')[1]
 
     changeLanguage(language)
+    convert()
+  })
+
+  navbarItem.addEventListener('mouseenter', function (e) {
+    e.preventDefault()
+    const language = e.target.href.split('#')[1]
+    convert(language)
+  })
+  navbarItem.addEventListener('mouseout', function (e) {
+    e.preventDefault()
     convert()
   })
 }
