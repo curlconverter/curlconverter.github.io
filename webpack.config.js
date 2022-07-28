@@ -32,7 +32,7 @@ export default {
       },
       {
         test: /\.sh$/,
-        use: 'raw-loader'
+        type: 'asset/source'
       }
     ]
   },
