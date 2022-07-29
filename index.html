@@ -167,8 +167,8 @@
 
   </div>
   <div class="container-md pb-4">
-    <div class="row border-top py-4" id="chrome">
-      <div class="col-lg-4">
+    <div class="row border-top py-4">
+      <div class="col-lg-4" id="chrome">
         <h3><code>curl</code> from Google Chrome</h3>
         <ol>
           <li>Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
@@ -183,12 +183,7 @@
           <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
         </p>
       </div>
-      <div class="col-lg-8">
-        <img class="screenshot img-fluid mx-auto d-block" src="/images/chrome.png" srcset="/images/chrome@2x.png 2x" alt="screenshot of the Chrome DevTools">
-      </div>
-    </div>
-    <div class="row border-top py-4 d-none" id="safari">
-      <div class="col-lg-4">
+      <div class="col-lg-4 d-none" id="safari">
         <h3><code>curl</code> from Safari</h3>
         <ol>
           <li>Open the <a href="https://support.apple.com/en-us/guide/safari-developer/dev1f3525e58/mac">Network</a> tab in the <a href="https://support.apple.com/en-us/guide/safari-developer/dev073038698/mac">Developer Tools</a></li>
@@ -203,12 +198,7 @@
           <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
         </p>
       </div>
-      <div class="col-lg-8">
-        <img class="screenshot img-fluid mx-auto d-block" src="/images/safari.png" srcset="/images/safari@2x.png 2x" alt="screenshot of the Safari dev tools">
-      </div>
-    </div>
-    <div class="row border-top py-4 d-none" id="firefox">
-      <div class="col-lg-4">
+      <div class="col-lg-4 d-none" id="firefox">
         <h3><code>curl</code> from Firefox</h3>
         <ol>
           <li>Open the <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor">Network Monitor</a> tab in the <a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li>
@@ -224,7 +214,7 @@
         </p>
       </div>
       <div class="col-lg-8">
-        <img class="screenshot img-fluid mx-auto d-block" src="/images/firefox.png" srcset="/images/firefox@2x.png 2x" alt="screenshot of the Firefox dev tools">
+        <img id="screenshot" class="img-fluid mx-auto d-block" src="/images/chrome.png" srcset="/images/chrome@2x.png 2x" alt="screenshot of browser DevTools showing how to copy a network request as curl">
       </div>
     </div>
 

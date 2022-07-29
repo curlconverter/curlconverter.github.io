@@ -348,6 +348,16 @@ const showInstructions = function (browser) {
       el.classList.add('d-none')
     }
   }
+
+  const screenshot = document.getElementById('screenshot')
+  const newSrc = window.location.origin + '/images/' + browser + '.png'
+  const newSrcSet = '/images/' + browser + '@2x.png 2x'
+  if (newSrc !== screenshot.src || newSrcSet !== screenshot.srcset) {
+    screenshot.src = ''
+    screenshot.srcset = ''
+    screenshot.src = newSrc
+    screenshot.srcset = newSrcSet
+  }
 }
 
 for (const b of browsers) {
