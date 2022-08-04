@@ -222,11 +222,16 @@ const convert = function () {
     } catch (e) {
       console.error(e)
       const origErrorMsg = e.toString()
-      error = 'Error parsing curl command'
       if (origErrorMsg) {
-        error += ':\n' + origErrorMsg
+        if (origErrorMsg.startsWith('Error: ')) {
+          error = origErrorMsg;
+        } else {
+          error = 'Error parsing curl command: ' + origErrorMsg;
+        }
       } else if (!curlCode.trim().startsWith('curl')) {
-        error += '. Your input should start with the word "curl"'
+        error = 'Error parsing curl command. Your input should start with the word "curl"'
+      } else {
+        error = 'Error parsing curl command.'
       }
       changeHighlight('plaintext')
       showIssuePromo(origErrorMsg)
@@ -350,13 +355,15 @@ const showInstructions = function (browser) {
   }
 
   const screenshot = document.getElementById('screenshot')
-  const newSrc = window.location.origin + '/images/' + browser + '.png'
-  const newSrcSet = '/images/' + browser + '@2x.png 2x'
-  if (newSrc !== screenshot.src || newSrcSet !== screenshot.srcset) {
-    screenshot.src = ''
-    screenshot.srcset = ''
-    screenshot.src = newSrc
-    screenshot.srcset = newSrcSet
+  const newInnerHTML = `
+          <source srcset="/images/${browser}.webp, /images/${browser}@2x.webp 2x" type="image/webp">
+          <img class="img-fluid mx-auto d-block" src="/images/${browser}.png" srcset="/images/${browser}@2x.png 2x" alt="screenshot of browser DevTools showing how to copy a network request as curl">
+        `
+  if (screenshot.innerHTML !== newInnerHTML) {
+    const newPicture = document.createElement('picture')
+    newPicture.id = 'screenshot'
+    newPicture.innerHTML = newInnerHTML
+    screenshot.parentNode.replaceChild(newPicture, screenshot)
   }
 }
 
