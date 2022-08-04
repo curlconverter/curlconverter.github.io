@@ -216,7 +216,10 @@
         </p>
       </div>
       <div class="col-lg-8">
-        <img id="screenshot" class="img-fluid mx-auto d-block" src="/images/chrome.png" srcset="/images/chrome@2x.png 2x" alt="screenshot of browser DevTools showing how to copy a network request as curl">
+        <picture id="screenshot">
+          <source srcset="/images/chrome.webp, /images/chrome@2x.webp 2x" type="image/webp">
+          <img class="img-fluid mx-auto d-block" src="/images/chrome.png" srcset="/images/chrome@2x.png 2x" alt="screenshot of browser DevTools showing how to copy a network request as curl">
+        </picture>
       </div>
     </div>
 
@@ -247,6 +250,7 @@
           <li><code>curl</code>'s <a href="https://everything.curl.dev/libcurl/libcurl">--libcurl</a> (to C)</li>
           <li><a href="https://github.com/spulec/uncurl">uncurl</a> (to Python)</li>
           <li><a href="https://github.com/hrbrmstr/curlconverter">hrbrmstr/curlconverter</a> (to R)</li>
+          <li><a href="https://github.com/xuchunyang/curl-to-elisp">curl-to-elisp</a></li>
           <li><a href="https://github.com/postmanlabs/curl-to-postman">Postman</a>, <a href="https://github.com/Kong/insomnia/blob/develop/packages/insomnia-importers/README.md">Insomnia</a> and <a href="https://github.com/luckymarmot/Paw-cURLImporter">Paw</a></li>
           <li><a href="https://mattcg.github.io/har-to-curl/">HAR-to-curl</a></li>
           <li><a href="https://github.com/ofw/curlify">curlify</a> (Python to <code>curl</code>)</li>

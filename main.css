@@ -552,6 +552,8 @@ code {
 #warnings {
   border-color: #ffffdd;
   background-color: #ffffdd;
+  /* if the error is very long, without this the yellow stops when you scroll right */
+  overflow-x: auto;
   min-width: 100%;
 }
 
