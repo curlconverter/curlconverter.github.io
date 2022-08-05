@@ -125,7 +125,7 @@ const changeHighlight = (language) => {
 }
 
 const changeLanguage = function (language) {
-  window.history.replaceState('', '', language);
+  window.history.replaceState('', '', '/' + language);
 
   const languageSelect = document.getElementById('language-select')
   languageSelect.value = language
