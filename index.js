@@ -132,7 +132,7 @@ const changeLanguage = function (language) {
 
   const languageNavbar = document.getElementById('language-navbar')
   // const newActiveElem = e.target.classList.contains('dropdown-item') ? : e.target
-  const newActiveElem = languageNavbar.querySelector(`a[href="#${language}"]`)
+  const newActiveElem = languageNavbar.querySelector(`a[href="/${language}"]`)
   for (const item of languageNavbar.querySelectorAll('.nav-link, .dropdown-item')) {
     item.classList.remove('active')
   }
@@ -304,7 +304,7 @@ for (const navbarItem of languageNavbarItems) {
   navbarItem.addEventListener('click', function (e) {
     e.preventDefault()
 
-    const language = e.target.href.split('#')[1]
+    const language = new URL(e.target.href).pathname.replace(/^\/+/, '').replace(/\/+$/, '').split('/')[0]
 
     changeLanguage(language)
     convert()
