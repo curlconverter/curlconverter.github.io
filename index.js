@@ -125,7 +125,7 @@ const changeHighlight = (language) => {
 }
 
 const changeLanguage = function (language) {
-  window.history.replaceState('', '', language);
+  window.location.hash = '#' + language
 
   const languageSelect = document.getElementById('language-select')
   languageSelect.value = language
@@ -265,26 +265,15 @@ const convert = function () {
   }
 }
 
-let startingLanguage = ''
-const path = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '')
-const hash = window.location.hash.replace('#', '')
-// backwards compatibility in hash
-// the language used to be stored in the hash, like http://localhost:8080/#elixir
-// now it's stored in the path http://localhost:8080/elixir
-if (!path && hash) {
-  // backwards compat
-  if (hash === 'browser') {
-    startingLanguage = 'javascript'
-  } else if (hash === 'node') {
-    startingLanguage = 'node-fetch'
-  } else {
-    startingLanguage = hash
-  }
-} else {
-  startingLanguage = path
+let hash = window.location.hash.replace('#', '')
+// backwards compatibility
+if (hash === 'browser') {
+  hash = 'javascript'
+} else if (hash === 'node') {
+  hash = 'node-fetch'
 }
-if (Object.prototype.hasOwnProperty.call(languages, startingLanguage)) {
-  changeLanguage(startingLanguage)
+if (Object.prototype.hasOwnProperty.call(languages, hash)) {
+  changeLanguage(hash)
 }
 
 const curlCodeInput = document.getElementById('curl-code')
