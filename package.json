@@ -16,7 +16,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.2.0",
-    "curlconverter": "^4.0.0",
+    "curlconverter": "^4.1.0",
     "detect-browser": "^5.3.0",
     "github-fork-ribbon-css": "^0.2.3",
     "highlight.js": "^11.6.0",
