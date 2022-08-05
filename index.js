@@ -16,6 +16,7 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
 import matlab from 'highlight.js/lib/languages/matlab';
 import php from 'highlight.js/lib/languages/php';
+import plaintext from 'highlight.js/lib/languages/plaintext';
 import python from 'highlight.js/lib/languages/python';
 import r from 'highlight.js/lib/languages/r';
 import rust from 'highlight.js/lib/languages/rust';
@@ -37,6 +38,7 @@ hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
 hljs.registerLanguage('matlab', matlab);
 hljs.registerLanguage('php', php);
+hljs.registerLanguage('plaintext', plaintext);
 hljs.registerLanguage('python', python);
 hljs.registerLanguage('r', r);
 hljs.registerLanguage('rust', rust);
@@ -194,6 +196,7 @@ const showExample = function (code) {
 
 const convert = function () {
   let curlCode = document.getElementById('curl-code').value
+  window.sessionStorage.setItem('prev-curl-command', curlCode);
   let generatedCode
   let error
   const language = getLanguage()
@@ -382,5 +385,9 @@ for (const b of browsers) {
   }
 }
 
+const prevCommand = window.sessionStorage.getItem('prev-curl-command');
+if (prevCommand) {
+  document.getElementById('curl-code').value = prevCommand;
+}
 convert()
 showInstructions()
