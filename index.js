@@ -125,14 +125,14 @@ const changeHighlight = (language) => {
 }
 
 const changeLanguage = function (language) {
-  window.location.hash = '#' + language
+  window.history.replaceState('', '', '/' + language);
 
   const languageSelect = document.getElementById('language-select')
   languageSelect.value = language
 
   const languageNavbar = document.getElementById('language-navbar')
   // const newActiveElem = e.target.classList.contains('dropdown-item') ? : e.target
-  const newActiveElem = languageNavbar.querySelector(`a[href="#${language}"]`)
+  const newActiveElem = languageNavbar.querySelector(`a[href="/${language}"]`)
   for (const item of languageNavbar.querySelectorAll('.nav-link, .dropdown-item')) {
     item.classList.remove('active')
   }
@@ -265,15 +265,26 @@ const convert = function () {
   }
 }
 
-let hash = window.location.hash.replace('#', '')
-// backwards compatibility
-if (hash === 'browser') {
-  hash = 'javascript'
-} else if (hash === 'node') {
-  hash = 'node-fetch'
+let startingLanguage = ''
+const path = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '')
+const hash = window.location.hash.replace('#', '')
+// backwards compatibility in hash
+// the language used to be stored in the hash, like http://localhost:8080/#elixir
+// now it's stored in the path http://localhost:8080/elixir
+if (!path && hash) {
+  // backwards compat
+  if (hash === 'browser') {
+    startingLanguage = 'javascript'
+  } else if (hash === 'node') {
+    startingLanguage = 'node-fetch'
+  } else {
+    startingLanguage = hash
+  }
+} else {
+  startingLanguage = path
 }
-if (Object.prototype.hasOwnProperty.call(languages, hash)) {
-  changeLanguage(hash)
+if (Object.prototype.hasOwnProperty.call(languages, startingLanguage)) {
+  changeLanguage(startingLanguage)
 }
 
 const curlCodeInput = document.getElementById('curl-code')
@@ -293,7 +304,7 @@ for (const navbarItem of languageNavbarItems) {
   navbarItem.addEventListener('click', function (e) {
     e.preventDefault()
 
-    const language = e.target.href.split('#')[1]
+    const language = new URL(e.target.href).pathname.replace(/^\/+/, '').replace(/\/+$/, '').split('/')[0]
 
     changeLanguage(language)
     convert()
