@@ -562,6 +562,11 @@ pre {
   margin-bottom: 0;
 }
 
+#generated-code {
+  display: block;
+  overflow-x: auto;
+}
+
 /* The output should be marked as plaintext only when there's an error. */
 #generated-code.language-plaintext {
   border-color: #ffcdcd;
