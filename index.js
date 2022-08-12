@@ -253,7 +253,7 @@ const convert = function () {
     changeHighlight('plaintext')
   }
 
-  if (userOS === 'windows' && curlCode.split('^').length > 5) {
+  if (userOS === 'windows' && curlCode.split('^', 6).length > 5) {
     warnings.push(['copy-as-cmd', 'Did you press "Copy as cURL (cmd)" instead of "Copy as cURL (bash)"? Only bash commands are supported.'])
   }
   if (warnings && warnings.length) {
@@ -398,7 +398,10 @@ for (const b of browsers) {
 
 const prevCommand = window.sessionStorage.getItem('prev-curl-command');
 if (prevCommand) {
-  document.getElementById('curl-code').value = prevCommand;
+  const curlCode = document.getElementById('curl-code')
+  if (!curlCode.value) {
+    curlCode.value = prevCommand;
+  }
 }
 convert()
 showInstructions()
