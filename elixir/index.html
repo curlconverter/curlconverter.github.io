@@ -69,7 +69,7 @@
           <option value="ansible">Ansible</option>
           <option value="cfml">ColdFusion ML</option>
           <option value="dart">Dart</option>
-          <option value="elixir">Elixir</option>
+          <option value="elixir" selected>Elixir</option>
           <option value="go">Go</option>
           <option value="java">Java</option>
           <option value="javascript">JavaScript</option>
@@ -79,7 +79,7 @@
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
@@ -102,7 +102,7 @@
           <a class="nav-link" href="/dart">Dart</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/elixir">Elixir</a>
+          <a class="nav-link active" href="/elixir">Elixir</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/go">Go</a>
@@ -131,7 +131,7 @@
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -152,7 +152,17 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">request = %HTTPoison.Request{
+  method: :get,
+  url: &quot;http://example.com&quot;,
+  options: [],
+  headers: [],
+  params: [],
+  body: &quot;&quot;
+}
+
+response = HTTPoison.request(request)
+</code></pre>
       </div>
     </div>
     <div class="row">

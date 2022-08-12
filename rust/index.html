@@ -79,9 +79,9 @@
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
-          <option value="rust">Rust</option>
+          <option value="rust" selected>Rust</option>
           <option value="strest">Strest</option>
         </select>
       </div>
@@ -131,7 +131,7 @@
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -142,7 +142,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/rust">Rust</a>
+          <a class="nav-link active" href="/rust">Rust</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/strest">Strest</a>
@@ -152,7 +152,18 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">extern crate reqwest;
+
+fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+    let client = reqwest::blocking::Client::new();
+    let res = client.get(&quot;http://example.com&quot;)
+        .send()?
+        .text()?;
+    println!(&quot;{}&quot;, res);
+
+    Ok(())
+}
+</code></pre>
       </div>
     </div>
     <div class="row">

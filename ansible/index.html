@@ -66,7 +66,7 @@
       </div>
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
-          <option value="ansible">Ansible</option>
+          <option value="ansible" selected>Ansible</option>
           <option value="cfml">ColdFusion ML</option>
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
@@ -79,7 +79,7 @@
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
@@ -87,7 +87,7 @@
       </div>
       <ul class="nav nav-tabs d-none d-xl-flex px-3" id="language-navbar">
         <li class="nav-item">
-          <a class="nav-link" href="/ansible">Ansible</a>
+          <a class="nav-link active" href="/ansible">Ansible</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-link-outbound" href="https://everything.curl.dev/libcurl/libcurl">
@@ -131,7 +131,7 @@
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -152,7 +152,13 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">-
+  name: &#039;http://example.com&#039;
+  uri:
+    url: &#039;http://example.com&#039;
+    method: GET
+  register: result
+</code></pre>
       </div>
     </div>
     <div class="row">

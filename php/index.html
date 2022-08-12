@@ -78,8 +78,8 @@
           <option value="node-axios">Node.js (axios)</option>
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
-          <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="php" selected>PHP</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
@@ -128,10 +128,10 @@
           <a class="nav-link" href="/matlab">MATLAB</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/php">PHP</a>
+          <a class="nav-link active" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -152,7 +152,16 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">&lt;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, &#039;http://example.com&#039;);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, &#039;GET&#039;);
+
+$response = curl_exec($ch);
+
+curl_close($ch);
+</code></pre>
       </div>
     </div>
     <div class="row">

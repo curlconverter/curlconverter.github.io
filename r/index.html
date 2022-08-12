@@ -79,8 +79,8 @@
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
-          <option value="r">R</option>
+          <option value="python">Python</option>
+          <option value="r" selected>R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
         </select>
@@ -131,10 +131,10 @@
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/r">R</a>
+          <a class="nav-link active" href="/r">R</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-link-outbound" href="https://jhawthorn.github.io/curl-to-ruby/">
@@ -152,7 +152,10 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">require(httr)
+
+res &lt;- httr::GET(url = &#039;http://example.com&#039;)
+</code></pre>
       </div>
     </div>
     <div class="row">

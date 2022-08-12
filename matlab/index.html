@@ -77,9 +77,9 @@
           <option value="node-fetch">Node.js (node-fetch)</option>
           <option value="node-axios">Node.js (axios)</option>
           <option value="node-request">Node.js (request)</option>
-          <option value="matlab">MATLAB</option>
+          <option value="matlab" selected>MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
@@ -125,13 +125,13 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/matlab">MATLAB</a>
+          <a class="nav-link active" href="/matlab">MATLAB</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -152,7 +152,17 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">%% Web Access using Data Import and Export API
+uri = &#039;http://example.com&#039;;
+response = webread(uri);
+
+%% HTTP Interface
+import matlab.net.*
+import matlab.net.http.*
+
+uri = URI(&#039;http://example.com&#039;);
+response = RequestMessage().send(uri.EncodedURI);
+</code></pre>
       </div>
     </div>
     <div class="row">

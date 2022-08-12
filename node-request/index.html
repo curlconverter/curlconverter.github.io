@@ -76,10 +76,10 @@
           <option value="json">JSON</option>
           <option value="node-fetch">Node.js (node-fetch)</option>
           <option value="node-axios">Node.js (axios)</option>
-          <option value="node-request">Node.js (request)</option>
+          <option value="node-request" selected>Node.js (request)</option>
           <option value="matlab">MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
@@ -117,7 +117,7 @@
           <a class="nav-link" href="/json">JSON</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-fetch">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-axios">axios</a></li>
@@ -131,7 +131,7 @@
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -152,7 +152,20 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">var request = require(&#039;request&#039;);
+
+var options = {
+    url: &#039;http://example.com&#039;
+};
+
+function callback(error, response, body) {
+    if (!error &amp;&amp; response.statusCode == 200) {
+        console.log(body);
+    }
+}
+
+request(options, callback);
+</code></pre>
       </div>
     </div>
     <div class="row">

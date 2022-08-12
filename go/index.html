@@ -70,7 +70,7 @@
           <option value="cfml">ColdFusion ML</option>
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
-          <option value="go">Go</option>
+          <option value="go" selected>Go</option>
           <option value="java">Java</option>
           <option value="javascript">JavaScript</option>
           <option value="json">JSON</option>
@@ -79,7 +79,7 @@
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
           <option value="php">PHP</option>
-          <option value="python" selected>Python</option>
+          <option value="python">Python</option>
           <option value="r">R</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
@@ -105,7 +105,7 @@
           <a class="nav-link" href="/elixir">Elixir</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/go">Go</a>
+          <a class="nav-link active" href="/go">Go</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/java">Java</a>
@@ -131,7 +131,7 @@
           <a class="nav-link" href="/php">PHP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/python">Python</a>
+          <a class="nav-link" href="/python">Python</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r">R</a>
@@ -152,7 +152,33 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code" class="placeholder-glow"><span class="placeholder col-6 col-sm-3 col-lg-2"></span><br><br><span class="placeholder col-3 col-sm-2 col-lg-1"></span> <span class="placeholder col-8 col-sm-5 col-md-4 col-lg-4 col-xxl-3"></span></code></pre>
+        <pre><code id="generated-code">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+)
+
+func main() {
+	client := &amp;http.Client{}
+	req, err := http.NewRequest(&quot;GET&quot;, &quot;http://example.com&quot;, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	bodyText, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf(&quot;%s\n&quot;, bodyText)
+}
+</code></pre>
       </div>
     </div>
     <div class="row">
