@@ -402,6 +402,22 @@ if (prevCommand) {
   if (!curlCode.value) {
     curlCode.value = prevCommand;
   }
+} else {
+  try {
+    const permission = await navigator.permissions.query({ name: 'clipboard-read' })
+    if (permission.state !== 'denied') {
+      const clipboardContents = await navigator.clipboard.readText()
+      if (clipboardContents.trim().startsWith('curl ')) {
+        const curlCode = document.getElementById('curl-code')
+        if (!curlCode.value) {
+          curlCode.value = clipboardContents;
+          // TODO: clipboard.writeText() too?
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Couldn't read curl command from clipboard:", error.message);
+  }
 }
 convert()
 showInstructions()
