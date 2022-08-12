@@ -7,20 +7,20 @@ import 'normalize.css'
 
 import 'highlight.js/styles/github.css'
 
-import hljs from 'highlight.js/lib/core';
-import dart from 'highlight.js/lib/languages/dart';
-import elixir from 'highlight.js/lib/languages/elixir';
-import go from 'highlight.js/lib/languages/go';
-import java from 'highlight.js/lib/languages/java';
-import javascript from 'highlight.js/lib/languages/javascript';
-import json from 'highlight.js/lib/languages/json';
-import matlab from 'highlight.js/lib/languages/matlab';
-import php from 'highlight.js/lib/languages/php';
-import plaintext from 'highlight.js/lib/languages/plaintext';
-import python from 'highlight.js/lib/languages/python';
-import r from 'highlight.js/lib/languages/r';
-import rust from 'highlight.js/lib/languages/rust';
-import yaml from 'highlight.js/lib/languages/yaml';
+import hljs from 'highlight.js/lib/core'
+import dart from 'highlight.js/lib/languages/dart'
+import elixir from 'highlight.js/lib/languages/elixir'
+import go from 'highlight.js/lib/languages/go'
+import java from 'highlight.js/lib/languages/java'
+import javascript from 'highlight.js/lib/languages/javascript'
+import json from 'highlight.js/lib/languages/json'
+import matlab from 'highlight.js/lib/languages/matlab'
+import php from 'highlight.js/lib/languages/php'
+import plaintext from 'highlight.js/lib/languages/plaintext'
+import python from 'highlight.js/lib/languages/python'
+import r from 'highlight.js/lib/languages/r'
+import rust from 'highlight.js/lib/languages/rust'
+import yaml from 'highlight.js/lib/languages/yaml'
 
 import './main.css'
 
@@ -30,19 +30,19 @@ import authExampleText from './examples/auth.sh'
 
 import * as curlconverter from 'curlconverter'
 
-hljs.registerLanguage('dart', dart);
-hljs.registerLanguage('elixir', elixir);
-hljs.registerLanguage('go', go);
-hljs.registerLanguage('java', java);
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('json', json);
-hljs.registerLanguage('matlab', matlab);
-hljs.registerLanguage('php', php);
-hljs.registerLanguage('plaintext', plaintext);
-hljs.registerLanguage('python', python);
-hljs.registerLanguage('r', r);
-hljs.registerLanguage('rust', rust);
-hljs.registerLanguage('yaml', yaml);
+hljs.registerLanguage('dart', dart)
+hljs.registerLanguage('elixir', elixir)
+hljs.registerLanguage('go', go)
+hljs.registerLanguage('java', java)
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('matlab', matlab)
+hljs.registerLanguage('php', php)
+hljs.registerLanguage('plaintext', plaintext)
+hljs.registerLanguage('python', python)
+hljs.registerLanguage('r', r)
+hljs.registerLanguage('rust', rust)
+hljs.registerLanguage('yaml', yaml)
 
 // TODO: include a Windows screenshot. Firefox and Safari have "copy as cURL" as well
 //
@@ -125,7 +125,7 @@ const changeHighlight = (language) => {
 }
 
 const changeLanguage = function (language) {
-  window.history.replaceState('', '', '/' + language);
+  window.history.replaceState('', '', '/' + language)
 
   const languageSelect = document.getElementById('language-select')
   languageSelect.value = language
@@ -196,7 +196,7 @@ const showExample = function (code) {
 
 const convert = function () {
   let curlCode = document.getElementById('curl-code').value
-  window.sessionStorage.setItem('prev-curl-command', curlCode);
+  window.sessionStorage.setItem('prev-curl-command', curlCode)
   let generatedCode
   let error
   const language = getLanguage()
@@ -218,7 +218,7 @@ const convert = function () {
   } else {
     try {
       const converter = languages[language].converter;
-      [generatedCode, warnings] = converter(curlCode, warnings);
+      [generatedCode, warnings] = converter(curlCode, warnings)
       generatedCode = generatedCode.trimEnd() // remove trailing newline
       hideIssuePromo()
       showCopyToClipboard()
@@ -227,9 +227,9 @@ const convert = function () {
       const origErrorMsg = e.toString()
       if (origErrorMsg) {
         if (origErrorMsg.startsWith('Error: ')) {
-          error = origErrorMsg;
+          error = origErrorMsg
         } else {
-          error = 'Error parsing curl command: ' + origErrorMsg;
+          error = 'Error parsing curl command: ' + origErrorMsg
         }
       } else if (!curlCode.trim().startsWith('curl')) {
         error = 'Error parsing curl command. Your input should start with the word "curl"'
@@ -349,7 +349,7 @@ try {
   const detectedBrowser = detect()
   if (detectedBrowser && detectedBrowser.name && browsers.includes(detectedBrowser.name)) {
     userBrowser = detectedBrowser.name
-    if (detectedBrowser.os && detectedBrowser.os.toLowerCase().includes("windows")) {
+    if (detectedBrowser.os && detectedBrowser.os.toLowerCase().includes('windows')) {
       userOS = 'windows'
     }
   }
@@ -374,10 +374,7 @@ const showInstructions = function (browser) {
           <img class="img-fluid mx-auto d-block" src="/images/${browser}.png" srcset="/images/${browser}@2x.png 2x" alt="screenshot of browser DevTools showing how to copy a network request as curl">
         `
   if (screenshot.innerHTML !== newInnerHTML) {
-    const newPicture = document.createElement('picture')
-    newPicture.id = 'screenshot'
-    newPicture.innerHTML = newInnerHTML
-    screenshot.parentNode.replaceChild(newPicture, screenshot)
+    screenshot.innerHTML = newInnerHTML
   }
 }
 
@@ -396,12 +393,13 @@ for (const b of browsers) {
   }
 }
 
-const prevCommand = window.sessionStorage.getItem('prev-curl-command');
+const inputBox = document.getElementById('curl-code')
+const prevCommand = window.sessionStorage.getItem('prev-curl-command')
 if (prevCommand) {
-  const curlCode = document.getElementById('curl-code')
-  if (!curlCode.value) {
-    curlCode.value = prevCommand;
+  if (!inputBox.value) {
+    inputBox.value = prevCommand
   }
 }
+inputBox.removeAttribute('disabled')
 convert()
 showInstructions()
