@@ -19,6 +19,7 @@ import php from 'highlight.js/lib/languages/php'
 import plaintext from 'highlight.js/lib/languages/plaintext'
 import python from 'highlight.js/lib/languages/python'
 import r from 'highlight.js/lib/languages/r'
+import ruby from 'highlight.js/lib/languages/ruby'
 import rust from 'highlight.js/lib/languages/rust'
 import yaml from 'highlight.js/lib/languages/yaml'
 
@@ -41,6 +42,7 @@ hljs.registerLanguage('php', php)
 hljs.registerLanguage('plaintext', plaintext)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('r', r)
+hljs.registerLanguage('ruby', ruby)
 hljs.registerLanguage('rust', rust)
 hljs.registerLanguage('yaml', yaml)
 
@@ -91,6 +93,7 @@ const languages = {
   php: { converter: curlconverter.toPhpWarn, hljs: 'php' },
   python: { converter: curlconverter.toPythonWarn, hljs: 'python' },
   r: { converter: curlconverter.toRWarn, hljs: 'r' },
+  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby' },
   rust: { converter: curlconverter.toRustWarn, hljs: 'rust' },
   strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml' }
 }

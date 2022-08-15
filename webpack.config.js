@@ -34,6 +34,7 @@ const languages = {
   php: { converter: curlconverter.toPhpWarn, hljs: 'php' },
   python: { converter: curlconverter.toPythonWarn, hljs: 'python' },
   r: { converter: curlconverter.toRWarn, hljs: 'r' },
+  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby' },
   rust: { converter: curlconverter.toRustWarn, hljs: 'rust' },
   strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml' }
 }
