@@ -372,9 +372,14 @@ const showInstructions = function (browser) {
   }
 
   const screenshot = document.getElementById('screenshot')
+  const [width, height] = {
+    chrome: [648, 354],
+    firefox: [733, 251],
+    safari: [658, 373]
+  }[browser]
   const newInnerHTML = `
           <source srcset="/images/${browser}.webp, /images/${browser}@2x.webp 2x" type="image/webp">
-          <img class="img-fluid mx-auto d-block" src="/images/${browser}.png" srcset="/images/${browser}@2x.png 2x" alt="screenshot of browser DevTools showing how to copy a network request as curl">
+          <img class="img-fluid mx-auto d-block" src="/images/${browser}.png" srcset="/images/${browser}@2x.png 2x" width="${width}" height="${height}"alt="screenshot of browser DevTools showing how to copy a network request as curl">
         `
   if (screenshot.innerHTML !== newInnerHTML) {
     screenshot.innerHTML = newInnerHTML
