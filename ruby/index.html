@@ -68,7 +68,7 @@
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
           <option value="cfml">ColdFusion ML</option>
-          <option value="dart" selected>Dart</option>
+          <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
           <option value="go">Go</option>
           <option value="java">Java</option>
@@ -81,7 +81,7 @@
           <option value="php">PHP</option>
           <option value="python">Python</option>
           <option value="r">R</option>
-          <option value="ruby">Ruby</option>
+          <option value="ruby" selected>Ruby</option>
           <option value="rust">Rust</option>
           <option value="strest">Strest</option>
         </select>
@@ -100,7 +100,7 @@
           <a class="nav-link" href="/cfml" title="ColdFusion Markup Language">CFML</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/dart">Dart</a>
+          <a class="nav-link" href="/dart">Dart</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/elixir">Elixir</a>
@@ -138,7 +138,7 @@
           <a class="nav-link" href="/r">R</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/ruby">Ruby</a>
+          <a class="nav-link active" href="/ruby">Ruby</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/rust">Rust</a>
@@ -151,14 +151,10 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:http/http.dart&#x27;</span> <span class="hljs-keyword">as</span> http;
+        <pre><code id="generated-code"><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;net/http&#x27;</span>
 
-<span class="hljs-keyword">void</span> main() <span class="hljs-keyword">async</span> {
-  <span class="hljs-keyword">var</span> url = <span class="hljs-built_in">Uri</span>.parse(<span class="hljs-string">&#x27;http://example.com&#x27;</span>);
-  <span class="hljs-keyword">var</span> res = <span class="hljs-keyword">await</span> http.<span class="hljs-keyword">get</span>(url);
-  <span class="hljs-keyword">if</span> (res.statusCode != <span class="hljs-number">200</span>) <span class="hljs-keyword">throw</span> Exception(<span class="hljs-string">&#x27;http.get error: statusCode= <span class="hljs-subst">${res.statusCode}</span>&#x27;</span>);
-  <span class="hljs-built_in">print</span>(res.body);
-}
+uri = <span class="hljs-variable constant_">URI</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>)
+res = Net::<span class="hljs-variable constant_">HTTP</span>.get_response(uri)
 </code></pre>
       </div>
     </div>
