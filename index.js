@@ -199,7 +199,9 @@ const showExample = function (code) {
 
 const convert = function () {
   let curlCode = document.getElementById('curl-code').value
-  window.sessionStorage.setItem('prev-curl-command', curlCode)
+  try {
+    window.sessionStorage.setItem('prev-curl-command', curlCode)
+  } catch {}
   let generatedCode
   let error
   const language = getLanguage()
@@ -402,12 +404,12 @@ for (const b of browsers) {
 }
 
 const inputBox = document.getElementById('curl-code')
-const prevCommand = window.sessionStorage.getItem('prev-curl-command')
-if (prevCommand) {
-  if (!inputBox.value) {
+try {
+  const prevCommand = window.sessionStorage.getItem('prev-curl-command')
+  if (prevCommand && !inputBox.value) {
     inputBox.value = prevCommand
   }
-}
+} catch {}
 inputBox.removeAttribute('disabled')
 convert()
 showInstructions()
