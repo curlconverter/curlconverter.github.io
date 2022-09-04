@@ -18,28 +18,29 @@ const STARTING_CODE = `import requests
 response = requests.get('http://example.com')`
 
 const languages = {
-  ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml' },
-  // TODO: not supported by highlight.js
-  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript' },
-  dart: { converter: curlconverter.toDartWarn, hljs: 'dart' },
-  elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir' },
-  go: { converter: curlconverter.toGoWarn, hljs: 'go' },
-  java: { converter: curlconverter.toJavaWarn, hljs: 'java' },
-  javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript' },
-  json: { converter: curlconverter.toJsonStringWarn, hljs: 'json' },
-  matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab' },
-  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript' },
-  'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript' },
-  'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript' },
-  php: { converter: curlconverter.toPhpWarn, hljs: 'php' },
-  python: { converter: curlconverter.toPythonWarn, hljs: 'python' },
-  r: { converter: curlconverter.toRWarn, hljs: 'r' },
-  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby' },
-  rust: { converter: curlconverter.toRustWarn, hljs: 'rust' },
-  strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml' }
+  ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
+  // TODO: CFML isn't supported by highlight.js
+  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
+  dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
+  elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
+  go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },
+  java: { converter: curlconverter.toJavaWarn, hljs: 'java', title: 'Java' },
+  javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript', title: 'JavaScript' },
+  // People googling for "curl json" are probably looking for something else
+  json: { converter: curlconverter.toJsonStringWarn, hljs: 'json', title: 'a JSON object' },
+  matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
+  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
+  'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node (Axios)' },
+  'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node (request)' },
+  php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
+  python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
+  r: { converter: curlconverter.toRWarn, hljs: 'r', title: 'R' },
+  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby', title: 'Ruby' },
+  rust: { converter: curlconverter.toRustWarn, hljs: 'rust', title: 'Rust' },
+  strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml', title: 'Strest' },
 }
 
-const toLanguage = (language, converter, hljsLang) => {
+const toLanguage = (language, title, converter, hljsLang) => {
   return (content) => {
     const newContent = content
       .toString()
@@ -50,21 +51,23 @@ const toLanguage = (language, converter, hljsLang) => {
       .replace('<option value="python" selected>Python</option>', '<option value="python">Python</option>')
       .replace(`<option value="${language}">`, `<option value="${language}" selected>`)
       .replace('<a class="nav-link active" href="/python">Python</a>', '<a class="nav-link" href="/python">Python</a>')
-      if (['node-fetch', 'node-axios', 'node-request'].includes(language)) {
-        return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>')
-      } else {
-        return newContent.replace(`<a class="nav-link" href="/${language}"`, `<a class="nav-link active" href="/${language}"`)
-      }
+      .replace('<title>Convert curl commands to code</title>', `<title>Convert curl commands to ${title}</title>`)
+      
+    if (['node-fetch', 'node-axios', 'node-request'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>')
+    } else {
+      return newContent.replace(`<a class="nav-link" href="/${language}"`, `<a class="nav-link active" href="/${language}"`)
+    }
   }
 }
 
 const copyIndexHtml = () => {
   return Object.entries(languages).map((l) => {
-    const [language, { converter, hljs }] = l
+    const [language, { title, converter, hljs }] = l
     return {
       from: 'index.html',
       to: language,
-      transform: toLanguage(language, converter, hljs),
+      transform: toLanguage(language, title, converter, hljs),
     };
   });
 };
@@ -113,7 +116,7 @@ export default {
         'node_modules/web-tree-sitter/tree-sitter.wasm',
         'node_modules/curlconverter/dist/tree-sitter-bash.wasm',
         'node_modules/bootstrap/dist/css/bootstrap.min.css.map',
-        { from: 'index.html', transform: (c) => c.toString().replace(STARTING_CODE, hljs.highlight(STARTING_CODE, {language: 'python'}).value) },
+        { from: 'index.html', transform: (c) => c.toString().replace(STARTING_CODE, hljs.highlight(STARTING_CODE, { language: 'python' }).value) },
         { from: 'images', to: 'images' },
         'meta',
         'CNAME'

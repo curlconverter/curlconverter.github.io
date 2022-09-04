@@ -77,25 +77,26 @@ const getExampleText = getExampleTemplate.replace('{{useragent}}', useragent)
 const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
 
 const languages = {
-  ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml' },
-  // TODO: not supported by highlight.js
-  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript' },
-  dart: { converter: curlconverter.toDartWarn, hljs: 'dart' },
-  elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir' },
-  go: { converter: curlconverter.toGoWarn, hljs: 'go' },
-  java: { converter: curlconverter.toJavaWarn, hljs: 'java' },
-  javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript' },
-  json: { converter: curlconverter.toJsonStringWarn, hljs: 'json' },
-  matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab' },
-  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript' },
-  'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript' },
-  'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript' },
-  php: { converter: curlconverter.toPhpWarn, hljs: 'php' },
-  python: { converter: curlconverter.toPythonWarn, hljs: 'python' },
-  r: { converter: curlconverter.toRWarn, hljs: 'r' },
-  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby' },
-  rust: { converter: curlconverter.toRustWarn, hljs: 'rust' },
-  strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml' }
+  ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
+  // TODO: CFML isn't supported by highlight.js
+  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
+  dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
+  elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
+  go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },
+  java: { converter: curlconverter.toJavaWarn, hljs: 'java', title: 'Java' },
+  javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript', title: 'JavaScript' },
+  // People googling for "curl json" are probably looking for something else
+  json: { converter: curlconverter.toJsonStringWarn, hljs: 'json', title: 'a JSON object' },
+  matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
+  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
+  'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node (Axios)' },
+  'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node (request)' },
+  php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
+  python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
+  r: { converter: curlconverter.toRWarn, hljs: 'r', title: 'R' },
+  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby', title: 'Ruby' },
+  rust: { converter: curlconverter.toRustWarn, hljs: 'rust', title: 'Rust' },
+  strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml', title: 'Strest' },
 }
 
 const changeHighlight = (language) => {
@@ -128,14 +129,14 @@ const changeHighlight = (language) => {
 }
 
 const changeLanguage = function (language) {
-  window.history.replaceState('', '', '/' + language)
+  window.history.replaceState('', '', '/' + language + '/')
 
   const languageSelect = document.getElementById('language-select')
   languageSelect.value = language
 
   const languageNavbar = document.getElementById('language-navbar')
   // const newActiveElem = e.target.classList.contains('dropdown-item') ? : e.target
-  const newActiveElem = languageNavbar.querySelector(`a[href="/${language}"]`)
+  const newActiveElem = languageNavbar.querySelector(`a[href="/${language}/"]`)
   for (const item of languageNavbar.querySelectorAll('.nav-link, .dropdown-item')) {
     item.classList.remove('active')
   }
@@ -150,6 +151,19 @@ const changeLanguage = function (language) {
   document.getElementById('language-select').value = language
 
   changeHighlight(language)
+
+  try {
+    if (Object.prototype.hasOwnProperty.call(languages, language)) {
+      // The initial title in the HTML is a bit more verbose for Google
+      // If the user clicks on the language they already opened again,
+      // don't needlessly change the title
+      const initialTitle = 'Convert curl commands to ' + languages[language].title
+      const newTitle = 'Convert curl to ' + languages[language].title
+      if (document.title !== newTitle && document.title !== initialTitle) {
+        document.title = newTitle
+      }
+    }
+  } catch {}
 
   return language
 }
