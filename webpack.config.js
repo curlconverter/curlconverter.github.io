@@ -50,13 +50,13 @@ const toLanguage = (language, title, converter, hljsLang) => {
       )
       .replace('<option value="python" selected>Python</option>', '<option value="python">Python</option>')
       .replace(`<option value="${language}">`, `<option value="${language}" selected>`)
-      .replace('<a class="nav-link active" href="/python">Python</a>', '<a class="nav-link" href="/python">Python</a>')
+      .replace('<a class="nav-link active" href="/python/">Python</a>', '<a class="nav-link" href="/python/">Python</a>')
       .replace('<title>Convert curl commands to code</title>', `<title>Convert curl commands to ${title}</title>`)
-      
+
     if (['node-fetch', 'node-axios', 'node-request'].includes(language)) {
       return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>')
     } else {
-      return newContent.replace(`<a class="nav-link" href="/${language}"`, `<a class="nav-link active" href="/${language}"`)
+      return newContent.replace(`<a class="nav-link" href="/${language}/"`, `<a class="nav-link active" href="/${language}/"`)
     }
   }
 }
