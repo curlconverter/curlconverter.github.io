@@ -26,7 +26,7 @@
 
     <script defer data-domain="curlconverter.com" src="https://plausible.io/js/plausible.js"></script>
 
-    <title>Convert curl commands to Strest</title>
+    <title>Convert curl commands to C#</title>
   </head>
   <body>
 
@@ -68,7 +68,7 @@
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
           <option value="cfml">ColdFusion ML</option>
-          <option value="csharp">C#</option>
+          <option value="csharp" selected>C#</option>
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
           <option value="go">Go</option>
@@ -84,7 +84,7 @@
           <option value="r">R</option>
           <option value="ruby">Ruby</option>
           <option value="rust">Rust</option>
-          <option value="strest" selected>Strest</option>
+          <option value="strest">Strest</option>
         </select>
       </div>
       <ul class="nav nav-tabs d-none d-xl-flex px-3" id="language-navbar">
@@ -101,7 +101,7 @@
           <a class="nav-link" href="/cfml/" title="ColdFusion Markup Language">CFML</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/csharp/">C#</a>
+          <a class="nav-link active" href="/csharp/">C#</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/dart/">Dart</a>
@@ -148,19 +148,16 @@
           <a class="nav-link" href="/rust/">Rust</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/strest/">Strest</a>
+          <a class="nav-link" href="/strest/">Strest</a>
         </li>
       </ul>
     </div>
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-attr">version:</span> <span class="hljs-number">2</span>
-<span class="hljs-attr">requests:</span>
-  <span class="hljs-attr">curl_converter:</span>
-    <span class="hljs-attr">request:</span>
-      <span class="hljs-attr">url:</span> <span class="hljs-string">&#x27;http://example.com&#x27;</span>
-      <span class="hljs-attr">method:</span> <span class="hljs-string">GET</span>
+        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+
+<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
 </code></pre>
       </div>
     </div>
