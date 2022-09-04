@@ -8,6 +8,7 @@ import 'normalize.css'
 import 'highlight.js/styles/github.css'
 
 import hljs from 'highlight.js/lib/core'
+import csharp from 'highlight.js/lib/languages/csharp'
 import dart from 'highlight.js/lib/languages/dart'
 import elixir from 'highlight.js/lib/languages/elixir'
 import go from 'highlight.js/lib/languages/go'
@@ -31,6 +32,7 @@ import authExampleText from './examples/auth.sh'
 
 import * as curlconverter from 'curlconverter'
 
+hljs.registerLanguage('csharp', csharp)
 hljs.registerLanguage('dart', dart)
 hljs.registerLanguage('elixir', elixir)
 hljs.registerLanguage('go', go)
@@ -80,6 +82,7 @@ const languages = {
   ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
   // TODO: CFML isn't supported by highlight.js
   cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
+  csharp: { converter: curlconverter.toCSharpWarn, hljs: 'csharp', title: 'C#' },
   dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
   elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
   go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },

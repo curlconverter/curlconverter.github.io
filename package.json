@@ -16,13 +16,13 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.0",
-    "curlconverter": "^4.2.0",
+    "curlconverter": "^4.3.0",
     "detect-browser": "^5.3.0",
     "github-fork-ribbon-css": "^0.2.3",
     "highlight.js": "^11.6.0",
     "normalize.css": "^8.0.1",
     "path-browserify": "^1.0.1",
-    "tree-sitter-cli": "^0.20.6",
+    "tree-sitter-cli": "^0.20.7",
     "url": "^0.11.0"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.10.0"
+    "webpack-dev-server": "^4.10.1"
   },
   "standard": {
     "ignore": [

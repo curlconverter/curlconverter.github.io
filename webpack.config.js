@@ -21,6 +21,7 @@ const languages = {
   ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
   // TODO: CFML isn't supported by highlight.js
   cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
+  csharp: { converter: curlconverter.toCSharpWarn, hljs: 'csharp', title: 'C#' },
   dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
   elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
   go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },
