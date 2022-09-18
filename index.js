@@ -8,6 +8,7 @@ import 'normalize.css'
 import 'highlight.js/styles/github.css'
 
 import hljs from 'highlight.js/lib/core'
+import plaintext from 'highlight.js/lib/languages/plaintext'
 import csharp from 'highlight.js/lib/languages/csharp'
 import dart from 'highlight.js/lib/languages/dart'
 import elixir from 'highlight.js/lib/languages/elixir'
@@ -17,7 +18,6 @@ import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
 import matlab from 'highlight.js/lib/languages/matlab'
 import php from 'highlight.js/lib/languages/php'
-import plaintext from 'highlight.js/lib/languages/plaintext'
 import python from 'highlight.js/lib/languages/python'
 import r from 'highlight.js/lib/languages/r'
 import ruby from 'highlight.js/lib/languages/ruby'
@@ -32,6 +32,8 @@ import authExampleText from './examples/auth.sh'
 
 import * as curlconverter from 'curlconverter'
 
+hljs.registerLanguage('plaintext', plaintext)
+
 hljs.registerLanguage('csharp', csharp)
 hljs.registerLanguage('dart', dart)
 hljs.registerLanguage('elixir', elixir)
@@ -41,7 +43,6 @@ hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)
 hljs.registerLanguage('matlab', matlab)
 hljs.registerLanguage('php', php)
-hljs.registerLanguage('plaintext', plaintext)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('r', r)
 hljs.registerLanguage('ruby', ruby)
@@ -65,7 +66,7 @@ hljs.registerLanguage('yaml', yaml)
 // spanish
 
 // https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
-let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
 // For fun and future-proofing, put the user's
 // actual User Agent in the examples
 if (window.navigator &&
@@ -280,7 +281,7 @@ const convert = function () {
   }
 
   if (userOS === 'windows' && curlCode.split('^', 6).length > 5) {
-    warnings.push(['copy-as-cmd', 'Did you press "Copy as cURL (cmd)" instead of "Copy as cURL (bash)"? Only bash commands are supported.'])
+    warnings.push(['copy-as-cmd', 'Did you click "Copy as cURL (cmd)" instead of "Copy as cURL (bash)"? Only bash commands are supported.'])
   }
   if (warnings && warnings.length) {
     warningsEl.textContent = warnings.map(w => w[1]).join('\n')
@@ -294,9 +295,10 @@ const convert = function () {
 let startingLanguage = ''
 const path = window.location.pathname.replace(/^\/+/, '').replace(/\/+$/, '')
 const hash = window.location.hash.replace('#', '')
-// backwards compatibility in hash
-// the language used to be stored in the hash, like http://localhost:8080/#elixir
-// now it's stored in the path http://localhost:8080/elixir
+// Backwards compatibility. The language used to be in the hash, like
+// https://curlconverter.com/#elixir
+// now it's in the path
+// https://curlconverter.com/elixir/
 if (!path && hash) {
   // backwards compat
   if (hash === 'browser') {
