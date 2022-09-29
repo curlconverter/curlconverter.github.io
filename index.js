@@ -434,5 +434,6 @@ try {
   }
 } catch {}
 inputBox.removeAttribute('disabled')
+inputBox.focus()
 convert()
 showInstructions()
