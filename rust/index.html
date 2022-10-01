@@ -158,7 +158,10 @@
         <pre><code id="generated-code"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">crate</span> reqwest;
 
 <span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> std::error::Error&gt;&gt; {
-    <span class="hljs-keyword">let</span> <span class="hljs-variable">client</span> = reqwest::blocking::Client::<span class="hljs-title function_ invoke__">new</span>();
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">client</span> = reqwest::blocking::Client::<span class="hljs-title function_ invoke__">builder</span>()
+        .<span class="hljs-title function_ invoke__">redirect</span>(reqwest::redirect::Policy::<span class="hljs-title function_ invoke__">none</span>())
+        .<span class="hljs-title function_ invoke__">build</span>()
+        .<span class="hljs-title function_ invoke__">unwrap</span>();
     <span class="hljs-keyword">let</span> <span class="hljs-variable">res</span> = client.<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&quot;http://example.com&quot;</span>)
         .<span class="hljs-title function_ invoke__">send</span>()?
         .<span class="hljs-title function_ invoke__">text</span>()?;
