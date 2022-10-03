@@ -155,16 +155,7 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">request = %<span class="hljs-title class_">HTTPoison</span>.<span class="hljs-title class_">Request</span>{
-  <span class="hljs-symbol">method:</span> <span class="hljs-symbol">:get</span>,
-  <span class="hljs-symbol">url:</span> <span class="hljs-string">&quot;http://example.com&quot;</span>,
-  <span class="hljs-symbol">options:</span> [],
-  <span class="hljs-symbol">headers:</span> [],
-  <span class="hljs-symbol">params:</span> [],
-  <span class="hljs-symbol">body:</span> <span class="hljs-string">&quot;&quot;</span>
-}
-
-response = <span class="hljs-title class_">HTTPoison</span>.request(request)
+        <pre><code id="generated-code">response = <span class="hljs-title class_">HTTPoison</span>.get! <span class="hljs-string">&quot;http://example.com&quot;</span>
 </code></pre>
       </div>
     </div>
