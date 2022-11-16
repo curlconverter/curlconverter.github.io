@@ -1,10 +1,7 @@
 import 'bootstrap'
 import { detect } from 'detect-browser'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'github-fork-ribbon-css/gh-fork-ribbon.css'
-
-import 'highlight.js/styles/github.css'
+import './main.scss'
 
 import hljs from 'highlight.js/lib/core'
 import plaintext from 'highlight.js/lib/languages/plaintext'
@@ -22,8 +19,6 @@ import r from 'highlight.js/lib/languages/r'
 import ruby from 'highlight.js/lib/languages/ruby'
 import rust from 'highlight.js/lib/languages/rust'
 import yaml from 'highlight.js/lib/languages/yaml'
-
-import './main.css'
 
 import getExampleTemplate from './examples/get.sh'
 import postExampleTemplate from './examples/post.sh'

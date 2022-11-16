@@ -87,16 +87,30 @@ export default {
     rules: [
       {
         test: /\.js$/,
-        enforce: "pre",
-        use: ["source-map-loader"],
-      },
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        enforce: 'pre',
+        use: ['source-map-loader']
       },
       {
         test: /\.sh$/,
         type: 'asset/source'
+      },
+      {
+        test: /\.(scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'autoprefixer'
+                ]
+              }
+            }
+          },
+          'sass-loader'
+        ]
       }
     ]
   },

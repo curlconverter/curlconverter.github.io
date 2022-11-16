@@ -1,0 +1,99 @@
+@import "~bootstrap/scss/bootstrap";
+@import "github-fork-ribbon-css/gh-fork-ribbon.css";
+@import "highlight.js/styles/github.css";
+
+#language-navbar {
+  border-bottom: none;
+}
+
+.nav-item > .nav-link {
+  &.active, &:hover {
+    background-color: #f8f8f8;
+    border-bottom: none;
+    transition: none;
+  }
+}
+
+.nav-link {
+  // Don't briefly draw a blue bar under Node.js dropdown after hovering over it
+  transition: none;
+  // move tabs closer together so that all the languages fit
+  padding: 0.5rem 0.6rem;
+
+  &.nav-link-outbound {
+    > svg {
+      height: 14px;
+      width: 14px;
+      margin-bottom: 3px;
+      stroke: #0d6efd;
+      fill: #0d6efd;
+    }
+
+    &:focus > svg, &:hover > svg {
+      stroke: #0a58ca;
+      fill: #0a58ca;
+    }
+  }
+}
+
+.nav.error > .nav-item > .nav-link {
+  &.active, &:hover {
+    background-color: #ffcdcd;
+    border-color: #ffcdcd;
+  }
+}
+
+#curl-code, #generated-code, #warnings {
+  font-family: var(--bs-font-monospace);
+  line-height: 1.25;
+}
+
+#generated-code, #warnings  {
+  /* same as the text area */
+  padding: .375rem .75rem;
+  border-radius: .3rem;
+  border: 1px solid;
+  font-size: 1rem;
+  font-weight: 400;
+  min-height: calc(1.25em + .375rem + .375rem + 2px);
+}
+
+#generated-code {
+  border-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+
+#warnings {
+  border-color: #ffffdd;
+  background-color: #ffffdd;
+
+  /* if the error is very long, without this the yellow stops when you scroll right */
+  overflow-x: auto;
+  min-width: 100%;
+}
+
+/* At least Chrome on macOS adds a bottom margin */
+pre {
+  margin-bottom: 0;
+}
+
+code {
+  color: var(--bs-body-color);
+  font-size: 1rem;
+}
+
+#generated-code {
+  display: block;
+  overflow-x: auto;
+
+  /* The output should be marked as plaintext only when there's an error. */
+  &.language-plaintext {
+    border-color: #ffcdcd;
+    background-color: #ffcdcd;
+  }
+}
+
+
+.github-fork-ribbon:before {
+  background-color: #333;
+}
