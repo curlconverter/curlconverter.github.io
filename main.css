@@ -8,8 +8,8 @@
   transition: none;
 }
 
-/* Don't briefly draw a blue bar under Node.js dropdown after hovering over it */
 .nav-link {
+  /* Don't briefly draw a blue bar under Node.js dropdown after hovering over it */
   transition: none;
   /* move tabs closer together so that all the languages fit */
   padding: .5rem .6rem
@@ -38,7 +38,7 @@ code {
 }
 
 #generated-code, #curl-code, #warnings {
-  font-family: monospace;
+  font-family: var(--bs-font-monospace);
   line-height: 1.25;
 }
 

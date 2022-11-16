@@ -3,7 +3,6 @@ import { detect } from 'detect-browser'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'github-fork-ribbon-css/gh-fork-ribbon.css'
-import 'normalize.css'
 
 import 'highlight.js/styles/github.css'
 
