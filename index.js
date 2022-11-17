@@ -94,7 +94,6 @@ const languages = {
   r: { converter: curlconverter.toRWarn, hljs: 'r', title: 'R' },
   ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby', title: 'Ruby' },
   rust: { converter: curlconverter.toRustWarn, hljs: 'rust', title: 'Rust' },
-  strest: { converter: curlconverter.toStrestWarn, hljs: 'yaml', title: 'Strest' },
 }
 
 const changeHighlight = (language) => {
