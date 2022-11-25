@@ -3,7 +3,6 @@
   "short_name": "curlconverter",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#229ced",
   "background_color": "#ffffff",
   "description": "Convert curl commands to code",
   "icons": [
