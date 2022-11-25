@@ -129,7 +129,6 @@ export default {
       patterns: [
         'node_modules/web-tree-sitter/tree-sitter.wasm',
         'node_modules/curlconverter/dist/tree-sitter-bash.wasm',
-        'node_modules/bootstrap/dist/css/bootstrap.min.css.map',
         { from: 'index.html', transform: (c) => c.toString().replace(STARTING_CODE, hljs.highlight(STARTING_CODE, { language: 'python' }).value) },
         { from: 'images', to: 'images' },
         'meta',

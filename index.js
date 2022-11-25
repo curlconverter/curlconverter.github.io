@@ -23,6 +23,10 @@ import yaml from 'highlight.js/lib/languages/yaml'
 import getExampleTemplate from './examples/get.sh'
 import postExampleTemplate from './examples/post.sh'
 import authExampleText from './examples/auth.sh'
+import jsonExampleText from './examples/json.sh'
+import filesExampleText from './examples/files.sh'
+import formExampleText from './examples/form.sh'
+
 
 import * as curlconverter from 'curlconverter'
 
@@ -348,6 +352,24 @@ const basicAuthExample = document.getElementById('basic-auth-example')
 basicAuthExample.addEventListener('click', function (e) {
   e.preventDefault()
   showExample(authExampleText)
+})
+
+const jsonExample = document.getElementById('json-example')
+jsonExample.addEventListener('click', function (e) {
+  e.preventDefault()
+  showExample(jsonExampleText)
+})
+
+const filesExample = document.getElementById('files-example')
+filesExample.addEventListener('click', function (e) {
+  e.preventDefault()
+  showExample(filesExampleText)
+})
+
+const formExample = document.getElementById('form-example')
+formExample.addEventListener('click', function (e) {
+  e.preventDefault()
+  showExample(formExampleText)
 })
 
 const copyToClipboardEl = document.getElementById('copy-to-clipboard')
