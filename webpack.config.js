@@ -115,7 +115,6 @@ export default {
   },
   resolve: {
     fallback: {
-      url: require.resolve('url/'),
       path: require.resolve('path-browserify'),
       fs: false
     }
