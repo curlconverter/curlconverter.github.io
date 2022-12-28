@@ -32,6 +32,7 @@ const languages = {
   matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
   'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
   'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node (Axios)' },
+  'node-got': { converter: curlconverter.toNodeGotWarn, hljs: 'javascript', title: 'Node (Got)' },
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node (request)' },
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
@@ -53,7 +54,7 @@ const toLanguage = (language, title, converter, hljsLang) => {
       .replace('<a class="nav-link active" href="/python/">Python</a>', '<a class="nav-link" href="/python/">Python</a>')
       .replace('<title>Convert curl commands to code</title>', `<title>Convert curl commands to ${title}</title>`)
 
-    if (['node-fetch', 'node-axios', 'node-request'].includes(language)) {
+    if (['node-fetch', 'node-axios', 'node-got', 'node-request'].includes(language)) {
       return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>')
     } else {
       return newContent.replace(`<a class="nav-link" href="/${language}/"`, `<a class="nav-link active" href="/${language}/"`)
