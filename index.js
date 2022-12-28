@@ -92,6 +92,7 @@ const languages = {
   matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
   'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
   'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node (Axios)' },
+  'node-got': { converter: curlconverter.toNodeGotWarn, hljs: 'javascript', title: 'Node (Got)' },
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node (request)' },
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
