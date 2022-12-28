@@ -26,7 +26,7 @@
 
     <script defer data-domain="curlconverter.com" src="https://plausible.io/js/plausible.js"></script>
 
-    <title>Convert curl commands to C#</title>
+    <title>Convert curl commands to Node (Got)</title>
   </head>
   <body>
 
@@ -75,7 +75,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C#</option>
+          <option value="csharp">C#</option>
           <option value="cfml">ColdFusion ML</option>
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
@@ -84,7 +84,7 @@
           <option value="javascript">JavaScript</option>
           <option value="json">JSON</option>
           <option value="node-axios">Node.js (Axios)</option>
-          <option value="node-got">Node.js (Got)</option>
+          <option value="node-got" selected>Node.js (Got)</option>
           <option value="node-fetch">Node.js (node-fetch)</option>
           <option value="node-request">Node.js (request)</option>
           <option value="matlab">MATLAB</option>
@@ -106,7 +106,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/csharp/">C#</a>
+          <a class="nav-link" href="/csharp/">C#</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/cfml/" title="ColdFusion Markup Language">CFML</a>
@@ -130,7 +130,7 @@
           <a class="nav-link" href="/json/">JSON</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-axios/">Axios</a></li>
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
@@ -161,9 +161,9 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> got <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;got&#x27;</span>;
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
+<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">got</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>);
 </code></pre>
       </div>
     </div>
