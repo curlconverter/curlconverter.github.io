@@ -229,7 +229,7 @@ const convert = function () {
   }
   // Remove leading $
   if (curlCode.match(/^\s*\$\s+curl\s+/)) {
-    curlCode = curlCode.replace(/^\s*\$/, '')
+    curlCode = curlCode.replace(/^\s*\$\s*/, '')
   }
   // If command starts with a non-breaking space, replace all of them with a space
   if (curlCode.startsWith('curl\u00A0')) {
