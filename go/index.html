@@ -163,7 +163,7 @@
 
 <span class="hljs-keyword">import</span> (
 	<span class="hljs-string">&quot;fmt&quot;</span>
-	<span class="hljs-string">&quot;io/ioutil&quot;</span>
+	<span class="hljs-string">&quot;io&quot;</span>
 	<span class="hljs-string">&quot;log&quot;</span>
 	<span class="hljs-string">&quot;net/http&quot;</span>
 )
@@ -179,7 +179,7 @@
 		log.Fatal(err)
 	}
 	<span class="hljs-keyword">defer</span> resp.Body.Close()
-	bodyText, err := ioutil.ReadAll(resp.Body)
+	bodyText, err := io.ReadAll(resp.Body)
 	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
 		log.Fatal(err)
 	}
