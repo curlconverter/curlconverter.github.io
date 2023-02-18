@@ -47,12 +47,12 @@ hljs.registerLanguage('ruby', ruby)
 hljs.registerLanguage('rust', rust)
 hljs.registerLanguage('yaml', yaml)
 
-// TODO: include a Windows screenshot. Firefox and Safari have "copy as cURL" as well
+// TODO: include a Windows screenshot for Chrome and Firefox.
 //
 // TODO: put the curl input in the URL?
 // TODO: print a diff of the raw resulting requests?
 //
-// TODO: add check box for scanning the clipboard
+// TODO: add check box for scanning the clipboard?
 
 // TODO: translate the site. The top languages are
 // chinese
@@ -64,7 +64,7 @@ hljs.registerLanguage('yaml', yaml)
 // spanish
 
 // https://techblog.willshouse.com/2012/01/03/most-common-user-agents/
-let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
+let useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
 // For fun and future-proofing, put the user's
 // actual User Agent in the examples
 if (window.navigator &&
@@ -175,25 +175,8 @@ const getLanguage = function () {
   return languageSelect.value
 }
 
-const showIssuePromo = (errorMsg) => {
-  const issuePromo = document.getElementById('issue-promo')
-
-  const curlCode = document.getElementById('curl-code').value
-  const prefilledIssue = document.getElementById('prefilled-issue')
-  if (errorMsg && curlCode && curlCode.length <= 2000) {
-    const link = new URL('https://github.com/curlconverter/curlconverter/issues/new')
-    const params = new URLSearchParams({
-      title: 'Error: "' + errorMsg + '"',
-      body: '**Input**:\n\n```sh\n' + curlCode + '\n```\n\n**Expected output**:\n\n'
-    })
-    link.search = params
-    prefilledIssue.getElementsByTagName('a')[0].href = link.toString()
-    prefilledIssue.style.display = 'inline-block'
-  } else {
-    prefilledIssue.style.display = 'none'
-  }
-
-  issuePromo.style.display = 'inline-block'
+const showIssuePromo = () => {
+  document.getElementById('issue-promo').style.display = 'inline-block'
 }
 
 const hideIssuePromo = () => {
@@ -262,7 +245,7 @@ const convert = function () {
         error = 'Error parsing curl command.'
       }
       changeHighlight('plaintext')
-      showIssuePromo(origErrorMsg)
+      showIssuePromo()
       hideCopyToClipboard()
     }
   }
