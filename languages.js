@@ -52,8 +52,6 @@ export const languages = {
   'node-http': httpsnippet('Node + http', 'node', 'http', 'javascript'),
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   'php-guzzle': httpsnippet('PHP + Guzzle', 'php', 'guzzle'),
-  'php-http1': httpsnippet('PHP + HTTP v1', 'php', 'http1'),
-  'php-http2': httpsnippet('PHP + HTTP v2', 'php', 'http2'),
   'powershell-restmethod': httpsnippet('PowerShell + Invoke-RestMethod', 'powershell', 'restmethod'),
   'powershell-webrequest': httpsnippet('PowerShell + Invoke-WebRequest', 'powershell', 'webrequest'),
   python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
