@@ -53,7 +53,6 @@ export const languages = {
   objectivec: httpsnippet('Objective-C', 'objc', 'nsurlsession', 'objectivec'),
   ocaml: httpsnippet('OCaml'),
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
-  'php-guzzle': httpsnippet('PHP + Guzzle', 'php', 'guzzle'),
   'powershell-restmethod': httpsnippet('PowerShell + Invoke-RestMethod', 'powershell', 'restmethod'),
   'powershell-webrequest': httpsnippet('PowerShell + Invoke-WebRequest', 'powershell', 'webrequest'),
   python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
