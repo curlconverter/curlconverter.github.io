@@ -36,9 +36,7 @@ const toLanguage = (language, title, converter, hljsLang) => {
 
       .replace('<title>Convert curl commands to code</title>', `<title>Convert curl commands to ${title}</title>`)
 
-    if (['csharp', 'csharp-restsharp'].includes(language)) {
-      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>')
-    } else if (['java', 'java-asynchttp', 'java-okhttp'].includes(language)) {
+    if (['java', 'java-asynchttp', 'java-okhttp'].includes(language)) {
       return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>')
     } else if (['javascript', 'javascript-jquery', 'javascript-xhr'].includes(language)) {
       return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>')
