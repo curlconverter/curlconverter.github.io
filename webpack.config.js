@@ -79,11 +79,24 @@ export default {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.js$/,
-      //   enforce: 'pre',
-      //   // use: ['source-map-loader']
-      // },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'source-map-loader',
+            options: {
+              filterSourceMappingUrl: (url, resourcePath) => {
+                if (/get-own-enumerable-property-symbols/i.test(resourcePath)) {
+                  return false;
+                }
+
+                return true;
+              },
+            },
+          },
+        ]
+      },
       {
         test: /\.sh$/,
         type: 'asset/source'
