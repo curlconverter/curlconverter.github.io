@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to Objective-C</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -96,7 +96,7 @@
           <option value="node-request">Node.js + request</option>
           <option value="node-http">Node + http</option>
           <option value="matlab">MATLAB</option>
-          <option value="objectivec">Objective-C</option>
+          <option value="objectivec" selected>Objective-C</option>
           <option value="ocaml">OCaml</option>
           <option value="php">PHP + cURL</option>
           <option value="php-guzzle">PHP + Guzzle</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -186,7 +186,7 @@
           <a class="nav-link" href="/matlab/">MATLAB</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/objectivec/">Objective-C</a>
+          <a class="nav-link active" href="/objectivec/">Objective-C</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/ocaml/">OCaml</a>
@@ -232,10 +232,24 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-meta">#import <span class="hljs-string">&lt;Foundation/Foundation.h&gt;</span></span>
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-built_in">NSMutableURLRequest</span> *request = [<span class="hljs-built_in">NSMutableURLRequest</span> requestWithURL:[<span class="hljs-built_in">NSURL</span> URLWithString:<span class="hljs-string">@&quot;http://example.com/&quot;</span>]
+                                                       cachePolicy:<span class="hljs-built_in">NSURLRequestUseProtocolCachePolicy</span>
+                                                   timeoutInterval:<span class="hljs-number">10.0</span>];
+[request setHTTPMethod:<span class="hljs-string">@&quot;GET&quot;</span>];
+
+<span class="hljs-built_in">NSURLSession</span> *session = [<span class="hljs-built_in">NSURLSession</span> sharedSession];
+<span class="hljs-built_in">NSURLSessionDataTask</span> *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(<span class="hljs-built_in">NSData</span> *data, <span class="hljs-built_in">NSURLResponse</span> *response, <span class="hljs-built_in">NSError</span> *error) {
+                                                <span class="hljs-keyword">if</span> (error) {
+                                                    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, error);
+                                                } <span class="hljs-keyword">else</span> {
+                                                    <span class="hljs-built_in">NSHTTPURLResponse</span> *httpResponse = (<span class="hljs-built_in">NSHTTPURLResponse</span> *) response;
+                                                    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, httpResponse);
+                                                }
+                                            }];
+[dataTask resume];</code></pre>
       </div>
     </div>
     <div class="row">

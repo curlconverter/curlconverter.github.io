@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to Swift</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -107,7 +107,7 @@
           <option value="r">R</option>
           <option value="ruby">Ruby</option>
           <option value="rust">Rust</option>
-          <option value="swift">Swift</option>
+          <option value="swift" selected>Swift</option>
           <option value="wget">Wget</option>
         </select>
       </div>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -222,7 +222,7 @@
           <a class="nav-link" href="/rust/">Rust</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/swift/">Swift</a>
+          <a class="nav-link active" href="/swift/">Swift</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/wget/">Wget</a>
@@ -232,10 +232,24 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> Foundation
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-keyword">let</span> request <span class="hljs-operator">=</span> <span class="hljs-type">NSMutableURLRequest</span>(url: <span class="hljs-type">NSURL</span>(string: <span class="hljs-string">&quot;http://example.com/&quot;</span>)<span class="hljs-operator">!</span> <span class="hljs-keyword">as</span> <span class="hljs-type">URL</span>,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: <span class="hljs-number">10.0</span>)
+request.httpMethod <span class="hljs-operator">=</span> <span class="hljs-string">&quot;GET&quot;</span>
+
+<span class="hljs-keyword">let</span> session <span class="hljs-operator">=</span> <span class="hljs-type">URLSession</span>.shared
+<span class="hljs-keyword">let</span> dataTask <span class="hljs-operator">=</span> session.dataTask(with: request <span class="hljs-keyword">as</span> <span class="hljs-type">URLRequest</span>, completionHandler: { (data, response, error) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+  <span class="hljs-keyword">if</span> (error <span class="hljs-operator">!=</span> <span class="hljs-literal">nil</span>) {
+    <span class="hljs-built_in">print</span>(error)
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">let</span> httpResponse <span class="hljs-operator">=</span> response <span class="hljs-keyword">as?</span> <span class="hljs-type">HTTPURLResponse</span>
+    <span class="hljs-built_in">print</span>(httpResponse)
+  }
+})
+
+dataTask.resume()</code></pre>
       </div>
     </div>
     <div class="row">

@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to Node + http</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -94,7 +94,7 @@
           <option value="node-got">Node.js + Got</option>
           <option value="node-fetch">Node.js + node-fetch</option>
           <option value="node-request">Node.js + request</option>
-          <option value="node-http">Node + http</option>
+          <option value="node-http" selected>Node + http</option>
           <option value="matlab">MATLAB</option>
           <option value="objectivec">Objective-C</option>
           <option value="ocaml">OCaml</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -170,13 +170,13 @@
           <a class="nav-link" href="/json/">JSON</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-axios/">Axios</a></li>
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
-            <li><a class="dropdown-item" href="/node-http/">http</a></li>
+            <li><a class="dropdown-item active" href="/node-http/">http</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -232,10 +232,30 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;http&quot;</span>);
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-keyword">const</span> options = {
+  <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;GET&quot;</span>,
+  <span class="hljs-string">&quot;hostname&quot;</span>: <span class="hljs-string">&quot;example.com&quot;</span>,
+  <span class="hljs-string">&quot;port&quot;</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>,
+  <span class="hljs-string">&quot;headers&quot;</span>: {}
+};
+
+<span class="hljs-keyword">const</span> req = http.<span class="hljs-title function_">request</span>(options, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+  <span class="hljs-keyword">const</span> chunks = [];
+
+  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;data&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">chunk</span>) {
+    chunks.<span class="hljs-title function_">push</span>(chunk);
+  });
+
+  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;end&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> body = <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">concat</span>(chunks);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(body.<span class="hljs-title function_">toString</span>());
+  });
+});
+
+req.<span class="hljs-title function_">end</span>();</code></pre>
       </div>
     </div>
     <div class="row">

@@ -31,7 +31,7 @@
   <div class="container-md py-2">
     <div class="row">
       <div class="col-8 col-sm-10 col-md-11">
-        <h3 class="text-muted d-none d-md-block">Convert <a href="https://curl.se/docs/manual.html">curl</a> commands to Python, JavaScript, PHP, R, Go, C#, Ruby, Rust, Elixir, Java, MATLAB, Dart, CFML, Ansible URI or JSON</h3>
+        <h3 class="text-muted d-none d-md-block">Convert <a href="https://curl.se/docs/manual.html">curl</a> commands to Python, JavaScript, PHP, R, Go, C#, Ruby, Rust, Elixir, Java, MATLAB, Dart, CFML, Ansible URI, or JSON and more</h3>
         <h3 class="text-muted d-block d-md-none">Convert <a href="https://curl.se/docs/manual.html">curl</a> to Python, JavaScript and more</h3>
       </div>
     </div>
@@ -73,26 +73,45 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp">C#</option>
+          <option value="csharp">C# + HttpClient</option>
+          <option value="csharp-restsharp">C# + RestSharp</option>
+          <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
           <option value="dart" selected>Dart</option>
           <option value="elixir">Elixir</option>
           <option value="go">Go</option>
-          <option value="java">Java</option>
-          <option value="javascript">JavaScript</option>
+          <option value="har">HAR</option>
+          <option value="httpie">HTTPie</option>
+          <option value="java">Java + java.net.http</option>
+          <option value="java-asynchttp">Java + AsyncHttpClient</option>
+          <option value="java-okhttp">Java + OkHttp</option>
+          <option value="javascript">JavaScript + fetch</option>
+          <option value="javascript-jquery">JavaScript + jQuery</option>
+          <option value="javascript-xhr">JavaScript + XHR</option>
           <option value="json">JSON</option>
-          <option value="node-axios">Node.js (Axios)</option>
-          <option value="node-got">Node.js (Got)</option>
-          <option value="node-fetch">Node.js (node-fetch)</option>
-          <option value="node-request">Node.js (request)</option>
+          <option value="kotlin">Kotlin</option>
+          <option value="node-axios">Node.js + Axios</option>
+          <option value="node-got">Node.js + Got</option>
+          <option value="node-fetch">Node.js + node-fetch</option>
+          <option value="node-request">Node.js + request</option>
+          <option value="node-http">Node + http</option>
           <option value="matlab">MATLAB</option>
-          <option value="php">PHP</option>
-          <option value="python">Python</option>
+          <option value="objectivec">Objective-C</option>
+          <option value="ocaml">OCaml</option>
+          <option value="php">PHP + cURL</option>
+          <option value="php-guzzle">PHP + Guzzle</option>
+          <option value="powershell-restmethod">PowerShell + Invoke-RestMethod</option>
+          <option value="powershell-webrequest">PowerShell + Invoke-WebRequest</option>
+          <option value="python">Python + Requests</option>
+          <option value="python-httpclient">Python + http.client</option>
           <option value="r">R</option>
           <option value="ruby">Ruby</option>
           <option value="rust">Rust</option>
+          <option value="swift">Swift</option>
+          <option value="wget">Wget</option>
         </select>
       </div>
+
       <ul class="nav nav-tabs d-none d-xl-flex px-3" id="language-navbar">
         <li class="nav-item">
           <a class="nav-link" href="/ansible/">Ansible</a>
@@ -103,11 +122,18 @@
             C <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 64C256 46.33 270.3 32 288 32H415.1C415.1 32 415.1 32 415.1 32C420.3 32 424.5 32.86 428.2 34.43C431.1 35.98 435.5 38.27 438.6 41.3C438.6 41.35 438.6 41.4 438.7 41.44C444.9 47.66 447.1 55.78 448 63.9C448 63.94 448 63.97 448 64V192C448 209.7 433.7 224 416 224C398.3 224 384 209.7 384 192V141.3L214.6 310.6C202.1 323.1 181.9 323.1 169.4 310.6C156.9 298.1 156.9 277.9 169.4 265.4L338.7 96H288C270.3 96 256 81.67 256 64V64zM0 128C0 92.65 28.65 64 64 64H160C177.7 64 192 78.33 192 96C192 113.7 177.7 128 160 128H64V416H352V320C352 302.3 366.3 288 384 288C401.7 288 416 302.3 416 320V416C416 451.3 387.3 480 352 480H64C28.65 480 0 451.3 0 416V128z"/></svg>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/csharp/">C#</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/cfml/" title="ColdFusion Markup Language">CFML</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/clojure/">Clojure</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/dart/">Dart</a>
@@ -119,10 +145,26 @@
           <a class="nav-link" href="/go/">Go</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/java/">Java</a>
+          <a class="nav-link" href="/har/">HAR</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/javascript/">JavaScript</a>
+          <a class="nav-link" href="/httpie/">HTTPie</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/java/">java.net.http</a></li>
+            <li><a class="dropdown-item" href="/java-asynchttp/">AsyncHttpClient</a></li>
+            <li><a class="dropdown-item" href="/java-okhttp/">OkHttp</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/javascript/">fetch</a></li>
+            <li><a class="dropdown-item" href="/javascript-jquery/">jQuery</a></li>
+            <li><a class="dropdown-item" href="/javascript-xhr/">XHR</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/json/">JSON</a>
@@ -134,16 +176,41 @@
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
+            <li><a class="dropdown-item" href="/node-http/">http</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/kotlin/">Kotlin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/matlab/">MATLAB</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/php/">PHP</a>
+          <a class="nav-link" href="/objectivec/">Objective-C</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/python/">Python</a>
+          <a class="nav-link" href="/ocaml/">OCaml</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/php/">cURL</a></li>
+            <li><a class="dropdown-item" href="/php-guzzle/">Guzzle</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PowerShell</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/powershell-restmethod/">Invoke-RestMethod</a></li>
+            <li><a class="dropdown-item" href="/powershell-webrequest/">Invoke-WebRequest</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Python</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/python/">Requests</a></li>
+            <li><a class="dropdown-item" href="/python-httpclient/">http.client</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/r/">R</a>
@@ -153,6 +220,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/rust/">Rust</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/swift/">Swift</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/wget/">Wget</a>
         </li>
       </ul>
     </div>

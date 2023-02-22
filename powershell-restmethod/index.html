@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to PowerShell + Invoke-RestMethod</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -100,7 +100,7 @@
           <option value="ocaml">OCaml</option>
           <option value="php">PHP + cURL</option>
           <option value="php-guzzle">PHP + Guzzle</option>
-          <option value="powershell-restmethod">PowerShell + Invoke-RestMethod</option>
+          <option value="powershell-restmethod" selected>PowerShell + Invoke-RestMethod</option>
           <option value="powershell-webrequest">PowerShell + Invoke-WebRequest</option>
           <option value="python">Python + Requests</option>
           <option value="python-httpclient">Python + http.client</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -199,9 +199,9 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PowerShell</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PowerShell</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/powershell-restmethod/">Invoke-RestMethod</a></li>
+            <li><a class="dropdown-item active" href="/powershell-restmethod/">Invoke-RestMethod</a></li>
             <li><a class="dropdown-item" href="/powershell-webrequest/">Invoke-WebRequest</a></li>
           </ul>
         </li>
@@ -232,10 +232,7 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
-
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+        <pre><code id="generated-code"><span class="hljs-variable">$response</span> = <span class="hljs-built_in">Invoke-RestMethod</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&#x27;http://example.com/&#x27;</span> <span class="hljs-literal">-Method</span> GET </code></pre>
       </div>
     </div>
     <div class="row">

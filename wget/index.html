@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to Wget</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -108,7 +108,7 @@
           <option value="ruby">Ruby</option>
           <option value="rust">Rust</option>
           <option value="swift">Swift</option>
-          <option value="wget">Wget</option>
+          <option value="wget" selected>Wget</option>
         </select>
       </div>
 
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -225,17 +225,17 @@
           <a class="nav-link" href="/swift/">Swift</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/wget/">Wget</a>
+          <a class="nav-link active" href="/wget/">Wget</a>
         </li>
       </ul>
     </div>
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
-
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+        <pre><code id="generated-code">wget --quiet \
+  --method GET \
+  --output-document \
+  - http://example.com/</code></pre>
       </div>
     </div>
     <div class="row">

@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to HAR</title>
   </head>
   <body>
 
@@ -73,14 +73,14 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
           <option value="go">Go</option>
-          <option value="har">HAR</option>
+          <option value="har" selected>HAR</option>
           <option value="httpie">HTTPie</option>
           <option value="java">Java + java.net.http</option>
           <option value="java-asynchttp">Java + AsyncHttpClient</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -145,7 +145,7 @@
           <a class="nav-link" href="/go/">Go</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/har/">HAR</a>
+          <a class="nav-link active" href="/har/">HAR</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/httpie/">HTTPie</a>
@@ -232,9 +232,25 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
-
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
+        <pre><code id="generated-code"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;log&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.2&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;entries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+            <span class="hljs-punctuation">{</span>
+                <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;GET&quot;</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://example.com&quot;</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;httpVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;HTTP/1.1&quot;</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;headers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;queryString&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;headersSize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">-1</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">&quot;bodySize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">-1</span>
+                <span class="hljs-punctuation">}</span>
+            <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
 </code></pre>
       </div>
     </div>

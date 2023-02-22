@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to Kotlin</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -89,7 +89,7 @@
           <option value="javascript-jquery">JavaScript + jQuery</option>
           <option value="javascript-xhr">JavaScript + XHR</option>
           <option value="json">JSON</option>
-          <option value="kotlin">Kotlin</option>
+          <option value="kotlin" selected>Kotlin</option>
           <option value="node-axios">Node.js + Axios</option>
           <option value="node-got">Node.js + Got</option>
           <option value="node-fetch">Node.js + node-fetch</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -180,7 +180,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/kotlin/">Kotlin</a>
+          <a class="nav-link active" href="/kotlin/">Kotlin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/matlab/">MATLAB</a>
@@ -232,10 +232,14 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-keyword">val</span> client = OkHttpClient()
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-keyword">val</span> request = Request.Builder()
+  .url(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
+  .<span class="hljs-keyword">get</span>()
+  .build()
+
+<span class="hljs-keyword">val</span> response = client.newCall(request).execute()</code></pre>
       </div>
     </div>
     <div class="row">

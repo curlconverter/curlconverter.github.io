@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to Java + OkHttp</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -84,7 +84,7 @@
           <option value="httpie">HTTPie</option>
           <option value="java">Java + java.net.http</option>
           <option value="java-asynchttp">Java + AsyncHttpClient</option>
-          <option value="java-okhttp">Java + OkHttp</option>
+          <option value="java-okhttp" selected>Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
           <option value="javascript-xhr">JavaScript + XHR</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -151,11 +151,11 @@
           <a class="nav-link" href="/httpie/">HTTPie</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/java/">java.net.http</a></li>
             <li><a class="dropdown-item" href="/java-asynchttp/">AsyncHttpClient</a></li>
-            <li><a class="dropdown-item" href="/java-okhttp/">OkHttp</a></li>
+            <li><a class="dropdown-item active" href="/java-okhttp/">OkHttp</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -232,10 +232,14 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-type">OkHttpClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OkHttpClient</span>();
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-type">Request</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Request</span>.Builder()
+  .url(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
+  .get()
+  .build();
+
+<span class="hljs-type">Response</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.newCall(request).execute();</code></pre>
       </div>
     </div>
     <div class="row">

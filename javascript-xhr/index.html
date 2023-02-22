@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to JavaScript + XHR</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -87,7 +87,7 @@
           <option value="java-okhttp">Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
-          <option value="javascript-xhr">JavaScript + XHR</option>
+          <option value="javascript-xhr" selected>JavaScript + XHR</option>
           <option value="json">JSON</option>
           <option value="kotlin">Kotlin</option>
           <option value="node-axios">Node.js + Axios</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -159,11 +159,11 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/javascript/">fetch</a></li>
             <li><a class="dropdown-item" href="/javascript-jquery/">jQuery</a></li>
-            <li><a class="dropdown-item" href="/javascript-xhr/">XHR</a></li>
+            <li><a class="dropdown-item active" href="/javascript-xhr/">XHR</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -232,10 +232,20 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-keyword">const</span> data = <span class="hljs-literal">null</span>;
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();
+xhr.<span class="hljs-property">withCredentials</span> = <span class="hljs-literal">true</span>;
+
+xhr.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;readystatechange&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">readyState</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">DONE</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">responseText</span>);
+  }
+});
+
+xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;http://example.com/&quot;</span>);
+
+xhr.<span class="hljs-title function_">send</span>(data);</code></pre>
       </div>
     </div>
     <div class="row">

@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to C# + HttpClient</title>
+    <title>Convert curl commands to OCaml</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="csharp" selected>C# + HttpClient</option>
+          <option value="csharp">C# + HttpClient</option>
           <option value="csharp-restsharp">C# + RestSharp</option>
           <option value="clojure">Clojure</option>
           <option value="cfml">ColdFusion ML</option>
@@ -97,7 +97,7 @@
           <option value="node-http">Node + http</option>
           <option value="matlab">MATLAB</option>
           <option value="objectivec">Objective-C</option>
-          <option value="ocaml">OCaml</option>
+          <option value="ocaml" selected>OCaml</option>
           <option value="php">PHP + cURL</option>
           <option value="php-guzzle">PHP + Guzzle</option>
           <option value="powershell-restmethod">PowerShell + Invoke-RestMethod</option>
@@ -123,9 +123,9 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/csharp/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/csharp/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/csharp-restsharp/">RestSharp</a></li>
           </ul>
         </li>
@@ -189,7 +189,7 @@
           <a class="nav-link" href="/objectivec/">Objective-C</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/ocaml/">OCaml</a>
+          <a class="nav-link active" href="/ocaml/">OCaml</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>
@@ -232,10 +232,15 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">HttpClient client = <span class="hljs-keyword">new</span> HttpClient();
+        <pre><code id="generated-code"><span class="hljs-keyword">open</span> <span class="hljs-type">Cohttp_lwt_unix</span>
+<span class="hljs-keyword">open</span> <span class="hljs-type">Cohttp</span>
+<span class="hljs-keyword">open</span> <span class="hljs-type">Lwt</span>
 
-<span class="hljs-built_in">string</span> responseBody = <span class="hljs-keyword">await</span> client.GetStringAsync(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-</code></pre>
+<span class="hljs-keyword">let</span> uri = <span class="hljs-type">Uri</span>.of_string <span class="hljs-string">&quot;http://example.com/&quot;</span> <span class="hljs-keyword">in</span>
+
+<span class="hljs-type">Client</span>.call <span class="hljs-type">`GET</span> uri
+&gt;&gt;= <span class="hljs-keyword">fun</span> (res, body_stream) -&gt;
+  <span class="hljs-comment">(* Do stuff with the result *)</span></code></pre>
       </div>
     </div>
     <div class="row">
