@@ -50,6 +50,8 @@ export const languages = {
   'node-got': { converter: curlconverter.toNodeGotWarn, hljs: 'javascript', title: 'Node + Got' },
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node + request' },
   'node-http': httpsnippet('Node + http', 'node', 'http', 'javascript'),
+  objectivec: httpsnippet('Objective-C', 'objc', 'nsurlsession', 'objectivec'),
+  ocaml: httpsnippet('OCaml'),
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   'php-guzzle': httpsnippet('PHP + Guzzle', 'php', 'guzzle'),
   'powershell-restmethod': httpsnippet('PowerShell + Invoke-RestMethod', 'powershell', 'restmethod'),
