@@ -3,8 +3,12 @@ import { detect } from 'detect-browser'
 
 import './main.scss'
 
+import { languages } from './languages.js'
+
 import hljs from 'highlight.js/lib/core'
 import plaintext from 'highlight.js/lib/languages/plaintext'
+import bash from 'highlight.js/lib/languages/bash'
+import clojure from 'highlight.js/lib/languages/clojure'
 import csharp from 'highlight.js/lib/languages/csharp'
 import dart from 'highlight.js/lib/languages/dart'
 import elixir from 'highlight.js/lib/languages/elixir'
@@ -12,12 +16,17 @@ import go from 'highlight.js/lib/languages/go'
 import java from 'highlight.js/lib/languages/java'
 import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
+import kotlin from 'highlight.js/lib/languages/kotlin'
 import matlab from 'highlight.js/lib/languages/matlab'
+import objectivec from 'highlight.js/lib/languages/objectivec'
+import ocaml from 'highlight.js/lib/languages/ocaml'
 import php from 'highlight.js/lib/languages/php'
+import powershell from 'highlight.js/lib/languages/powershell'
 import python from 'highlight.js/lib/languages/python'
 import r from 'highlight.js/lib/languages/r'
 import ruby from 'highlight.js/lib/languages/ruby'
 import rust from 'highlight.js/lib/languages/rust'
+import swift from 'highlight.js/lib/languages/swift'
 import yaml from 'highlight.js/lib/languages/yaml'
 
 import getExampleTemplate from './examples/get.sh'
@@ -27,11 +36,10 @@ import jsonExampleText from './examples/json.sh'
 import filesExampleText from './examples/files.sh'
 import formExampleText from './examples/form.sh'
 
-
-import * as curlconverter from 'curlconverter'
-
 hljs.registerLanguage('plaintext', plaintext)
 
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('clojure', clojure)
 hljs.registerLanguage('csharp', csharp)
 hljs.registerLanguage('dart', dart)
 hljs.registerLanguage('elixir', elixir)
@@ -39,12 +47,17 @@ hljs.registerLanguage('go', go)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)
+hljs.registerLanguage('kotlin', kotlin)
 hljs.registerLanguage('matlab', matlab)
+hljs.registerLanguage('objectivec', objectivec)
+hljs.registerLanguage('ocaml', ocaml)
 hljs.registerLanguage('php', php)
+hljs.registerLanguage('powershell', powershell)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('r', r)
 hljs.registerLanguage('ruby', ruby)
 hljs.registerLanguage('rust', rust)
+hljs.registerLanguage('swift', swift)
 hljs.registerLanguage('yaml', yaml)
 
 // TODO: include a Windows screenshot for Chrome and Firefox.
@@ -76,30 +89,6 @@ if (window.navigator &&
 
 const getExampleText = getExampleTemplate.replace('{{useragent}}', useragent)
 const postExampleText = postExampleTemplate.replace('{{useragent}}', useragent)
-
-const languages = {
-  ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
-  // TODO: CFML isn't supported by highlight.js
-  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
-  csharp: { converter: curlconverter.toCSharpWarn, hljs: 'csharp', title: 'C#' },
-  dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
-  elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
-  go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },
-  java: { converter: curlconverter.toJavaWarn, hljs: 'java', title: 'Java' },
-  javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript', title: 'JavaScript' },
-  // People googling for "curl json" are probably looking for something else
-  json: { converter: curlconverter.toJsonStringWarn, hljs: 'json', title: 'a JSON object' },
-  matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
-  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
-  'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node (Axios)' },
-  'node-got': { converter: curlconverter.toNodeGotWarn, hljs: 'javascript', title: 'Node (Got)' },
-  'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node (request)' },
-  php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
-  python: { converter: curlconverter.toPythonWarn, hljs: 'python', title: 'Python' },
-  r: { converter: curlconverter.toRWarn, hljs: 'r', title: 'R' },
-  ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby', title: 'Ruby' },
-  rust: { converter: curlconverter.toRustWarn, hljs: 'rust', title: 'Rust' },
-}
 
 const changeHighlight = (language) => {
   if (languages[language] && languages[language].hljs) {
