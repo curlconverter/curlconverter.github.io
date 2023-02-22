@@ -27,13 +27,29 @@ const toLanguage = (language, title, converter, hljsLang) => {
         STARTING_CODE,
         hljs.highlight(converter(['curl', 'example.com'])[0], { language: hljsLang }).value
       )
-      .replace('<option value="python" selected>Python</option>', '<option value="python">Python</option>')
+      .replace('<option value="python" selected>Python + Requests</option>', '<option value="python">Python + Requests</option>')
       .replace(`<option value="${language}">`, `<option value="${language}" selected>`)
-      .replace('<a class="nav-link active" href="/python/">Python</a>', '<a class="nav-link" href="/python/">Python</a>')
+
+      .replace('<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Python</a>', '<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Python</a>')
+      .replace('<li><a class="dropdown-item active" href="/python/">Requests</a></li>', '<li><a class="dropdown-item" href="/python/">Requests</a></li>')
+      .replace(`<li><a class="dropdown-item" href="/${language}/">`, `<li><a class="dropdown-item active" href="/${language}/">`)
+
       .replace('<title>Convert curl commands to code</title>', `<title>Convert curl commands to ${title}</title>`)
 
-    if (['node-fetch', 'node-axios', 'node-got', 'node-request'].includes(language)) {
+    if (['csharp', 'csharp-restsharp'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">C#</a>')
+    } else if (['java', 'java-asynchttp', 'java-okhttp'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>')
+    } else if (['javascript', 'javascript-jquery', 'javascript-xhr'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>')
+    } else if (['node-fetch', 'node-axios', 'node-got', 'node-request', 'node-http'].includes(language)) {
       return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>')
+    } else if (['php', 'php-guzzle', 'php-http1', 'php-http2'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>')
+    } else if (['powershell-restmethod', 'powershell-webrequest'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PowerShell</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PowerShell</a>')
+    } else if (['python', 'python-httpclient'].includes(language)) {
+      return newContent.replace('<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Python</a>', '<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Python</a>')
     } else {
       return newContent.replace(`<a class="nav-link" href="/${language}/"`, `<a class="nav-link active" href="/${language}/"`)
     }

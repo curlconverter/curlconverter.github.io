@@ -16,6 +16,7 @@ import go from 'highlight.js/lib/languages/go'
 import java from 'highlight.js/lib/languages/java'
 import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
+import kotlin from 'highlight.js/lib/languages/kotlin'
 import matlab from 'highlight.js/lib/languages/matlab'
 import objectivec from 'highlight.js/lib/languages/objectivec'
 import ocaml from 'highlight.js/lib/languages/ocaml'
@@ -46,6 +47,7 @@ hljs.registerLanguage('go', go)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)
+hljs.registerLanguage('kotlin', kotlin)
 hljs.registerLanguage('matlab', matlab)
 hljs.registerLanguage('ocaml', ocaml)
 hljs.registerLanguage('objectivec', objectivec)
