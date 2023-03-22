@@ -60,5 +60,5 @@ export const languages = {
   ruby: { converter: curlconverter.toRubyWarn, hljs: 'ruby', title: 'Ruby' },
   rust: { converter: curlconverter.toRustWarn, hljs: 'rust', title: 'Rust' },
   swift: httpsnippet('Swift'),
-  wget: httpsnippet('Wget', 'shell', 'wget', 'bash'),
+  wget: { converter: curlconverter.toWgetWarn, hljs: 'bash', title: 'Wget' },
 }
