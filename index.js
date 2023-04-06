@@ -218,7 +218,10 @@ const convert = function () {
     try {
       const converter = languages[language].converter;
       [generatedCode, warnings] = converter(curlCode, warnings)
-      generatedCode = generatedCode.trimEnd() // remove trailing newline
+      // remove trailing newline
+      if (generatedCode.endsWith('\n')) {
+        generatedCode = generatedCode.slice(0, -1)
+      }
       hideIssuePromo()
       showCopyToClipboard()
     } catch (e) {
