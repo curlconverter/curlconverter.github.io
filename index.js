@@ -13,6 +13,7 @@ import csharp from 'highlight.js/lib/languages/csharp'
 import dart from 'highlight.js/lib/languages/dart'
 import elixir from 'highlight.js/lib/languages/elixir'
 import go from 'highlight.js/lib/languages/go'
+import http from 'highlight.js/lib/languages/http'
 import java from 'highlight.js/lib/languages/java'
 import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
@@ -44,6 +45,7 @@ hljs.registerLanguage('csharp', csharp)
 hljs.registerLanguage('dart', dart)
 hljs.registerLanguage('elixir', elixir)
 hljs.registerLanguage('go', go)
+hljs.registerLanguage('http', http)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)

@@ -33,6 +33,7 @@ export const languages = {
   elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
   go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },
   har: { converter: curlconverter.toHarStringWarn, hljs: 'json', title: 'HAR' },
+  http: { converter: curlconverter.toHTTPWarn, hljs: 'http', title: 'HTTP' },
   httpie: httpsnippet('HTTPie', 'shell', 'httpie', 'bash'),
   java: { converter: curlconverter.toJavaWarn, hljs: 'java', title: 'Java + java.net.http' },
   'java-asynchttp': httpsnippet('Java + AsyncHttpClient', 'java', 'asynchttp'),
