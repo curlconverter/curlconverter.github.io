@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Kotlin</title>
+    <title>Convert curl commands to PHP + Guzzle</title>
   </head>
   <body>
 
@@ -89,7 +89,7 @@
           <option value="javascript-jquery">JavaScript + jQuery</option>
           <option value="javascript-xhr">JavaScript + XHR</option>
           <option value="json">JSON</option>
-          <option value="kotlin" selected>Kotlin</option>
+          <option value="kotlin">Kotlin</option>
           <option value="matlab">MATLAB</option>
           <option value="node-axios">Node.js + Axios</option>
           <option value="node-got">Node.js + Got</option>
@@ -99,7 +99,7 @@
           <option value="objectivec">Objective-C</option>
           <option value="ocaml">OCaml</option>
           <option value="php">PHP + cURL</option>
-          <option value="php-guzzle">PHP + Guzzle</option>
+          <option value="php-guzzle" selected>PHP + Guzzle</option>
           <option value="powershell-restmethod">PowerShell + Invoke-RestMethod</option>
           <option value="powershell-webrequest">PowerShell + Invoke-WebRequest</option>
           <option value="python">Python + Requests</option>
@@ -169,7 +169,7 @@
           <a class="nav-link" href="/json/">JSON</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/kotlin/">Kotlin</a>
+          <a class="nav-link" href="/kotlin/">Kotlin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/matlab/">MATLAB</a>
@@ -191,10 +191,10 @@
           <a class="nav-link" href="/ocaml/">OCaml</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/php/">cURL</a></li>
-            <li><a class="dropdown-item" href="/php-guzzle/">Guzzle</a></li>
+            <li><a class="dropdown-item active" href="/php-guzzle/">Guzzle</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -231,14 +231,15 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">val</span> client = OkHttpClient()
+        <pre><code id="generated-code"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;vendor/autoload.php&#x27;</span>;
 
-<span class="hljs-keyword">val</span> request = Request.Builder()
-  .url(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
-  .<span class="hljs-keyword">get</span>()
-  .build()
+<span class="hljs-keyword">use</span> <span class="hljs-title">GuzzleHttp</span>\<span class="hljs-title">Client</span>;
 
-<span class="hljs-keyword">val</span> response = client.newCall(request).execute()</code></pre>
+<span class="hljs-variable">$client</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Client</span>();
+
+<span class="hljs-variable">$response</span> = <span class="hljs-variable">$client</span>-&gt;<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>);
+</code></pre>
       </div>
     </div>
     <div class="row">

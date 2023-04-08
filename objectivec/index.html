@@ -99,6 +99,7 @@
           <option value="objectivec" selected>Objective-C</option>
           <option value="ocaml">OCaml</option>
           <option value="php">PHP + cURL</option>
+          <option value="php-guzzle">PHP + Guzzle</option>
           <option value="powershell-restmethod">PowerShell + Invoke-RestMethod</option>
           <option value="powershell-webrequest">PowerShell + Invoke-WebRequest</option>
           <option value="python">Python + Requests</option>
@@ -189,8 +190,12 @@
         <li class="nav-item">
           <a class="nav-link" href="/ocaml/">OCaml</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/php/">PHP</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/php/">cURL</a></li>
+            <li><a class="dropdown-item" href="/php-guzzle/">Guzzle</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PowerShell</a>
