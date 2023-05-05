@@ -123,12 +123,12 @@ export default {
     fallback: {
       path: require.resolve('path-browserify'),
       fs: false,
-      "stream": require.resolve("stream-browserify"),
-      "util": require.resolve("util/"),
-      "url": require.resolve("url/"),
-      "querystring": require.resolve("querystring-es3"),
-      "string_decoder": require.resolve("string_decoder/"),
-      "buffer": require.resolve("buffer/")
+      stream: require.resolve("stream-browserify"),
+      util: require.resolve("util/"),
+      url: require.resolve("url/"),
+      querystring: require.resolve("querystring-es3"),
+      string_decoder: require.resolve("string_decoder/"),
+      buffer: require.resolve("buffer/")
     }
   },
   experiments: {
