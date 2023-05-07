@@ -231,14 +231,23 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-type">OkHttpClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OkHttpClient</span>();
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> okhttp3.OkHttpClient;
+<span class="hljs-keyword">import</span> okhttp3.Request;
+<span class="hljs-keyword">import</span> okhttp3.Response;
+
+<span class="hljs-type">OkHttpClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OkHttpClient</span>();
 
 <span class="hljs-type">Request</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Request</span>.Builder()
-  .url(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
-  .get()
-  .build();
+    .url(<span class="hljs-string">&quot;http://example.com&quot;</span>)
+    .build();
 
-<span class="hljs-type">Response</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.newCall(request).execute();</code></pre>
+<span class="hljs-keyword">try</span> (<span class="hljs-type">Response</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.newCall(request).execute()) {
+    <span class="hljs-keyword">if</span> (!response.isSuccessful()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IOException</span>(<span class="hljs-string">&quot;Unexpected code &quot;</span> + response);
+    response.body().string();
+}
+
+</code></pre>
       </div>
     </div>
     <div class="row">
