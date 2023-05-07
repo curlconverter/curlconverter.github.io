@@ -37,7 +37,7 @@ export const languages = {
   httpie: { converter: curlconverter.toHttpieWarn, hljs: 'bash', title: 'HTTPie' },
   java: { converter: curlconverter.toJavaWarn, hljs: 'java', title: 'Java + java.net.http' },
   'java-asynchttp': httpsnippet('Java + AsyncHttpClient', 'java', 'asynchttp'),
-  'java-okhttp': httpsnippet('Java + OkHttp', 'java', 'okhttp'),
+  'java-okhttp': { converter: curlconverter.toJavaOkHttpWarn, hljs: 'java', title: 'Java + OkHttp'},
   javascript: { converter: curlconverter.toJavaScriptWarn, hljs: 'javascript', title: 'JavaScript + fetch' },
   'javascript-jquery': httpsnippet('JavaScript + jQuery', 'javascript', 'jquery'),
   'javascript-xhr': httpsnippet('JavaScript + XHR', 'javascript', 'xhr'),
