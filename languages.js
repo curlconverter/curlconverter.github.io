@@ -43,7 +43,7 @@ export const languages = {
   'javascript-xhr': httpsnippet('JavaScript + XHR', 'javascript', 'xhr'),
   // People googling for "curl json" are probably looking for something else
   json: { converter: curlconverter.toJsonStringWarn, hljs: 'json', title: 'a JSON object' },
-  kotlin: httpsnippet('Kotlin'),
+  kotlin: { converter: curlconverter.toKotlinWarn, hljs: 'kotlin', title: 'Kotlin' },
   matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
   'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
   'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node + Axios' },
