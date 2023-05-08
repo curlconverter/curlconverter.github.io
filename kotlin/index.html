@@ -231,14 +231,22 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">val</span> client = OkHttpClient()
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> java.io.IOException
+<span class="hljs-keyword">import</span> okhttp3.OkHttpClient
+<span class="hljs-keyword">import</span> okhttp3.Request
+
+<span class="hljs-keyword">val</span> client = OkHttpClient()
 
 <span class="hljs-keyword">val</span> request = Request.Builder()
-  .url(<span class="hljs-string">&quot;http://example.com/&quot;</span>)
-  .<span class="hljs-keyword">get</span>()
+  .url(<span class="hljs-string">&quot;http://example.com&quot;</span>)
   .build()
 
-<span class="hljs-keyword">val</span> response = client.newCall(request).execute()</code></pre>
+client.newCall(request).execute().use { response -&gt;
+  <span class="hljs-keyword">if</span> (!response.isSuccessful) <span class="hljs-keyword">throw</span> IOException(<span class="hljs-string">&quot;Unexpected code <span class="hljs-variable">$response</span>&quot;</span>)
+  response.body!!.string()
+}
+
+</code></pre>
       </div>
     </div>
     <div class="row">
