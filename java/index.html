@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Java + java.net.http</title>
+    <title>Convert curl commands to Java + HttpClient</title>
   </head>
   <body>
 
@@ -82,8 +82,8 @@
           <option value="har">HAR</option>
           <option value="http">HTTP</option>
           <option value="httpie">HTTPie</option>
-          <option value="java" selected>Java + java.net.http</option>
-          <option value="java-asynchttp">Java + AsyncHttpClient</option>
+          <option value="java" selected>Java + HttpClient</option>
+          <option value="java-httpurlconnection">Java + HttpURLConnection</option>
           <option value="java-okhttp">Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
@@ -152,8 +152,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item active" href="/java/">java.net.http</a></li>
-            <li><a class="dropdown-item" href="/java-asynchttp/">AsyncHttpClient</a></li>
+            <li><a class="dropdown-item active" href="/java/">HttpClient</a></li>
+            <li><a class="dropdown-item" href="/java-httpurlconnection/">HttpURLConnection</a></li>
             <li><a class="dropdown-item" href="/java-okhttp/">OkHttp</a></li>
           </ul>
         </li>
@@ -232,26 +232,19 @@
     <div class="row">
       <div class="col">
         <pre><code id="generated-code"><span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStream;
-<span class="hljs-keyword">import</span> java.net.HttpURLConnection;
-<span class="hljs-keyword">import</span> java.net.URL;
-<span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">import</span> java.net.URI;
+<span class="hljs-keyword">import</span> java.net.http.HttpClient;
+<span class="hljs-keyword">import</span> java.net.http.HttpRequest;
+<span class="hljs-keyword">import</span> java.net.http.HttpResponse;
 
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+<span class="hljs-type">HttpClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> HttpClient.newHttpClient();
 
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-        <span class="hljs-type">HttpURLConnection</span> <span class="hljs-variable">httpConn</span> <span class="hljs-operator">=</span> (HttpURLConnection) url.openConnection();
-        httpConn.setRequestMethod(<span class="hljs-string">&quot;GET&quot;</span>);
+<span class="hljs-type">HttpRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> HttpRequest.newBuilder()
+    .uri(URI.create(<span class="hljs-string">&quot;http://example.com&quot;</span>))
+    .GET()
+    .build();
 
-        <span class="hljs-type">InputStream</span> <span class="hljs-variable">responseStream</span> <span class="hljs-operator">=</span> httpConn.getResponseCode() / <span class="hljs-number">100</span> == <span class="hljs-number">2</span>
-                ? httpConn.getInputStream()
-                : httpConn.getErrorStream();
-        <span class="hljs-type">Scanner</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(responseStream).useDelimiter(<span class="hljs-string">&quot;\\A&quot;</span>);
-        <span class="hljs-type">String</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> s.hasNext() ? s.next() : <span class="hljs-string">&quot;&quot;</span>;
-        System.out.println(response);
-    }
-}
+HttpResponse&lt;String&gt; response = client.send(request, HttpResponse.BodyHandlers.ofString());
 </code></pre>
       </div>
     </div>
