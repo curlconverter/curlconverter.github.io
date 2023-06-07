@@ -183,8 +183,9 @@ const hideCopyToClipboard = () => {
 }
 
 const showExample = function (code) {
-  document.getElementById('curl-code').value = code.trim()
-  convert()
+  const inputBox = document.getElementById('curl-code');
+  inputBox.value = code.trim();
+  inputBox.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
 }
 
 const convert = function () {
