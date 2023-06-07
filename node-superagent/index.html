@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Java + HttpURLConnection</title>
+    <title>Convert curl commands to Node + SuperAgent</title>
   </head>
   <body>
 
@@ -83,7 +83,7 @@
           <option value="http">HTTP</option>
           <option value="httpie">HTTPie</option>
           <option value="java">Java + HttpClient</option>
-          <option value="java-httpurlconnection" selected>Java + HttpURLConnection</option>
+          <option value="java-httpurlconnection">Java + HttpURLConnection</option>
           <option value="java-okhttp">Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
@@ -95,7 +95,7 @@
           <option value="node-got">Node.js + Got</option>
           <option value="node-fetch">Node.js + node-fetch</option>
           <option value="node-request">Node.js + request</option>
-          <option value="node-superagent">Node.js + SuperAgent</option>
+          <option value="node-superagent" selected>Node.js + SuperAgent</option>
           <option value="node-http">Node + http</option>
           <option value="objectivec">Objective-C</option>
           <option value="ocaml">OCaml</option>
@@ -154,7 +154,7 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/java/">HttpClient</a></li>
-            <li><a class="dropdown-item active" href="/java-httpurlconnection/">HttpURLConnection</a></li>
+            <li><a class="dropdown-item" href="/java-httpurlconnection/">HttpURLConnection</a></li>
             <li><a class="dropdown-item" href="/java-okhttp/">OkHttp</a></li>
           </ul>
         </li>
@@ -182,7 +182,7 @@
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
-            <li><a class="dropdown-item" href="/node-superagent/">SuperAgent</a></li>
+            <li><a class="dropdown-item active" href="/node-superagent/">SuperAgent</a></li>
             <li><a class="dropdown-item" href="/node-http/">http</a></li>
           </ul>
         </li>
@@ -233,27 +233,13 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">import</span> java.io.IOException;
-<span class="hljs-keyword">import</span> java.io.InputStream;
-<span class="hljs-keyword">import</span> java.net.HttpURLConnection;
-<span class="hljs-keyword">import</span> java.net.URL;
-<span class="hljs-keyword">import</span> java.util.Scanner;
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;superagent&#x27;</span>;
 
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;http://example.com&quot;</span>);
-        <span class="hljs-type">HttpURLConnection</span> <span class="hljs-variable">httpConn</span> <span class="hljs-operator">=</span> (HttpURLConnection) url.openConnection();
-        httpConn.setRequestMethod(<span class="hljs-string">&quot;GET&quot;</span>);
-
-        <span class="hljs-type">InputStream</span> <span class="hljs-variable">responseStream</span> <span class="hljs-operator">=</span> httpConn.getResponseCode() / <span class="hljs-number">100</span> == <span class="hljs-number">2</span>
-                ? httpConn.getInputStream()
-                : httpConn.getErrorStream();
-        <span class="hljs-type">Scanner</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(responseStream).useDelimiter(<span class="hljs-string">&quot;\\A&quot;</span>);
-        <span class="hljs-type">String</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> s.hasNext() ? s.next() : <span class="hljs-string">&quot;&quot;</span>;
-        System.out.println(response);
-    }
-}
+request
+  .<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>)
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">body</span>);
+  });
 </code></pre>
       </div>
     </div>
