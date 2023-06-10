@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Node + http</title>
+    <title>Convert curl commands to Java + jsoup</title>
   </head>
   <body>
 
@@ -84,7 +84,7 @@
           <option value="httpie">HTTPie</option>
           <option value="java">Java + HttpClient</option>
           <option value="java-httpurlconnection">Java + HttpURLConnection</option>
-          <option value="java-jsoup">Java + jsoup</option>
+          <option value="java-jsoup" selected>Java + jsoup</option>
           <option value="java-okhttp">Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
@@ -97,7 +97,7 @@
           <option value="node-fetch">Node.js + node-fetch</option>
           <option value="node-request">Node.js + request</option>
           <option value="node-superagent">Node.js + SuperAgent</option>
-          <option value="node-http" selected>Node + http</option>
+          <option value="node-http">Node + http</option>
           <option value="objectivec">Objective-C</option>
           <option value="ocaml">OCaml</option>
           <option value="php">PHP + cURL</option>
@@ -152,11 +152,11 @@
           <a class="nav-link" href="/httpie/">HTTPie</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Java</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/java/">HttpClient</a></li>
             <li><a class="dropdown-item" href="/java-httpurlconnection/">HttpURLConnection</a></li>
-            <li><a class="dropdown-item" href="/java-jsoup/">jsoup</a></li>
+            <li><a class="dropdown-item active" href="/java-jsoup/">jsoup</a></li>
             <li><a class="dropdown-item" href="/java-okhttp/">OkHttp</a></li>
           </ul>
         </li>
@@ -178,14 +178,14 @@
           <a class="nav-link" href="/matlab/">MATLAB</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-axios/">Axios</a></li>
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
             <li><a class="dropdown-item" href="/node-superagent/">SuperAgent</a></li>
-            <li><a class="dropdown-item active" href="/node-http/">http</a></li>
+            <li><a class="dropdown-item" href="/node-http/">http</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -235,20 +235,24 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">import</span> http <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;http&#x27;</span>;
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.FileInputStream;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.jsoup.Connection;
+<span class="hljs-keyword">import</span> org.jsoup.Jsoup;
 
-<span class="hljs-keyword">const</span> req = http.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
-  <span class="hljs-keyword">const</span> chunks = [];
 
-  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">chunk</span>) {
-    chunks.<span class="hljs-title function_">push</span>(chunk);
-  });
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
 
-  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">const</span> body = <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">concat</span>(chunks);
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(body.<span class="hljs-title function_">toString</span>());
-  });
-});
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
+		Connection.<span class="hljs-type">Response</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> Jsoup.connect(<span class="hljs-string">&quot;http://example.com&quot;</span>)
+			.method(org.jsoup.Connection.Method.GET)
+			.ignoreContentType(<span class="hljs-literal">true</span>)
+			.execute();
+
+		System.out.println(response.parse());
+	}
+}
 </code></pre>
       </div>
     </div>
