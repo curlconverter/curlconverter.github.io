@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Swift</title>
+    <title>Convert curl commands to swift</title>
   </head>
   <body>
 
@@ -237,22 +237,21 @@
       <div class="col">
         <pre><code id="generated-code"><span class="hljs-keyword">import</span> Foundation
 
-<span class="hljs-keyword">let</span> request <span class="hljs-operator">=</span> <span class="hljs-type">NSMutableURLRequest</span>(url: <span class="hljs-type">NSURL</span>(string: <span class="hljs-string">&quot;http://example.com/&quot;</span>)<span class="hljs-operator">!</span> <span class="hljs-keyword">as</span> <span class="hljs-type">URL</span>,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: <span class="hljs-number">10.0</span>)
-request.httpMethod <span class="hljs-operator">=</span> <span class="hljs-string">&quot;GET&quot;</span>
+<span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-type">URL</span>(string: <span class="hljs-string">&quot;http://example.com&quot;</span>)<span class="hljs-operator">!</span>
 
-<span class="hljs-keyword">let</span> session <span class="hljs-operator">=</span> <span class="hljs-type">URLSession</span>.shared
-<span class="hljs-keyword">let</span> dataTask <span class="hljs-operator">=</span> session.dataTask(with: request <span class="hljs-keyword">as</span> <span class="hljs-type">URLRequest</span>, completionHandler: { (data, response, error) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
-  <span class="hljs-keyword">if</span> (error <span class="hljs-operator">!=</span> <span class="hljs-literal">nil</span>) {
-    <span class="hljs-built_in">print</span>(error)
-  } <span class="hljs-keyword">else</span> {
-    <span class="hljs-keyword">let</span> httpResponse <span class="hljs-operator">=</span> response <span class="hljs-keyword">as?</span> <span class="hljs-type">HTTPURLResponse</span>
-    <span class="hljs-built_in">print</span>(httpResponse)
-  }
-})
+<span class="hljs-keyword">var</span> request <span class="hljs-operator">=</span> <span class="hljs-type">URLRequest</span>(url: url)
 
-dataTask.resume()</code></pre>
+<span class="hljs-keyword">let</span> task <span class="hljs-operator">=</span> <span class="hljs-type">URLSession</span>.shared.dataTask(with: request) { (data, response, error) <span class="hljs-keyword">in</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> error <span class="hljs-operator">=</span> error {
+        <span class="hljs-built_in">print</span>(error)
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> data <span class="hljs-operator">=</span> data {
+        <span class="hljs-keyword">let</span> str <span class="hljs-operator">=</span> <span class="hljs-type">String</span>(data: data, encoding: .utf8)
+        <span class="hljs-built_in">print</span>(str <span class="hljs-operator">??</span> <span class="hljs-string">&quot;&quot;</span>)
+    }
+}
+
+task.resume()
+</code></pre>
       </div>
     </div>
     <div class="row">
