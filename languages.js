@@ -50,6 +50,7 @@ export const languages = {
   'node-http': { converter: curlconverter.toNodeHttpWarn, hljs: 'javascript', title: 'Node + http' },
   'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node + Axios' },
   'node-got': { converter: curlconverter.toNodeGotWarn, hljs: 'javascript', title: 'Node + Got' },
+  'node-ky': { converter: curlconverter.toNodeKyWarn, hljs: 'javascript', title: 'Node + Ky' },
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node + request' },
   'node-superagent': { converter: curlconverter.toNodeSuperAgentWarn, hljs: 'javascript', title: 'Node + SuperAgent' },
   objectivec: httpsnippet('Objective-C', 'objc', 'nsurlsession', 'objectivec'),
