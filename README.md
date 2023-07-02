@@ -6,3 +6,12 @@ curlconverter uses [tree-sitter](https://tree-sitter.github.io/tree-sitter/) for
 
     npm install
     npm start
+
+
+If you're on macOS, this prerequisite may also be necessary:
+
+```
+brew install emscripten
+```
+
+if you receive the error: `npm ERR! You must have either emcc or docker on your PATH to run this command`
