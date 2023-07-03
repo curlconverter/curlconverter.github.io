@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to JavaScript + jQuery</title>
+    <title>Convert curl commands to Node + Ky</title>
   </head>
   <body>
 
@@ -87,14 +87,14 @@
           <option value="java-jsoup">Java + jsoup</option>
           <option value="java-okhttp">Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
-          <option value="javascript-jquery" selected>JavaScript + jQuery</option>
+          <option value="javascript-jquery">JavaScript + jQuery</option>
           <option value="javascript-xhr">JavaScript + XHR</option>
           <option value="json">JSON</option>
           <option value="kotlin">Kotlin</option>
           <option value="matlab">MATLAB</option>
           <option value="node-axios">Node.js + Axios</option>
           <option value="node-got">Node.js + Got</option>
-          <option value="node-ky">Node.js + Ky</option>
+          <option value="node-ky" selected>Node.js + Ky</option>
           <option value="node-fetch">Node.js + node-fetch</option>
           <option value="node-request">Node.js + request</option>
           <option value="node-superagent">Node.js + SuperAgent</option>
@@ -162,10 +162,10 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/javascript/">fetch</a></li>
-            <li><a class="dropdown-item active" href="/javascript-jquery/">jQuery</a></li>
+            <li><a class="dropdown-item" href="/javascript-jquery/">jQuery</a></li>
             <li><a class="dropdown-item" href="/javascript-xhr/">XHR</a></li>
           </ul>
         </li>
@@ -179,11 +179,11 @@
           <a class="nav-link" href="/matlab/">MATLAB</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-axios/">Axios</a></li>
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
-            <li><a class="dropdown-item" href="/node-ky/">Ky</a></li>
+            <li><a class="dropdown-item active" href="/node-ky/">Ky</a></li>
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
             <li><a class="dropdown-item" href="/node-superagent/">SuperAgent</a></li>
@@ -237,10 +237,11 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code">$.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>)
-  .<span class="hljs-title function_">done</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(response);
-  });
+        <pre><code id="generated-code"><span class="hljs-keyword">import</span> ky <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ky&#x27;</span>;
+
+<span class="hljs-title function_">ky</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>, {
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>
+});
 </code></pre>
       </div>
     </div>
