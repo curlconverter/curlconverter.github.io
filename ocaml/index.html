@@ -237,15 +237,15 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">open</span> <span class="hljs-type">Cohttp_lwt_unix</span>
+        <pre><code id="generated-code"><span class="hljs-keyword">open</span> <span class="hljs-type">Lwt</span>
 <span class="hljs-keyword">open</span> <span class="hljs-type">Cohttp</span>
-<span class="hljs-keyword">open</span> <span class="hljs-type">Lwt</span>
+<span class="hljs-keyword">open</span> <span class="hljs-type">Cohttp_lwt_unix</span>
 
-<span class="hljs-keyword">let</span> uri = <span class="hljs-type">Uri</span>.of_string <span class="hljs-string">&quot;http://example.com/&quot;</span> <span class="hljs-keyword">in</span>
-
-<span class="hljs-type">Client</span>.call <span class="hljs-type">`GET</span> uri
-&gt;&gt;= <span class="hljs-keyword">fun</span> (res, body_stream) -&gt;
-  <span class="hljs-comment">(* Do stuff with the result *)</span></code></pre>
+<span class="hljs-keyword">let</span> uri = <span class="hljs-type">Uri</span>.of_string <span class="hljs-string">&quot;http://example.com&quot;</span> <span class="hljs-keyword">in</span>
+<span class="hljs-type">Client</span>.get uri
+&gt;&gt;= <span class="hljs-keyword">fun</span> (resp, body) -&gt;
+  <span class="hljs-comment">(* Do stuff with the result *)</span>
+</code></pre>
       </div>
     </div>
     <div class="row">
