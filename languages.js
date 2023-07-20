@@ -54,7 +54,7 @@ export const languages = {
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node + request' },
   'node-superagent': { converter: curlconverter.toNodeSuperAgentWarn, hljs: 'javascript', title: 'Node + SuperAgent' },
   objectivec: httpsnippet('Objective-C', 'objc', 'nsurlsession', 'objectivec'),
-  ocaml: httpsnippet('OCaml'),
+  ocaml: { converter: curlconverter.toOCamlWarn, hljs: 'ocaml', title: 'OCaml' },
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   'php-guzzle': { converter: curlconverter.toPhpGuzzleWarn, hljs: 'php', title: 'PHP + Guzzle' },
   'powershell-restmethod': { converter: curlconverter.toPowershellRestMethodWarn, hljs: 'powershell', title: 'PowerShell + Invoke-RestMethod' },
