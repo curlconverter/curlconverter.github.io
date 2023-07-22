@@ -25,6 +25,8 @@ function httpsnippet(title, lang, client, hljs) {
 
 export const languages = {
   ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
+  // backwards compatibility
+  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
   // TODO: CFML isn't supported by highlight.js
   coldfusion: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
   csharp: { converter: curlconverter.toCSharpWarn, hljs: 'csharp', title: 'C# + HttpClient' },
