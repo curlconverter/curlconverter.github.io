@@ -284,6 +284,8 @@ if (!path && hash) {
   } else {
     startingLanguage = hash
   }
+} else if (path && path === 'cfml') {
+  startingLanguage = 'coldfusion'
 } else {
   startingLanguage = path
 }

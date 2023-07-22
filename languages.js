@@ -26,7 +26,7 @@ function httpsnippet(title, lang, client, hljs) {
 export const languages = {
   ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
   // TODO: CFML isn't supported by highlight.js
-  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
+  coldfusion: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language' },
   csharp: { converter: curlconverter.toCSharpWarn, hljs: 'csharp', title: 'C# + HttpClient' },
   clojure: { converter: curlconverter.toClojureWarn, hljs: 'clojure', title: 'Clojure' },
   dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
