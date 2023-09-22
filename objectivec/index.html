@@ -239,22 +239,21 @@
       <div class="col">
         <pre><code id="generated-code"><span class="hljs-meta">#import <span class="hljs-string">&lt;Foundation/Foundation.h&gt;</span></span>
 
-<span class="hljs-built_in">NSMutableURLRequest</span> *request = [<span class="hljs-built_in">NSMutableURLRequest</span> requestWithURL:[<span class="hljs-built_in">NSURL</span> URLWithString:<span class="hljs-string">@&quot;http://example.com/&quot;</span>]
-                                                       cachePolicy:<span class="hljs-built_in">NSURLRequestUseProtocolCachePolicy</span>
-                                                   timeoutInterval:<span class="hljs-number">10.0</span>];
-[request setHTTPMethod:<span class="hljs-string">@&quot;GET&quot;</span>];
+<span class="hljs-built_in">NSURL</span> *url = [<span class="hljs-built_in">NSURL</span> URLWithString:<span class="hljs-string">@&quot;http://example.com&quot;</span>];
+<span class="hljs-built_in">NSMutableURLRequest</span> *request = [<span class="hljs-built_in">NSMutableURLRequest</span> requestWithURL:url];
 
-<span class="hljs-built_in">NSURLSession</span> *session = [<span class="hljs-built_in">NSURLSession</span> sharedSession];
-<span class="hljs-built_in">NSURLSessionDataTask</span> *dataTask = [session dataTaskWithRequest:request
-                                            completionHandler:^(<span class="hljs-built_in">NSData</span> *data, <span class="hljs-built_in">NSURLResponse</span> *response, <span class="hljs-built_in">NSError</span> *error) {
-                                                <span class="hljs-keyword">if</span> (error) {
-                                                    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, error);
-                                                } <span class="hljs-keyword">else</span> {
-                                                    <span class="hljs-built_in">NSHTTPURLResponse</span> *httpResponse = (<span class="hljs-built_in">NSHTTPURLResponse</span> *) response;
-                                                    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, httpResponse);
-                                                }
-                                            }];
-[dataTask resume];</code></pre>
+<span class="hljs-built_in">NSURLSessionConfiguration</span> *defaultSessionConfiguration = [<span class="hljs-built_in">NSURLSessionConfiguration</span> defaultSessionConfiguration];
+<span class="hljs-built_in">NSURLSession</span> *session = [<span class="hljs-built_in">NSURLSession</span> sessionWithConfiguration:defaultSessionConfiguration];
+<span class="hljs-built_in">NSURLSessionDataTask</span> *dataTask = [session dataTaskWithRequest:request completionHandler:^(<span class="hljs-built_in">NSData</span> *data, <span class="hljs-built_in">NSURLResponse</span> *response, <span class="hljs-built_in">NSError</span> *error) {
+    <span class="hljs-keyword">if</span> (error) {
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, error);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">NSHTTPURLResponse</span> *httpResponse = (<span class="hljs-built_in">NSHTTPURLResponse</span> *) response;
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, httpResponse);
+    }
+}];
+[dataTask resume];
+</code></pre>
       </div>
     </div>
     <div class="row">
