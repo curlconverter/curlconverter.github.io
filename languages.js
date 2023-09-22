@@ -55,7 +55,7 @@ export const languages = {
   'node-ky': { converter: curlconverter.toNodeKyWarn, hljs: 'javascript', title: 'Node + Ky' },
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node + request' },
   'node-superagent': { converter: curlconverter.toNodeSuperAgentWarn, hljs: 'javascript', title: 'Node + SuperAgent' },
-  objectivec: httpsnippet('Objective-C', 'objc', 'nsurlsession', 'objectivec'),
+  objectivec: { converter: curlconverter.toObjectiveCWarn, hljs: 'objectivec', title: 'Objective-C' },
   ocaml: { converter: curlconverter.toOCamlWarn, hljs: 'ocaml', title: 'OCaml' },
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   'php-guzzle': { converter: curlconverter.toPhpGuzzleWarn, hljs: 'php', title: 'PHP + Guzzle' },
