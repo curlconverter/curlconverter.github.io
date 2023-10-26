@@ -1,4 +1,4 @@
-import HTTPSnippet from 'httpsnippet'
+import { HTTPSnippet } from 'httpsnippet';
 
 import * as curlconverter from 'curlconverter'
 

@@ -118,6 +118,7 @@ const changeHighlight = (language) => {
     navbar.classList.remove('error')
   }
 
+  generatedCodeEl.removeAttribute('data-highlighted');
   hljs.highlightElement(generatedCodeEl)
 }
 
