@@ -239,14 +239,10 @@
       <div class="col">
         <pre><code id="generated-code"><span class="hljs-keyword">import</span> http.client
 
-conn = http.client.HTTPConnection(<span class="hljs-string">&quot;example.com&quot;</span>)
-
-conn.request(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>)
-
-res = conn.getresponse()
-data = res.read()
-
-<span class="hljs-built_in">print</span>(data.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))</code></pre>
+conn = http.client.HTTPConnection(<span class="hljs-string">&#x27;example.com&#x27;</span>)
+conn.request(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+response = conn.getresponse()
+</code></pre>
       </div>
     </div>
     <div class="row">
