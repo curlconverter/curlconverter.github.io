@@ -21,7 +21,6 @@
     "detect-browser": "^5.3.0",
     "github-fork-ribbon-css": "^0.2.3",
     "highlight.js": "^11.9.0",
-    "httpsnippet": "^2.0.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "querystring-es3": "^0.2.1",
