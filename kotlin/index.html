@@ -251,7 +251,6 @@ client.newCall(request).execute().use { response -&gt;
   <span class="hljs-keyword">if</span> (!response.isSuccessful) <span class="hljs-keyword">throw</span> IOException(<span class="hljs-string">&quot;Unexpected code <span class="hljs-variable">$response</span>&quot;</span>)
   response.body!!.string()
 }
-
 </code></pre>
       </div>
     </div>
