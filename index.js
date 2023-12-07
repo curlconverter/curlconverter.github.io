@@ -17,10 +17,12 @@ import http from 'highlight.js/lib/languages/http'
 import java from 'highlight.js/lib/languages/java'
 import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
+import julia from 'highlight.js/lib/languages/julia'
 import kotlin from 'highlight.js/lib/languages/kotlin'
 import matlab from 'highlight.js/lib/languages/matlab'
 import objectivec from 'highlight.js/lib/languages/objectivec'
 import ocaml from 'highlight.js/lib/languages/ocaml'
+import perl from 'highlight.js/lib/languages/perl'
 import php from 'highlight.js/lib/languages/php'
 import powershell from 'highlight.js/lib/languages/powershell'
 import python from 'highlight.js/lib/languages/python'
@@ -49,10 +51,12 @@ hljs.registerLanguage('http', http)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)
+hljs.registerLanguage('julia', julia)
 hljs.registerLanguage('kotlin', kotlin)
 hljs.registerLanguage('matlab', matlab)
 hljs.registerLanguage('objectivec', objectivec)
 hljs.registerLanguage('ocaml', ocaml)
+hljs.registerLanguage('perl', perl)
 hljs.registerLanguage('php', php)
 hljs.registerLanguage('powershell', powershell)
 hljs.registerLanguage('python', python)

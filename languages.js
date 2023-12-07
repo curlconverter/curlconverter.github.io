@@ -23,6 +23,7 @@ export const languages = {
   'javascript-xhr': {converter: curlconverter.toJavaScriptXHRWarn, hljs: 'javascript', title: 'JavaScript + XHR'},
   // People googling for "curl json" are probably looking for something else
   json: { converter: curlconverter.toJsonStringWarn, hljs: 'json', title: 'a JSON object' },
+  julia: { converter: curlconverter.toJuliaWarn, hljs: 'julia', title: 'Julia' },
   kotlin: { converter: curlconverter.toKotlinWarn, hljs: 'kotlin', title: 'Kotlin' },
   matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
   'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
@@ -34,6 +35,7 @@ export const languages = {
   'node-superagent': { converter: curlconverter.toNodeSuperAgentWarn, hljs: 'javascript', title: 'Node + SuperAgent' },
   objectivec: { converter: curlconverter.toObjectiveCWarn, hljs: 'objectivec', title: 'Objective-C' },
   ocaml: { converter: curlconverter.toOCamlWarn, hljs: 'ocaml', title: 'OCaml' },
+  perl: { converter: curlconverter.toPerlWarn, hljs: 'perl', title: 'Perl' },
   php: { converter: curlconverter.toPhpWarn, hljs: 'php', title: 'PHP' },
   'php-guzzle': { converter: curlconverter.toPhpGuzzleWarn, hljs: 'php', title: 'PHP + Guzzle' },
   'powershell-restmethod': { converter: curlconverter.toPowershellRestMethodWarn, hljs: 'powershell', title: 'PowerShell + Invoke-RestMethod' },
