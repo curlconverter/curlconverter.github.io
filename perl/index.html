@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to JavaScript + XHR</title>
+    <title>Convert curl commands to Perl</title>
   </head>
   <body>
 
@@ -88,7 +88,7 @@
           <option value="java-okhttp">Java + OkHttp</option>
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
-          <option value="javascript-xhr" selected>JavaScript + XHR</option>
+          <option value="javascript-xhr">JavaScript + XHR</option>
           <option value="json">JSON</option>
           <option value="julia">Julia</option>
           <option value="kotlin">Kotlin</option>
@@ -102,7 +102,7 @@
           <option value="node-http">Node + http</option>
           <option value="objectivec">Objective-C</option>
           <option value="ocaml">OCaml</option>
-          <option value="perl">Perl</option>
+          <option value="perl" selected>Perl</option>
           <option value="php">PHP + cURL</option>
           <option value="php-guzzle">PHP + Guzzle</option>
           <option value="powershell-restmethod">PowerShell + Invoke-RestMethod</option>
@@ -164,11 +164,11 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">JavaScript</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/javascript/">fetch</a></li>
             <li><a class="dropdown-item" href="/javascript-jquery/">jQuery</a></li>
-            <li><a class="dropdown-item active" href="/javascript-xhr/">XHR</a></li>
+            <li><a class="dropdown-item" href="/javascript-xhr/">XHR</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -202,7 +202,7 @@
           <a class="nav-link" href="/ocaml/">OCaml</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/perl/">Perl</a>
+          <a class="nav-link active" href="/perl/">Perl</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PHP</a>
@@ -245,15 +245,8 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">let</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();
-xhr.<span class="hljs-property">withCredentials</span> = <span class="hljs-literal">true</span>;
-xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;http://example.com&#x27;</span>);
-
-xhr.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(xhr.<span class="hljs-property">response</span>);
-};
-
-xhr.<span class="hljs-title function_">send</span>();
+        <pre><code id="generated-code"><span class="hljs-keyword">use</span> LWP::Simple;
+$content = get(<span class="hljs-string">&#x27;http://example.com&#x27;</span>);
 </code></pre>
       </div>
     </div>
