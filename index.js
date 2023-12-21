@@ -156,7 +156,7 @@ const changeLanguage = function (language) {
       // If the user clicks on the language they already opened again,
       // don't needlessly change the title
       const initialTitle = 'Convert curl commands to ' + languages[language].title
-      const newTitle = 'Convert curl to ' + languages[language].title
+      const newTitle = 'curl to ' + languages[language].title
       if (document.title !== newTitle && document.title !== initialTitle) {
         document.title = newTitle
       }
