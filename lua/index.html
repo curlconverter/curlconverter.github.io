@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Node + Ky</title>
+    <title>Convert curl commands to Lua</title>
   </head>
   <body>
 
@@ -92,11 +92,11 @@
           <option value="json">JSON</option>
           <option value="julia">Julia</option>
           <option value="kotlin">Kotlin</option>
-          <option value="lua">Lua</option>
+          <option value="lua" selected>Lua</option>
           <option value="matlab">MATLAB</option>
           <option value="node-axios">Node.js + Axios</option>
           <option value="node-got">Node.js + Got</option>
-          <option value="node-ky" selected>Node.js + Ky</option>
+          <option value="node-ky">Node.js + Ky</option>
           <option value="node-fetch">Node.js + node-fetch</option>
           <option value="node-request">Node.js + request</option>
           <option value="node-superagent">Node.js + SuperAgent</option>
@@ -182,17 +182,17 @@
           <a class="nav-link" href="/kotlin/">Kotlin</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/lua/">Lua</a>
+          <a class="nav-link active" href="/lua/">Lua</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/matlab/">MATLAB</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-axios/">Axios</a></li>
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
-            <li><a class="dropdown-item active" href="/node-ky/">Ky</a></li>
+            <li><a class="dropdown-item" href="/node-ky/">Ky</a></li>
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
             <li><a class="dropdown-item" href="/node-superagent/">SuperAgent</a></li>
@@ -249,9 +249,9 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">import</span> ky <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ky&#x27;</span>;
+        <pre><code id="generated-code"><span class="hljs-keyword">local</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;socket.http&quot;</span>)
 
-ky.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>);
+<span class="hljs-keyword">local</span> body, code, headers, <span class="hljs-built_in">status</span> = http.request(<span class="hljs-string">&quot;example.com&quot;</span>)
 </code></pre>
       </div>
     </div>
