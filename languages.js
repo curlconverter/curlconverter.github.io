@@ -25,6 +25,7 @@ export const languages = {
   json: { converter: curlconverter.toJsonStringWarn, hljs: 'json', title: 'a JSON object' },
   julia: { converter: curlconverter.toJuliaWarn, hljs: 'julia', title: 'Julia' },
   kotlin: { converter: curlconverter.toKotlinWarn, hljs: 'kotlin', title: 'Kotlin' },
+  lua: { converter: curlconverter.toLuaWarn, hljs: 'lua', title: 'Lua' },
   matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
   'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
   'node-http': { converter: curlconverter.toNodeHttpWarn, hljs: 'javascript', title: 'Node + http' },

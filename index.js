@@ -19,6 +19,7 @@ import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
 import julia from 'highlight.js/lib/languages/julia'
 import kotlin from 'highlight.js/lib/languages/kotlin'
+import lua from 'highlight.js/lib/languages/lua'
 import matlab from 'highlight.js/lib/languages/matlab'
 import objectivec from 'highlight.js/lib/languages/objectivec'
 import ocaml from 'highlight.js/lib/languages/ocaml'
@@ -53,6 +54,7 @@ hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)
 hljs.registerLanguage('julia', julia)
 hljs.registerLanguage('kotlin', kotlin)
+hljs.registerLanguage('lua', lua)
 hljs.registerLanguage('matlab', matlab)
 hljs.registerLanguage('objectivec', objectivec)
 hljs.registerLanguage('ocaml', ocaml)
