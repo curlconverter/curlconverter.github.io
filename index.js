@@ -374,13 +374,30 @@ copyToClipboardEl.addEventListener('click', (e) => {
 })
 
 const browsers = ['chrome', 'safari', 'firefox']
+const browserNames = {
+  'chrome': 'chrome',
+  'chromium-webview': 'chrome',
+  'edge': 'chrome',
+  'edge-chromium': 'chrome',
+  'yandexbrowser': 'chrome',
+  'opera': 'chrome',
+  'opera-mini': 'chrome',
+  'android': 'chrome',
+
+  'firefox': 'firefox',
+
+  'safari': 'safari',
+  'ios': 'safari',
+  'ios-webview': 'safari',
+  'edge-ios': 'safari'
+}
 let userBrowser = 'chrome'
 let userOS = 'mac'
 try {
   const detectedBrowser = detect()
-  if (detectedBrowser && detectedBrowser.name && browsers.includes(detectedBrowser.name)) {
-    userBrowser = detectedBrowser.name
-    if (detectedBrowser.os && detectedBrowser.os.toLowerCase().includes('windows')) {
+  if (detectedBrowser && detectedBrowser.name) {
+    userBrowser = browserNames[detectedBrowser.name] || 'chrome'
+    if (detectedBrowser.os && detectedBrowser.os.toLowerCase().startsWith('windows')) {
       userOS = 'windows'
     }
   }
