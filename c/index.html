@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to a JSON object</title>
+    <title>Convert curl commands to C</title>
   </head>
   <body>
 
@@ -73,7 +73,7 @@
       <div class="col col-sm-auto d-xl-none px-sm-0">
         <select class="form-select form-select-lg" id="language-select">
           <option value="ansible">Ansible</option>
-          <option value="c">C</option>
+          <option value="c" selected>C</option>
           <option value="csharp">C#</option>
           <option value="clojure">Clojure</option>
           <option value="coldfusion">ColdFusion</option>
@@ -90,7 +90,7 @@
           <option value="javascript">JavaScript + fetch</option>
           <option value="javascript-jquery">JavaScript + jQuery</option>
           <option value="javascript-xhr">JavaScript + XHR</option>
-          <option value="json" selected>JSON</option>
+          <option value="json">JSON</option>
           <option value="julia">Julia</option>
           <option value="kotlin">Kotlin</option>
           <option value="lua">Lua</option>
@@ -124,7 +124,7 @@
           <a class="nav-link" href="/ansible/">Ansible</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/c/">C</a>
+          <a class="nav-link active" href="/c/">C</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/csharp/">C#</a>
@@ -174,7 +174,7 @@
           <a class="nav-link" href="/julia/">Julia</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/json/">JSON</a>
+          <a class="nav-link" href="/json/">JSON</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/kotlin/">Kotlin</a>
@@ -247,11 +247,30 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://example.com&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;raw_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://example.com&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;get&quot;</span>
-<span class="hljs-punctuation">}</span>
+        <pre><code id="generated-code"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;curl/curl.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> *argv[])</span>
+{
+  CURLcode ret;
+  CURL *hnd;
+
+  hnd = curl_easy_init();
+  curl_easy_setopt(hnd, CURLOPT_BUFFERSIZE, <span class="hljs-number">102400L</span>);
+  curl_easy_setopt(hnd, CURLOPT_URL, <span class="hljs-string">&quot;http://example.com&quot;</span>);
+  curl_easy_setopt(hnd, CURLOPT_NOPROGRESS, <span class="hljs-number">1L</span>);
+  curl_easy_setopt(hnd, CURLOPT_USERAGENT, <span class="hljs-string">&quot;curl/8.2.1&quot;</span>);
+  curl_easy_setopt(hnd, CURLOPT_MAXREDIRS, <span class="hljs-number">50L</span>);
+  curl_easy_setopt(hnd, CURLOPT_HTTP_VERSION, (<span class="hljs-type">long</span>)CURL_HTTP_VERSION_2TLS);
+  curl_easy_setopt(hnd, CURLOPT_FTP_SKIP_PASV_IP, <span class="hljs-number">1L</span>);
+  curl_easy_setopt(hnd, CURLOPT_TCP_KEEPALIVE, <span class="hljs-number">1L</span>);
+
+  ret = curl_easy_perform(hnd);
+
+  curl_easy_cleanup(hnd);
+  hnd = <span class="hljs-literal">NULL</span>;
+
+  <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>)ret;
+}
 </code></pre>
       </div>
     </div>
