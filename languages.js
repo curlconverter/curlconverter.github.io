@@ -2,12 +2,12 @@ import * as curlconverter from 'curlconverter'
 
 export const languages = {
   ansible: { converter: curlconverter.toAnsibleWarn, hljs: 'yaml', title: 'Ansible' },
-  // backwards compatibility
-  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language', shortTitle: 'CFML' },
-  // TODO: CFML isn't supported by highlight.js
-  coldfusion: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language', shortTitle: 'CFML' },
+  c: { converter: curlconverter.toCWarn, hljs: 'c', title: 'C' },
   csharp: { converter: curlconverter.toCSharpWarn, hljs: 'csharp', title: 'C#' },
   clojure: { converter: curlconverter.toClojureWarn, hljs: 'clojure', title: 'Clojure' },
+  // TODO: CFML isn't supported by highlight.js
+  cfml: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language', shortTitle: 'CFML' }, // backwards compatibility
+  coldfusion: { converter: curlconverter.toCFMLWarn, hljs: 'javascript', title: 'ColdFusion Markup Language', shortTitle: 'CFML' },
   dart: { converter: curlconverter.toDartWarn, hljs: 'dart', title: 'Dart' },
   elixir: { converter: curlconverter.toElixirWarn, hljs: 'elixir', title: 'Elixir' },
   go: { converter: curlconverter.toGoWarn, hljs: 'go', title: 'Go' },
@@ -27,13 +27,13 @@ export const languages = {
   kotlin: { converter: curlconverter.toKotlinWarn, hljs: 'kotlin', title: 'Kotlin' },
   lua: { converter: curlconverter.toLuaWarn, hljs: 'lua', title: 'Lua' },
   matlab: { converter: curlconverter.toMATLABWarn, hljs: 'matlab', title: 'MATLAB' },
-  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
-  'node-http': { converter: curlconverter.toNodeHttpWarn, hljs: 'javascript', title: 'Node + http', shortTitle: 'Node' },
   'node-axios': { converter: curlconverter.toNodeAxiosWarn, hljs: 'javascript', title: 'Node + Axios', shortTitle: 'Axios' },
   'node-got': { converter: curlconverter.toNodeGotWarn, hljs: 'javascript', title: 'Node + Got' },
   'node-ky': { converter: curlconverter.toNodeKyWarn, hljs: 'javascript', title: 'Node + Ky' },
+  'node-fetch': { converter: curlconverter.toNodeWarn, hljs: 'javascript', title: 'node-fetch' },
   'node-request': { converter: curlconverter.toNodeRequestWarn, hljs: 'javascript', title: 'Node + request' },
   'node-superagent': { converter: curlconverter.toNodeSuperAgentWarn, hljs: 'javascript', title: 'Node + SuperAgent', shortTitle: 'SuperAgent' },
+  'node-http': { converter: curlconverter.toNodeHttpWarn, hljs: 'javascript', title: 'Node + http', shortTitle: 'Node' },
   objectivec: { converter: curlconverter.toObjectiveCWarn, hljs: 'objectivec', title: 'Objective-C' },
   ocaml: { converter: curlconverter.toOCamlWarn, hljs: 'ocaml', title: 'OCaml' },
   perl: { converter: curlconverter.toPerlWarn, hljs: 'perl', title: 'Perl' },

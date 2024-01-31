@@ -8,6 +8,7 @@ import { languages } from './languages.js'
 import hljs from 'highlight.js/lib/core'
 import plaintext from 'highlight.js/lib/languages/plaintext'
 import bash from 'highlight.js/lib/languages/bash'
+import c from 'highlight.js/lib/languages/c'
 import clojure from 'highlight.js/lib/languages/clojure'
 import csharp from 'highlight.js/lib/languages/csharp'
 import dart from 'highlight.js/lib/languages/dart'
@@ -43,6 +44,7 @@ import formExampleText from './examples/form.sh'
 hljs.registerLanguage('plaintext', plaintext)
 
 hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('c', c)
 hljs.registerLanguage('clojure', clojure)
 hljs.registerLanguage('csharp', csharp)
 hljs.registerLanguage('dart', dart)
