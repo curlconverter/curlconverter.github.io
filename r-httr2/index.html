@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to HAR</title>
+    <title>Convert curl commands to R + httr2</title>
   </head>
   <body>
 
@@ -80,7 +80,7 @@
           <option value="dart">Dart</option>
           <option value="elixir">Elixir</option>
           <option value="go">Go</option>
-          <option value="har" selected>HAR</option>
+          <option value="har">HAR</option>
           <option value="http">HTTP</option>
           <option value="httpie">HTTPie</option>
           <option value="java">Java + HttpClient</option>
@@ -112,7 +112,7 @@
           <option value="python">Python + Requests</option>
           <option value="python-httpclient">Python + http.client</option>
           <option value="r">R + httr</option>
-          <option value="r-httr2">R + httr2</option>
+          <option value="r-httr2" selected>R + httr2</option>
           <option value="ruby">Ruby</option>
           <option value="rust">Rust</option>
           <option value="swift">Swift</option>
@@ -146,7 +146,7 @@
           <a class="nav-link" href="/go/">Go</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/har/">HAR</a>
+          <a class="nav-link" href="/har/">HAR</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/http/">HTTP</a>
@@ -229,10 +229,10 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">R</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">R</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/r/">httr</a></li>
-            <li><a class="dropdown-item" href="/r-httr2/">httr2</a></li>
+            <li><a class="dropdown-item active" href="/r-httr2/">httr2</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -252,25 +252,10 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;log&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-        <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.2&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;entries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
-            <span class="hljs-punctuation">{</span>
-                <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-                    <span class="hljs-attr">&quot;method&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;GET&quot;</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://example.com&quot;</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;httpVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;HTTP/1.1&quot;</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;cookies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;headers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;queryString&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;headersSize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">-1</span><span class="hljs-punctuation">,</span>
-                    <span class="hljs-attr">&quot;bodySize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">-1</span>
-                <span class="hljs-punctuation">}</span>
-            <span class="hljs-punctuation">}</span>
-        <span class="hljs-punctuation">]</span>
-    <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
+        <pre><code id="generated-code">library<span class="hljs-punctuation">(</span>httr2<span class="hljs-punctuation">)</span>
+
+request<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;http://example.com&quot;</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">|&gt;</span>
+  req_perform<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span>
 </code></pre>
       </div>
     </div>
