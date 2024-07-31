@@ -372,7 +372,14 @@ copyToClipboardEl.addEventListener('click', (e) => {
   selection.removeAllRanges()
   selection.addRange(range)
 
-  navigator.clipboard.writeText(generatedCodeEl.textContent)
+  navigator.clipboard.writeText(generatedCodeEl.textContent).then(() => {
+    copyToClipboardEl.querySelector(".clipboard").classList.add("hidden");
+    copyToClipboardEl.querySelector(".check").classList.remove("hidden");
+    setTimeout(() => {
+      copyToClipboardEl.querySelector(".clipboard").classList.remove("hidden");
+      copyToClipboardEl.querySelector(".check").classList.add("hidden");
+    }, 2000);
+  })
 })
 
 const browsers = ['chrome', 'safari', 'firefox']
