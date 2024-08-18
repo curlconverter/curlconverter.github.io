@@ -24,7 +24,7 @@
 
     <link href="/main.css" rel="stylesheet">
 
-    <title>Convert curl commands to Node + http</title>
+    <title>Convert curl commands to Ruby + HTTParty</title>
   </head>
   <body>
 
@@ -101,7 +101,7 @@
           <option value="node-fetch">Node.js + node-fetch</option>
           <option value="node-request">Node.js + request</option>
           <option value="node-superagent">Node.js + SuperAgent</option>
-          <option value="node-http" selected>Node + http</option>
+          <option value="node-http">Node + http</option>
           <option value="objectivec">Objective-C</option>
           <option value="ocaml">OCaml</option>
           <option value="perl">Perl</option>
@@ -114,7 +114,7 @@
           <option value="r">R + httr</option>
           <option value="r-httr2">R + httr2</option>
           <option value="ruby">Ruby + Net::HTTP</option>
-          <option value="ruby-httparty">Ruby + HTTParty</option>
+          <option value="ruby-httparty" selected>Ruby + HTTParty</option>
           <option value="rust">Rust</option>
           <option value="swift">Swift</option>
           <option value="wget">Wget</option>
@@ -188,7 +188,7 @@
           <a class="nav-link" href="/matlab/">MATLAB</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Node.js</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/node-axios/">Axios</a></li>
             <li><a class="dropdown-item" href="/node-got/">Got</a></li>
@@ -196,7 +196,7 @@
             <li><a class="dropdown-item" href="/node-fetch/">node-fetch</a></li>
             <li><a class="dropdown-item" href="/node-request/">request</a></li>
             <li><a class="dropdown-item" href="/node-superagent/">SuperAgent</a></li>
-            <li><a class="dropdown-item active" href="/node-http/">http</a></li>
+            <li><a class="dropdown-item" href="/node-http/">http</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -237,10 +237,10 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ruby</a>
+          <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ruby</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/ruby/">Net::HTTP</a></li>
-            <li><a class="dropdown-item" href="/ruby-httparty/">HTTParty</a></li>
+            <li><a class="dropdown-item active" href="/ruby-httparty/">HTTParty</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -257,20 +257,10 @@
 
     <div class="row">
       <div class="col">
-        <pre><code id="generated-code"><span class="hljs-keyword">import</span> http <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;http&#x27;</span>;
+        <pre><code id="generated-code"><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;httparty&#x27;</span>
 
-<span class="hljs-keyword">const</span> req = http.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;http://example.com&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
-  <span class="hljs-keyword">const</span> chunks = [];
-
-  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">chunk</span>) {
-    chunks.<span class="hljs-title function_">push</span>(chunk);
-  });
-
-  res.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">const</span> body = <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">concat</span>(chunks);
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(body.<span class="hljs-title function_">toString</span>());
-  });
-});
+url = <span class="hljs-string">&#x27;http://example.com&#x27;</span>
+res = <span class="hljs-title class_">HTTParty</span>.get(url)
 </code></pre>
       </div>
     </div>

@@ -113,7 +113,8 @@
           <option value="python-httpclient">Python + http.client</option>
           <option value="r">R + httr</option>
           <option value="r-httr2">R + httr2</option>
-          <option value="ruby">Ruby</option>
+          <option value="ruby">Ruby + Net::HTTP</option>
+          <option value="ruby-httparty">Ruby + HTTParty</option>
           <option value="rust">Rust</option>
           <option value="swift">Swift</option>
           <option value="wget" selected>Wget</option>
@@ -235,8 +236,12 @@
             <li><a class="dropdown-item" href="/r-httr2/">httr2</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/ruby/">Ruby</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Ruby</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/ruby/">Net::HTTP</a></li>
+            <li><a class="dropdown-item" href="/ruby-httparty/">HTTParty</a></li>
+          </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/rust/">Rust</a>
