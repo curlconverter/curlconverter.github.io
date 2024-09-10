@@ -1,6 +1,10 @@
+$color-mode-type: media-query;
+
 @import "~bootstrap/scss/bootstrap";
 @import "github-fork-ribbon-css/gh-fork-ribbon.css";
-@import "highlight.js/styles/github.css";
+
+@import url('highlight.js/styles/github-dark.css') screen and (prefers-color-scheme: dark);
+@import url('highlight.js/styles/github.css') screen and (prefers-color-scheme: light);
 
 #language-navbar {
   border-bottom: none;
@@ -8,9 +12,16 @@
 
 .nav-item > .nav-link {
   &.active, &:hover {
-    background-color: #f8f8f8;
+    background-color: #f6f8fa;
     border-bottom: none;
     transition: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .nav-item > .nav-link {
+    &.active, &:hover {
+      background-color: rgb(13, 17, 23);
+    }
   }
 }
 
@@ -38,8 +49,18 @@
 
 .nav.error > .nav-item > .nav-link {
   &.active, &:hover {
-    background-color: #ffcdcd;
-    border-color: #ffcdcd;
+    color: #1f2328 !important;
+    background-color: #ffebe9;
+    border-color: #ffebe9;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .nav.error > .nav-item > .nav-link {
+    &.active, &:hover {
+      color: #fff !important;
+      border-color: var(--bs-danger);
+      background-color: var(--bs-danger);
+    }
   }
 }
 
@@ -59,17 +80,33 @@
 }
 
 #generated-code {
-  border-color: #f8f8f8;
-  background-color: #f8f8f8;
+  border-color: #f6f8fa;
+  background-color: #f6f8fa;
+}
+@media (prefers-color-scheme: dark) {
+  #generated-code {
+    border-color: rgb(13, 17, 23);
+    background-color: rgb(13, 17, 23);
+  }
 }
 
-#warnings {
-  border-color: #ffffdd;
-  background-color: #ffffdd;
 
+#warnings {
   /* if the error is very long, without this the yellow stops when you scroll right */
   overflow-x: auto;
   min-width: 100%;
+}
+#warnings {
+  color: #1f2328 !important;
+  border-color: #fff8c5;
+  background-color: #fff8c5;
+}
+@media (prefers-color-scheme: dark) {
+  #warnings {
+    color: #000 !important;
+    border-color: var(--bs-warning);
+    background-color: var(--bs-warning);
+  }
 }
 
 /* At least Chrome on macOS adds a bottom margin */
@@ -85,11 +122,24 @@ code {
 #generated-code {
   display: block;
   overflow-x: auto;
+}
 
+#generated-code {
   /* The output should be marked as plaintext only when there's an error. */
   &.language-plaintext {
-    border-color: #ffcdcd;
-    background-color: #ffcdcd;
+    color: #1f2328 !important;
+    background-color: #ffebe9;
+    border-color: #ffebe9;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  #generated-code {
+    /* The output should be marked as plaintext only when there's an error. */
+    &.language-plaintext {
+      color: #fff !important;
+      border-color: var(--bs-danger);
+      background-color: var(--bs-danger);
+    }
   }
 }
 
