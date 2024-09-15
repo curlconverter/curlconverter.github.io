@@ -147,3 +147,25 @@ code {
 .github-fork-ribbon:before {
   background-color: #333;
 }
+
+#copy-to-clipboard {
+  top: 1px;
+  right: calc(0.75rem - 1px);
+  position: absolute;
+  padding: 0.125rem 0.500rem;
+}
+#copy-to-clipboard > svg {
+  padding: 0.20rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  opacity: 0.7;
+}
+#copy-to-clipboard > svg:hover {
+  opacity: 1.0;
+}
+#copy-to-clipboard > svg.clipboard:hover {
+  cursor: pointer;
+}
+#copy-to-clipboard > svg.hidden {
+  display: none;
+}
