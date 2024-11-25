@@ -192,9 +192,20 @@ const hideCopyToClipboard = () => {
 }
 
 const showExample = function (code) {
-  const inputBox = document.getElementById('curl-code');
-  inputBox.value = code.trim();
-  inputBox.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+  const inputBox = document.getElementById('curl-code')
+  if (!inputBox) return
+
+  inputBox.focus()
+  code = code.trim()
+
+  if (document.queryCommandSupported && document.queryCommandSupported('insertText')) {
+    inputBox.select()
+    document.execCommand('insertText', false, code)
+  } else {
+    inputBox.value = code
+  }
+
+  inputBox.dispatchEvent(new Event('input', { bubbles: true, composed: true, cancelable: true }))
 }
 
 const convert = function () {
